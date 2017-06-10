@@ -1,12 +1,7 @@
 @import '../../static/styles/common.scss';
-*{outline: none;box-sizing:border-box;}
-.clearfix:after{
-    content:"";
-    clear:both;
-    display:block;
-    height:0;
-    overflow:hidden;
-    visibility:hidden;
+
+.cate_wrap{
+	background-color: #fff;
 }
 
 header.cate_header{
@@ -14,15 +9,17 @@ header.cate_header{
 	height:1.375rem;
 	text-align: center;
 	input{
+		font-size: .375rem;
 		border:none;
 		height:0.90625rem;
-		width:9.375rem;
+		width:95%;
 		margin-top: 0.1875rem;
 		text-align: center;
-		border-radius: 2px;
+		border-radius: .0625rem;
 	}
 }
 nav.cate_nav{
+	background-color:#fff;
 	h2{
 		display: inline-block;
 		width:50%;
@@ -30,40 +27,52 @@ nav.cate_nav{
 		span{
 			height:1.5625rem;
 			line-height: 1.5625rem;
-			border-bottom:3px solid #d8b86f;
-			font-size: 16px;
+			border-bottom:.09375rem solid #d8b86f;
+			font-size: .5rem;
 			display: inline-block;
 			padding:0 0.25rem;
 		}	
 	}
 
 }
-.cate_classify{
-	width: 100%;
-	height:100%;
-	display: block;
+ul.cate_classify{
+	margin-top: .3125rem;
+	padding: 0 .15625rem .15625rem .15625rem;
+	-webkit-box-flex:1;
+	-webkit-flex:1;
+	    -ms-flex:1;
+	        flex:1;
+	overflow-x:hidden;
 	li{
-		width: 4.53125rem;
-		height:4.53125rem;
+		width: 50%;
 		float: left;
-		background: url('../../static/styles/imgs/nanshi.jpg') no-repeat;
-		background-size: cover;
-		margin:0.21875rem;
+		padding:.15625rem;
 		position: relative;
-		.shade{
+		img{
 			width:100%;
-			height:100%;
+			display: block;
+		}
+		.shade{
+			width:calc(100% - .3125rem);
+			height:calc(100% - .3125rem);
 			background-color: #000;
 			opacity: .4;
 			position: absolute;
+			top:.15625rem;
+			left:.15625rem;
+			z-index:5;
 		}
 		h2{
 			color:#fff;
-			font-size: 16px;
-			line-height: 4.53125rem;
+			font-size: .5rem;
+			line-height: .5rem;
+			padding:45% 0;
 			text-align: center;
 			width: 100%;
+			height:100%;
 			position: absolute;
+			top:0;
+			left:0;
 			z-index: 10;
 		}
 	}

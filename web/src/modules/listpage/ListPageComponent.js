@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
 import './ListPage.scss'
-import "../../static/styles/imgs/watch.png"
+// import "../../static/styles/imgs/watch.png"
+import FooterComponent from '../footer/FooterComponent'
 
 class ListPage extends Component {
 	render(){
@@ -13,6 +14,7 @@ class ListPage extends Component {
 					<h1>所有产品</h1>
 					<a className="iconfont icon-gouwuche"></a>
 				</header>
+				<div className="list_wrap">
 				<nav className="list_nav">
 					<i className="iconfont icon-sousuo_sousuo i_search"></i><input type="text" placeholder="请输入商品关键字"/>
 				</nav>
@@ -84,7 +86,8 @@ class ListPage extends Component {
 							</div>
 						</li>										
 					</ul>
-				</div>
+				</div></div>
+				<FooterComponent/>
 			</div>
 
 		)
