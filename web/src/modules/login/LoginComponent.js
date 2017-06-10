@@ -17,6 +17,9 @@ import {connect} from 'react-redux'
 import * as loginActions from './LoginAction'
 import SpinnerComponent from '../spinner/SpinnerComponent'
 
+var ReactRouter = require('react-router');
+var {Router,Route,hashHistory,Link,IndexRoute,browserHistory} = ReactRouter;
+
 // @connect(
 //     state => ({
 //         loading: state.login.loading
@@ -54,6 +57,7 @@ class LoginComponent extends React.Component {
                     <li>{this.props.loading + ''}</li>
                 </ul>
                 <SpinnerComponent show={this.props.loading}/>
+               
             </div>
         )
     }

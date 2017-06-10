@@ -5,7 +5,8 @@ import AppComponent from './modules/app/AppComponent'
 import LoginComponent from './modules/login/LoginComponent'
 
 export default (
-    <Route path="/" component={AppComponent}>
-        <Route path="login" component={LoginComponent} />
+	<Route>
+    	<Route path="/" component={AppComponent}/>
+        <Route path="login" component={LoginComponent}/>
     </Route>
 )

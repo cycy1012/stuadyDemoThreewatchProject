@@ -42,7 +42,7 @@ export function ajaxMiddleware({ dispatch, getState }) {
         return http[method](path, query, payload)
             .then(
                 response => dispatch(Object.assign({}, { query }, { payload }, {
-                    type: requestType,
+                    type: successType,
                     body: response,
                     lastFetched: Date.now()
                 })),
