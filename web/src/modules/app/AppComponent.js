@@ -43,27 +43,27 @@ class AppComponent extends Component{
 	            		<div className="recommend">
 							<ul>
 								<li>
-									<div><img src="" alt="" /></div>
+									<div><img src={pic1} alt="" /></div>
 									<p>浪琴浪琴运动系列33913987 男表</p>
 								</li>
 								<li>
-									<div><img src="" alt="" /></div>
+									<div><img src={pic2} alt="" /></div>
 									<p>浪琴浪琴运动系列33913987 男表</p>
 								</li>
 								<li>
-									<div><img src="" alt="" /></div>
+									<div><img src={pic1} alt="" /></div>
 									<p>浪琴浪琴运动系列33913987 男表</p>
 								</li>
 								<li>
-									<div><img src="" alt="" /></div>
+									<div><img src={pic2} alt="" /></div>
 									<p>浪琴浪琴运动系列33913987 男表</p>
 								</li>
 								<li>
-									<div><img src="" alt="" /></div>
+									<div><img src={pic1} alt="" /></div>
 									<p>浪琴浪琴运动系列33913987 男表</p>
 								</li>
 								<li>
-									<div><img src="" alt="" /></div>
+									<div><img src={pic2} alt="" /></div>
 									<p>浪琴浪琴运动系列33913987 男表</p>
 								</li>
 							</ul>
