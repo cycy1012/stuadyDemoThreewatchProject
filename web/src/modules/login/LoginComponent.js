@@ -1,21 +1,10 @@
-// var React = require('react')
-// var Component = React.Component;
-// var React, {Component} = require('react');
-
-// var ReactRouter = require('react-route');
-
-// var {Router, Route, Link} = ReactRouter
-
-// var Router = ReactRouter.Router
-// var Route = ReactRouter.Route
-// var Link = ReactRouter.Link
-
-// import {Router, Route, Link} from 'React-Router'
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import * as loginActions from './LoginAction'
 import SpinnerComponent from '../spinner/SpinnerComponent'
+import './Login.scss'
+
 
 // @connect(
 //     state => ({
@@ -46,21 +35,39 @@ class LoginComponent extends React.Component {
 
     render(){
         return(
-            <div className="login">
-                <ul>
-                    <li><input type="text" ref="username"/></li>
-                    <li><input type="text" ref="password"/></li>
-                    <li><input type="button" value="登录" onClick={this.loginHandler.bind(this)}/></li>
-                    <li>{this.props.loading + ''}</li>
-                </ul>
-                <SpinnerComponent show={this.props.loading}/>
+            <div className= 'loginScss'>
+                <div className= 'loginTop'>名表汇登录</div>
+                <div className= 'logoImg'><img src={require('../../static/styles/images/watchLogo.jpg')} alt=""/></div>
+                <form>
+                    <div>
+                        <input type="text" className="phone" placeholder="请填写手机号" />
+                        <hr/>
+                        <input type="password" className="password" placeholder="请填写6-12位密码，包含字母和数字" />
+                    </div>
+                    <p className="loginCode">验证码登陆</p>
+                    <input type="button" className="login_btn" value="登 录" />
+                    <p><span className="rapidRegistration">手机快速注册</span><span className="findPassword">找回密码</span></p>
+                </form>             
             </div>
+        
         )
     }
 }
 
 const mapStateToProps = state => ({
-    loading: state.login.loading
+    loading: state.register.loading
 })
 export default connect(mapStateToProps, loginActions)(LoginComponent)
 // export default LoginComponent
+
+
+
+                //  <div className="login">
+                //     <ul>
+                //         <li><input type="text" ref="username"/></li>
+                //         <li><input type="text" ref="password"/></li>
+                //         <li><input type="button" value="登录" onClick={this.loginHandler.bind(this)}/></li>
+                //         <li>{this.props.loading + ''}</li>
+                //     </ul>
+                //     <SpinnerComponent show={this.props.loading}/>
+                // </div>  
