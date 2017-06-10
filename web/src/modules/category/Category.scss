@@ -1,0 +1,70 @@
+@import '../../static/styles/common.scss';
+*{outline: none;box-sizing:border-box;}
+.clearfix:after{
+    content:"";
+    clear:both;
+    display:block;
+    height:0;
+    overflow:hidden;
+    visibility:hidden;
+}
+
+header.cate_header{
+	background-color: #EFEFEF;
+	height:1.375rem;
+	text-align: center;
+	input{
+		border:none;
+		height:0.90625rem;
+		width:9.375rem;
+		margin-top: 0.1875rem;
+		text-align: center;
+		border-radius: 2px;
+	}
+}
+nav.cate_nav{
+	h2{
+		display: inline-block;
+		width:50%;
+		text-align: center;
+		span{
+			height:1.5625rem;
+			line-height: 1.5625rem;
+			border-bottom:3px solid #d8b86f;
+			font-size: 16px;
+			display: inline-block;
+			padding:0 0.25rem;
+		}	
+	}
+
+}
+.cate_classify{
+	width: 100%;
+	height:100%;
+	display: block;
+	li{
+		width: 4.53125rem;
+		height:4.53125rem;
+		float: left;
+		background: url('../../static/styles/imgs/nanshi.jpg') no-repeat;
+		background-size: cover;
+		margin:0.21875rem;
+		position: relative;
+		.shade{
+			width:100%;
+			height:100%;
+			background-color: #000;
+			opacity: .4;
+			position: absolute;
+		}
+		h2{
+			color:#fff;
+			font-size: 16px;
+			line-height: 4.53125rem;
+			text-align: center;
+			width: 100%;
+			position: absolute;
+			z-index: 10;
+		}
+	}
+}
