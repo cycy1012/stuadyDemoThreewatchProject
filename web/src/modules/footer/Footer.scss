@@ -1,0 +1,25 @@
+@import '../../static/styles/common.scss';
+@import '../../static/styles/iconfont/iconfont.css';
+
+.footer_footer{
+	width: 100%;
+	height:1.46875rem;
+	background-color: #FFF;
+	border-top: 1px solid #E1E1E1;
+}
+.footer_footer ul{
+	display: flex;
+	li{
+		flex:25%;
+		height: 1.46875rem;
+		text-align: center;
+		i,span{
+			display: block;
+		}
+		i{	
+			/*#D8B86F激活颜色*/
+			color:#646464;
+			margin: 0.09375rem 0 0.15625rem 0;
+		}
+	}
+}
