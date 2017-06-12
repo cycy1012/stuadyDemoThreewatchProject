@@ -1,0 +1,227 @@
+@import '../../static/styles/base.scss';
+// @import '../../static/styles/common.scss';
+.orderpageHeader{
+	position: relative;
+	height:50px;
+	p{
+		height:50px;
+		font-size:16px;
+		overflow: hidden;
+		background-color: #6040ff;
+		// background-color: $main_color;
+		color: #fff;
+		border-bottom: 0.03125rem solid #E8E8E8;
+		text-align: center;
+		line-height: 50px;
+	
+		.back{
+			// float: left;
+			height:50px;
+			width: 50px;
+			position: absolute;
+			left: 0;
+			text-decoration: none;
+			i{
+				height: 100%;
+				line-height: 1.21875rem;
+				font-size: 20px;
+				color: #fff;
+			}
+		}
+		.homepage{
+			// float: right;
+			height: 50px;
+			width: 50px;
+			position: absolute;
+			right: 0;
+			text-decoration: none;
+			i{
+				height: 100%;
+				line-height: 1.31875rem;
+				font-size: 20px;
+				color: #fff;
+			}
+		}
+	}
+}
+.address{
+	height: 80px;
+    margin-bottom: 0.125rem;
+    background-color: #fff;
+    padding: 10px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 16px;
+    background-color:#f1f1f1;
+    font-family:"Microsoft YaHei";
+}
+.product_ifo{
+	.title_ifo{
+	    border-bottom: 1px solid #dcdcdc;
+	    padding-bottom: 10px;
+	    padding-left: 10px;
+	    line-height: 30px;
+	    // margin-bottom: 15px;
+	}
+	.prolist{
+		li{
+			position: relative;
+			height: 75px;
+			border-bottom: 1px solid #d7d7d7;
+		    padding: 10px;
+    		overflow: hidden;
+    		.propic{
+			    display: block;
+			    width: 55px;
+			    height: 55px;
+			    float: left;
+    			img{
+    				width: 55px;
+			   		height: 55px;
+    			}
+    		}
+			.proname{
+				width: 170px;
+			    float: left;
+			    margin-left: 0.3125rem;
+			    h3{
+			    	width: 100%;
+			    	height: 34px;
+				    font-weight: normal;
+				    font-size: 14px;
+				    a{
+				    	display: block;
+				    	line-height: 18px;
+				    	color: #333;
+				    }
+
+			    }
+			    i{
+				    color: #999;
+				    font-size: 12px;
+				    line-height: 20px;
+				    text-align: center;
+				    float: right
+			    }
+			}
+			.proprice{
+				float: right;
+				text-align: right;
+				position: absolute;
+			    right: 10px;
+			    bottom: 10px;
+			    .pronum{
+				    display: block;
+				    overflow: hidden;
+				    text-align: right;
+				    clear: both;
+				    margin-bottom: 0;
+				    height: 17px;
+   					line-height: 17px;
+   					color: #df3033;
+			    }
+			    .onecount{
+
+   					.onecount_i{
+   						display: block;
+   						color: #df3033;
+					    font-style: normal;
+					    height: 20px;
+					    line-height: 20px;
+   					}
+			    }
+			}
+		}
+	}
+}
+.payway{
+	height: 50px;
+    padding: 10px 10px;
+    line-height: 30px;
+	border-bottom: 1px solid #dcdcdc;
+
+    a{
+    	color: #000;
+    	font-size: 15px;
+    }
+    span{
+    	float: right;
+    	font-size: 15px;
+
+    }
+}
+.buymsg{
+	height: 50px;
+	line-height: 30px;
+    padding: 10px 10px;
+	border-bottom: 1px solid #dcdcdc;
+	font-size: 15px;
+	.msgtext{
+		width: 240px;
+		height: 30px;
+		font-size: 15px;	
+   		border: none;
+   		color: #df3033;
+	}
+}
+.countprice{
+	height: 50px;
+	line-height: 30px;
+    padding: 10px 10px;
+	border-bottom: 5px solid #f1f1f1;
+	font-size: 15px;
+	text-align:right;
+}
+.usepoints{
+	height: 50px;
+	line-height: 30px;
+    padding: 10px 10px;
+	border-bottom: 5px solid #f1f1f1;
+	font-size: 15px;
+	a{
+    	color: #000;
+    	font-size: 15px;
+    }
+    i{float:right}
+    span{
+    	float: right;
+    	font-size: 15px;
+
+    }
+}
+
+.accounts{
+	height: 50px;
+    background-color: #fff;
+    width: 100%;
+    border-top: 1px solid #e1e1e1;
+    z-index: 99;
+    position:relative;
+    
+    
+    .sumifo{
+    	float: right;
+    	height: 50px;
+		line-height: 50px;
+		font-size: 15px;
+    	margin-right: 10px;
+    	._totalprice{
+    		color: #df3033;
+    		font-weight: bold;
+    	}
+    }
+
+	.gotobuy{
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		width: 110px;
+		float: right;
+		background-color:#000;
+	    .gotobuyBTN{
+	    	font-size: 16px;
+	    	font-weight: bold;
+	    	color: #fff;
+	    }
+	}
+}
