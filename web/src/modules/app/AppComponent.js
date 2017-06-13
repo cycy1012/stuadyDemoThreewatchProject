@@ -30,7 +30,6 @@ class AppComponent extends Component{
 			}.bind(this),30)
 		}.bind(this),50)
 
-		this.bannerAnimate();
 	}
 	componentDidMount(){
 		let bannerImgWidth = -this.refs.banner_img.width ;
@@ -42,6 +41,7 @@ class AppComponent extends Component{
 			}
 			let targetLeft = bannerImgWidth*index;
 			let speed = 20;
+			clearInterval(scrollTimer)
 			let scrollTimer = setInterval(()=>{
 				let currentLeft = this.refs.banner_mask.offsetLeft;
 				if(currentLeft === 4*bannerImgWidth){

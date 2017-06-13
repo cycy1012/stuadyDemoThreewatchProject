@@ -1,10 +1,95 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Router, Route, hashHistory, Link, IndexRoute, browserhistory} from 'react-router'
+import $ from './jquery-3.1.1.js'
 
 import './ListPage.scss'
-import "../../static/styles/imgs/watch.png"
+// import "../../static/styles/imgs/watch.png"
+import FooterComponent from '../footer/FooterComponent'
+import * as ListPageActions from './listPageAction'
 
-class ListPage extends Component {
+class ListPageCompoennt extends Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			sendAjaxFlat : true
+		}
+	}
+	getDefaultProps(){
+		return{
+			sendAjaxFlat : true
+		}
+	}
+	//点击筛选的事件
+	classify(targe){
+		// this.props.filterDisplay(targe);
+		// console.log('this', this.refs);
+		// console.log('targe', targe);
+		// console.log(this.refs.filter_son0)
+		for(let attr in this.refs){
+			if(attr === targe){
+				this.props.filterDisplay(this.refs[attr],targe);
+				// console.log(attr,this.refs[attr])
+			}
+		}
+		// switch(targe){
+		// 	case 'filter_son0':
+		// 		this.props.filterDisplay(this.refs.filter_son0);
+		// 		break;
+		// 	case 'filter_son1':
+		// 		this.props.filterDisplay(this.refs.filter_son1);
+		// 		break;				
+		// 	case 'filter_son2':
+		// 		this.props.filterDisplay(this.refs.filter_son2);
+		// 		break;				
+		// 	case 'filter_son3':
+		// 		this.props.filterDisplay(this.refs.filter_son3);
+		// 		break;				
+		// }
+	}
+	//组件加载前执行
+	componentWillMount(){
+		this.sendAjaxGetProducts();
+		// this.props.getProducts().then(response => {
+		// 	console.log(response);
+  //           // if(response.body.status){
+  //           //     hashHistory.push('/login')
+  //           // }else{
+  //           //     console.log("用户名已经注册")
+  //           // }
+  //       })
+	}
+	componentDidMount(){
+		
+	}
+	//发送请求获取商品列表
+	sendAjaxGetProducts(){
+		$.ajax({
+			url:'http://10.3.133.20/work/steal.php',
+			dataType : 'json',
+			data : {page : this.props.ajaxPage},
+			beforeSend:function(){
+				this.props.getProducts('before', {}, this.props.sendAjaxFlat);
+			}.bind(this),
+			success:function(response){	
+				this.props.getProducts('success', response, this.props.sendAjaxFlat);		
+			}.bind(this),
+			error:function(){
+				this.props.getProducts('error', {}, this.props.sendAjaxFlat);
+			}.bind(this)
+		});		
+	}
+	onScrollHandle(){
+		var wrapScrollTop = this.refs.wrap.scrollTop;
+		var wrapOffsetHieght = this.refs.list.offsetHeight;
+		var windowInnerHeight = window.innerHeight;
+		console.log(this.props.sendAjaxFlat)
+		console.log(this.state.sendAjaxFlat)
+		if((wrapScrollTop >= (wrapOffsetHieght - windowInnerHeight - 10)) && this.props.sendAjaxFlat){
+			this.sendAjaxGetProducts()
+		}
+		console.log(wrapScrollTop,windowInnerHeight,wrapOffsetHieght)
+	}
 	render(){
 		return(
 			<div className="listPage">
@@ -13,15 +98,16 @@ class ListPage extends Component {
 					<h1>所有产品</h1>
 					<a className="iconfont icon-gouwuche"></a>
 				</header>
+				<div className="list_wrap" onScroll = {this.onScrollHandle.bind(this)} ref="wrap">
 				<nav className="list_nav">
 					<i className="iconfont icon-sousuo_sousuo i_search"></i><input type="text" placeholder="请输入商品关键字"/>
 				</nav>
 				<div className="list_filter">
-					<p>类别<i className="iconfont icon-30"></i></p>
-					<p>品牌<i className="iconfont icon-30"></i></p>
-					<p>排序<i className="iconfont icon-30"></i></p>
-					<p>筛选<i className="iconfont icon-shaixuan"></i></p>
-					<div className="filter-com filter-son0">
+					<p onClick = {this.classify.bind(this, 'filter_son0')}>类别<i className="iconfont icon-30"></i></p>
+					<p onClick = {this.classify.bind(this, 'filter_son1')}>品牌<i className="iconfont icon-30"></i></p>
+					<p onClick = {this.classify.bind(this, 'filter_son2')}>排序<i className="iconfont icon-30"></i></p>
+					<p onClick = {this.classify.bind(this, 'filter_son3')}>筛选<i className="iconfont icon-shaixuan"></i></p>
+					<div className="filter-com filter-son0" style={{display : this.props.filter_son0?'block':'none'}} ref="filter_son0">
 						<ul>
 							<li>全部</li>
 							<li>男士腕表</li>
@@ -30,7 +116,7 @@ class ListPage extends Component {
 							<li>机械腕表</li>
 						</ul>
 					</div>
-					<div className="filter-com filter-son1">
+					<div className="filter-com filter-son1" style={{display : this.props.filter_son1?'block':'none'}} ref="filter_son1">
 						<ul>
 							<li>罗杰杜彼</li>
 							<li>积家</li>
@@ -44,28 +130,43 @@ class ListPage extends Component {
 							<li>摩凡陀</li>
 						</ul>
 					</div>
-					<div className="filter-com filter-son2">
+					<div className="filter-com filter-son2" style={{display : this.props.filter_son2?'block':'none'}} ref="filter_son2">
 						<ul>
 							<li>价格降序</li>
 							<li>销量</li>
 						</ul>
 					</div>
-					<div className="filter-com filter-son3">
+					<div className="filter-com filter-son3" style={{display : this.props.filter_son3?'block':'none'}} ref="filter_son3">
 						<ul>
-							<li>价格降序</li>
-							<li>销量</li>
+							<li>空</li>
+							<li>建设中</li>
 						</ul>
 					</div>						
 				</div>
-				<div className="list_products">
+				<div className="list_products" ref="list">
 					<ul className="clearfix">
-						<li>
-							<img src={require("../../static/styles/imgs/watch.png")} alt=""/>
+						{
+							// var aaa;
+							 this.props.listProducts.map(function(item, index){
+								console.log(item);
+								return (
+								<li><Link to={"/details?id=" + item.addtime}>
+									<img src={"https://www.watchvip.cn/" + item.appthumb} alt=""/>
+									<h3>{item.name}</h3>
+									<div className="collect clearfix">
+										<p className="price">{item.goods_price}</p>
+										<p className="like"><i className="iconfont icon-xin"></i>{item.click}</p>
+									</div>
+								</Link></li>	)			
+							})
+						}
+						{/*<li><Link to="/?name=aa">
+							<img src="https://www.watchvip.cn/upload/img/goods/20170506/5e4523386d654f046c3354c6ceabbfa4_s.jpg" alt=""/>
 							<h3>天梭 T095.417.11.067.00</h3>
 							<div className="collect clearfix">
 								<p className="price">2190.2</p>
 								<p className="like"><i className="iconfont icon-xin"></i>115</p>
-							</div>
+							</div></Link>
 						</li>
 						<li>
 							<img src={require("../../static/styles/imgs/watch.png")} alt=""/>
@@ -82,13 +183,23 @@ class ListPage extends Component {
 								<p className="price">2190.2</p>
 								<p className="like"><i className="iconfont icon-xin"></i>115</p>
 							</div>
-						</li>										
+						</li>*/}										
 					</ul>
-				</div>
+				</div></div>
+				<FooterComponent/>
 			</div>
 
 		)
 	}
 }
 
-export default ListPage
+const mapStateToProps = state =>({
+	filter_son0: state.listPage.filter_son0,
+	filter_son1: state.listPage.filter_son1,
+	filter_son2: state.listPage.filter_son2,
+	filter_son3: state.listPage.filter_son3,
+	listProducts: state.listPage.listProducts,
+	ajaxPage: state.listPage.ajaxPage,
+	sendAjaxFlat: state.listPage.sendAjaxFlat
+})
+export default connect(mapStateToProps, ListPageActions)(ListPageCompoennt)

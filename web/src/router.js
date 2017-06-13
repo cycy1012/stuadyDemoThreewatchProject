@@ -3,7 +3,6 @@ import {Route} from 'react-router'
 
 import AppComponent from './modules/app/AppComponent'
 import LoginComponent from './modules/login/LoginComponent'
-import FooterComponent from './modules/footer/FooterComponent'
 import CategoryComponent from './modules/category/CategoryComponent'
 import ListPageComponent from './modules/listpage/ListPageComponent'
 import RegisterComponent from './modules/register/registerComponent'
@@ -23,6 +22,5 @@ export default (
         <Route path="orderpage" component={OrderpageComponent} />
         <Route path="listPage" component={ListPageComponent}/>
         <Route path="category" component={CategoryComponent}/>
-        <Route path="footer" component={FooterComponent} />
     </Route>
 )

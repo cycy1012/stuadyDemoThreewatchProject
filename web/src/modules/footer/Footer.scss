@@ -9,9 +9,15 @@
 	overflow:hidden;
 }
 .footer_footer ul{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
 	li{
-		flex:25%;
+		-webkit-box-flex:25%;
+		-webkit-flex:25%;
+		    -ms-flex:25%;
+		        flex:25%;
 		height: 1.46875rem;
 		text-align: center;
 		i,span{
@@ -20,7 +26,12 @@
 		i{	
 			/*#D8B86F激活颜色*/
 			color:#646464;
-			margin: 0.09375rem 0 0.15625rem 0;
+			margin: 0.09375rem 0 .03125rem 0;
+			font-size: .5625rem;
+		}
+		span{
+			font-size: .375rem;
+			color:#646464;
 		}
 	}
 }
