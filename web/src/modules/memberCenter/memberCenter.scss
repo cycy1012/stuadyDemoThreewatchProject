@@ -1,0 +1,266 @@
+@import '../../static/styles/common.scss';
+@import '../../static/styles/base.scss';
+
+
+#container{
+	$member_color:#E3BC7D;
+	$member_border:0.03125rem solid #ddd;
+
+	background:#F6F6F6;
+	.header_main{
+		position: relative;
+		.title{
+			width:100%;
+			height: 100%;
+			img{
+				width:100%;
+				height:4.0rem;
+			}
+			.memberSet{
+				height:0.5625rem;
+				width: 1.09375rem;
+				position: absolute;
+				left:4%;
+				font-size: 14px;
+				top:10%;
+				color:#F6F6F6;
+				border-radius: 0.078125rem;
+			}
+			.headPic{
+				position: absolute;
+				border-radius: 50%;
+				height:1.875rem;
+				width: 1.8755rem;
+				left: 5%;
+				bottom:-20%;
+				img{
+					border-radius: 50%;
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+		}
+		
+	}
+	.member_main{
+		// flex:1;
+		// overflow-y:auto;
+		// height:37.5rem;
+		.user-behavior{
+			text-align: center;
+			ul{
+				float: right;
+				padding-top: 0.078125rem;
+				li{
+					border-right: 0.015625rem dotted #ccc;
+					float: right;
+					width:2.34375rem;
+					height: 100%;
+					a{
+						text-decoration: none;
+						font-size: 14px;
+						color:#051B28;
+						font-family: 'Microsoft YaHei',"Comic Sans MS","幼圆","黑体",sans-serif;
+					}
+					&:nth-child(1){
+						border: 0;
+					}					
+				}
+			}
+		}
+		// 我的订单
+		.myOrder{
+			height:3.625rem;
+			margin-top:0.3125rem;
+			background:#fff;
+			border-top:$member_border;
+			border-bottom:$member_border;
+			.orderTop{
+				border-bottom:$member_border;
+				span{
+					font-size:14px;
+					line-height:1.3125rem;
+
+					// 我的订单
+					&:nth-of-type(1){
+						float:left;
+						margin-left:0.40625rem;
+					}
+					// 右箭头
+					&:nth-of-type(2){
+						float:right;
+						margin-right:0.34375rem;
+						color:#C8C8C8;
+						font-size:20px;
+					}
+					// 查看我的全部订单
+					&:nth-of-type(3){
+						float:right;
+						margin-right:0.15625rem;
+						color:#C8C8C8;
+					}
+				}
+			}
+			.orderTab{
+				height:2.25rem;
+				display:flex;
+				// flex-direction:column;
+				div{
+					flex:1;
+					text-align:center;
+					// align-content:center;
+					span{
+						display:block;
+						text-align: center;
+						font-size:26px;
+						margin-top:0.3125rem;
+						color:$member_color;	
+						&:nth-child(5){
+							border: 3px solid #ccc
+						}
+					}
+					p{
+						font-size:12px;
+						margin-top:0.1875rem;
+						color:#666;
+					}
+				}
+			}
+		}
+		// 我的资料还有收货管理地址都在这里共用
+		.myData,.myDress{
+			height:1.34375rem;
+			margin-top:0.3125rem;
+			border-top:0.03125rem solid #C8C8C8;
+			border-bottom:0.03125rem solid #C8C8C8;
+			background:#fff;			
+			div{
+				float:left;
+				.iconfont{
+					display:inline-block;
+					font-size:24px;
+					margin-left:0.46875rem;
+					line-height:1.34375rem;
+				}
+				.icon-wodeziliao{
+					color:#E87BAC;
+				}
+				.icon-shouhuodizhiguanli{
+					color:#8F92FF;
+				}
+				.word{
+					font-size:14px;
+					line-height:1.25rem;
+					margin-left:0.34375rem;
+				}
+			}
+		}
+		// 我的优惠券，购物车，收藏，足迹共用
+		.carlist{
+			.myCarList{
+				height:1.34375rem;
+				border-top:$member_border;
+				border-bottom:$member_border;
+				background:#fff;			
+				div{
+					float:left;
+					.iconfont{
+						display:inline-block;
+						font-size:24px;
+						margin-left:0.46875rem;
+						line-height:1.34375rem;
+						color:#E87BAC;
+					}
+					.word{
+						font-size:14px;
+						line-height:1.25rem;
+						margin-left:0.34375rem;
+					}
+					.icon-gouwuche{
+						color:#72CB62;
+					}
+					.icon-wodezuji{
+						color:#4DC2DB;
+					}
+				}
+			}
+		}
+		.copyright{
+			p{
+				font-size:12px;
+				line-height:0.875rem;
+				margin-top:0.4375rem;
+				text-align:center;
+				color:#D0D0D0;
+			}
+		}
+		// 每行的右箭头(除我的订单)
+		#gt{
+			float:right;
+			line-height:1.25rem;
+			margin-right:0.46875rem;
+			font-size:20px;
+			color:$member_color;
+
+		}
+	}
+	.footer_main{
+		margin-top: 0.15625rem;
+		background: #fff;
+		display: flex;
+		height:0.9375rem;
+		text-align: center;
+		line-height:0.9375rem;
+		div{
+			flex:1;
+			border-right: 1px dotted #ccc;
+			&:nth-child(1),&:nth-child(4){
+				border:0;
+			}
+			a{
+				color:#051B28;
+				font-size: 14px;
+			}
+		}
+	}
+	.ad{
+		display: block;
+		height:1.71875rem;
+		background: #5F646E;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		padding-left:1.25rem;
+		text-align: center;
+		line-height: 1.71875rem;
+		span{
+			position: relative;
+			#btnLogo{
+				font-size: 40px;
+				color: #E3BC7D;
+			}
+			#btnClose{
+				font-size: 22px;
+				position: absolute;
+				color:#fff;
+				left:-1.0rem;
+				top:-0.706875rem;
+			}
+		}
+		.fontWord{
+			display: inline-block;
+			color:#fff;
+			font-size: 0.25rem;
+		}
+		.lingqu{
+			float: right;
+			width: 2.5rem;
+			height:100%;
+			color:#fff;
+			font-size: 14px;
+			line-height: 1.71875rem;
+			background: #E3BC7D;
+		}
+	}
+}

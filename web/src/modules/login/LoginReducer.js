@@ -4,7 +4,7 @@
 // action => store = createStroe(reducer, 中间件) => reducer
 
 import * as types from '../../redux/commonConstant'
-
+// console.log(action.type,action.query,"reducer")
 export default function(state = {loading: false}, action){
     let reState = JSON.parse(JSON.stringify(state))
     switch(action.type){

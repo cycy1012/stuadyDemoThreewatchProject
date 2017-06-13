@@ -11,10 +11,12 @@ body{
 			height:1.4rem;
 			line-height:1.4rem;
 			border-bottom: 0.015625rem solid #c8c8c8;
-			color:#000;
-			font-family:'Microsoft YaHei',"Comic Sans MS","幼圆","黑体",sans-serif; 
+			color:#fff;
+			font-weight: 500;
+			// font-family:'Microsoft YaHei',"Comic Sans MS","幼圆","黑体",sans-serif;
+			font-family: "Comic Sans MS";
 			text-align: center;
-			font-size: 18px;
+			font-size: 16px;
 			background:#DFBF77;
 			box-shadow: inset 0 0.015625rem 0 rgba(255,255,255,.08), 0 0.015625rem 0.125rem rgba(0,0,0,.2);
 		}
@@ -29,6 +31,7 @@ body{
 		}
 		form{
 			width:100%;
+			position: relative;
 			// margin-top:3.28125rem;
 			position:relative;
 			div{background:#fff;}
@@ -39,6 +42,27 @@ body{
 				border:none;
 				font-size:12px;	
 			}
+			#Login_cha{
+				display: none;
+				position: absolute;
+				right: 10%;
+				top:6%;
+				color:#DFBF77;
+			}
+			#Login_show{
+				display: block;
+				position: absolute;
+				right: 17%;
+				top:26%;
+				color:#DFBF77;
+			}	
+			#Login_showpas{
+				display: none;
+				position: absolute;
+				right: 10%;
+				top:26%;
+				color:#DFBF77;
+			}					
 			hr{
 				margin:0;
 				margin-left:5.5%;

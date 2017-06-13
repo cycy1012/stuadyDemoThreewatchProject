@@ -5,8 +5,15 @@ export function login(username, password){
         types: [constants.REQUEST, constants.SUCCESS, constants.FAILURE],
         path: 'login',
         method: 'post',
-        query: {username, password}
+        query: {username, password},
+
     }
+}
+
+
+
+export function loginName(){
+	
 }
 
 // export function login(username, password){

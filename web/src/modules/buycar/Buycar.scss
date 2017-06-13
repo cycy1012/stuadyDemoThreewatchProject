@@ -1,0 +1,245 @@
+@import '../../static/styles/common.scss';
+@import '../../static/styles/iconfont/iconfont.css';
+
+body,html{
+	height: 100%;
+}
+.buycarHeader{
+	position: relative;
+	height:50px;
+	p{
+		height:50px;
+		font-size:16px;
+		overflow: hidden;
+		background-color: #6040ff;
+		// background-color: $main_color;
+		color: #fff;
+		border-bottom: 0.03125rem solid #E8E8E8;
+		text-align: center;
+		line-height: 50px;
+	
+				.back{
+			// float: left;
+			height:50px;
+			width: 50px;
+			position: absolute;
+			left: 0;
+			text-decoration: none;
+			i{
+				height: 100%;
+				line-height: 50px;
+				font-size: 24px;
+				color: #fff;
+			}
+		}
+		.homepage{
+			// float: right;
+			height: 50px;
+			width: 50px;
+			position: absolute;
+			right: 0;
+			text-decoration: none;
+			i{
+				height: 100%;
+				line-height: 50px;
+				font-size: 24px;
+				color: #fff;
+			}
+		}
+	}
+}
+.buycarMain{
+	overflow: hidden;
+	flex:1;
+	display: flex;
+	overflow-y: auto;
+	overflow-x: hidden;
+	ul{
+		width: 100%;
+		background-color:#eee;
+		.prodetail{
+			background-color:#fff;
+
+			height: 100px;
+			padding: 10px;
+			overflow: hidden;
+			position:relative;
+			margin-bottom: 5px;
+
+			.checkbox{
+				display: block;
+				float: left;
+				position:relative;
+				line-height: 80px;
+
+
+				.choosePro{
+					// position: absolute;
+				 //    top: 4px;
+				    width: 20px;
+				    height: 20px;
+				    border-radius:50%;
+				}
+			}
+			.detail_main{
+				float: left;
+				margin-left: 10px;
+				overflow: hidden;
+				width: 270px;
+				.picbox {
+					float: left;
+				    display: block;
+				    // width: 1.375rem;
+				    // height: 1.375rem;
+				    float: left;
+				    img{
+				    	width: 70px;
+				    	height: 70px;				    }
+				}
+				.pro_word{
+					float: left;
+					margin-left: 10px;
+					.proName{
+					    text-overflow: ellipsis;
+					    display: 	block;
+					    overflow: hidden;
+					    white-space: nowrap;
+					    color: #000;
+					}
+					.buyoption{
+						.priceTag{
+							// text-align: right;	
+						    // margin-right: 0.3rem;
+						    // line-height: initial;
+
+						    a{
+							    padding-right: 0.3rem;
+							    padding-top: 0.25rem;
+							    padding-bottom: 0.25rem;
+							    color: #d8b86e;
+							    font-size: 14px;
+						    }
+						}
+						.addNum{
+							position:absolute;
+							right: 10px;
+							bottom:10px;
+						    border: none;
+						    background: none;
+						    height: 30px;
+						    // margin-top: 0.12rem	;
+						    padding: 0 30px;
+						    width: 100px;
+						    input{
+						    	display: block;
+							    height: 30px;
+							    width: 40px;
+							    border: none !important;
+								text-align: center;
+							    color: #313131;
+						    }
+						    .Numreduce{
+						    	font-size: 18px;
+							    line-height: 100%;
+							    position: absolute;
+							    top: 0;
+							    left: 0;
+							    width: 30px;
+							    height: 100%;
+							    color: #555;
+							    border-radius: 50%;
+  								border: 1px solid #e6e6e6;
+							    background-color: #f9f9f9;
+							    outline: none;
+						    }
+						    .Numadd{
+						    	font-size: 18px;
+							    line-height: 100%;
+							    position: absolute;
+							    top: 0;
+							    right: 0;
+							    width: 30px;
+							    height: 100%;
+							    color: #555;
+							    border-radius: 50%;
+  								border: 1px solid #e6e6e6;
+							    background-color: #f9f9f9;
+							    outline: none;
+						    	
+						    }
+
+						}
+					}
+				}
+			}
+		}
+	}
+	// h4{
+	// 	display: flex;
+	// 	flex-flow: colum;
+	// }
+
+}
+.buycarFooter{
+
+	height:50px;
+
+	// position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    border-top: 1px solid #e1e1e1;
+    z-index: 99;
+    position:relative;
+	// overflow:hidden;
+	
+	border-top: 1px solid #E8E8E8;
+	.chooseAll{
+		float: left;
+		line-height: 50px;
+		position:relative;
+
+		span{
+            margin-left: 32px;
+            font-size: 12px;
+		}
+		.chooseBtn{
+			position:absolute;
+  			top: 20px;
+   			left: 0.25rem;
+        }
+	}
+	.totalPay{
+		float: left;
+		line-height: 50px;
+		position: relative;
+		padding: 0 0 0 20px;
+		span{
+			font-size: 14px;
+			font-weight: bold;	
+			color: #df3033;
+		}
+		b{
+			font-size: 16px;
+			font-weight: bold;
+			color: #df3033;
+
+		}
+	}
+	.buynow{
+		float: right;
+		.buyBtn{
+			font-size: 16px;
+		    background-color: #1b1b1b;
+		    line-height: 52px;
+		    position: absolute;
+		    right: 0;
+		    padding: 0 20px;
+		    max-width: 98px;
+		    top: -1px;
+		    color: #fff;
+    		text-align: center;
+		}
+	}
+}

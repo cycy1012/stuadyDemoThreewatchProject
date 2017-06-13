@@ -36,6 +36,7 @@ const HttpClient = {
             .end((err, res) => {
                 if (err) {
                     reject(err);
+                    console.log("错误了")
                 } else {
                     resolve(res.body);
                 }
