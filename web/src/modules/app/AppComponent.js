@@ -2,33 +2,85 @@ import React, {Component} from 'react'
 // import {Router,Route,hashHistory,Link,IndexRoute,browserHistory} from 'React-Router'
 
 var ReactRouter = require('react-router');
+import {connect} from 'react-redux'
 var {Router,Route,hashHistory,Link,IndexRoute,browserHistory} = ReactRouter;
 import "./App.scss"
+import * as AppActions from './AppAction.js'
 import FooterComponent from '../footer/FooterComponent.js'
 import pic1 from '../../static/imgs/1.png'
 import pic2 from '../../static/imgs/2.png'
 
 class AppComponent extends Component{
+	onScrollHandler(){
+		this.props.backToTopStatus(this.refs.app_main.scrollTop)
+	}
+	backtotopfn(){
+		// 当前滚动条 滚动距离
+		let Height = this.props.height
+		setTimeout(function(){
+			var timer = setInterval(function(){
+				let speed = Math.ceil(Height/5)
+				let _scrollTop = Height - speed
+				if(_scrollTop <= 20){
+					clearInterval(timer)
+					_scrollTop = 0
+				}
+				this.refs.app_main.scrollTop=_scrollTop
+				Height=this.refs.app_main.scrollTop
+			}.bind(this),30)
+		}.bind(this),50)
+
+		this.bannerAnimate();
+	}
+	componentDidMount(){
+		let bannerImgWidth = -this.refs.banner_img.width ;
+		let index =0
+		let timer=setInterval(function(){
+			index++
+			if(index>4){
+				index=1
+			}
+			let targetLeft = bannerImgWidth*index;
+			let speed = 20;
+			let scrollTimer = setInterval(()=>{
+				let currentLeft = this.refs.banner_mask.offsetLeft;
+				if(currentLeft === 4*bannerImgWidth){
+					this.refs.banner_mask.style.left = 0 + 'px';
+				}else{
+					if(currentLeft <= targetLeft){//-960<=0
+						clearInterval(scrollTimer);
+						currentLeft = targetLeft + speed;
+					}
+					this.refs.banner_mask.style.left = currentLeft - speed + 'px';
+				}			
+			},30);
+		}.bind(this),3000)
+	}
+
     render(){
-    	console.log(this.props)
         return (
         	<div>
-            	<header className="app_header">
-            		<div><i className="iconfont icon-fenlei"></i>	</div>
+            	<header className="app_header" >
+            		<div><i className="iconfont icon-fenlei"></i></div>
             		<input type="text" placeholder="请输入商品关键字"/>
-            		<span className="iconfont icon-sousuo_sousuo"></span>	
-            		
-            		
+            		<span className="iconfont icon-sousuo_sousuo"></span>			
             	</header>
-            	<main className="app_main">
-            		<section className="banner">
-						<div className="banner_mask">
+            	
+            	<main className="app_main" ref="app_main" onScroll={this.onScrollHandler.bind(this)} style={{height:this.props.height}}>
+            		<div className="backToTop" ref="backTop" onClick={this.backtotopfn.bind(this)} style={{display:this.props.display}}><span className="iconfont icon-fanhuidingbu"></span></div>
+            		
+
+            		<section className="banner" ref="banner">
+						<div className="banner_mask" ref="banner_mask">
+							<img src={require('../../static/imgs/6.png')} alt="" ref="banner_img"/>
+							<img src={require('../../static/imgs/1.png')} alt="" />
 							<img src={require('../../static/imgs/5.png')} alt="" />
-							<img src={require('../../static/imgs/6.png')} alt="" />
-							<img src={require('../../static/imgs/5.png')} alt="" />
+							<img src={require('../../static/imgs/2.png')} alt="" />
 							<img src={require('../../static/imgs/6.png')} alt="" />
 						</div>
 	            	</section>
+
+
 	            	<div className="linkPic"><Link to=""><img src={require('../../static/imgs/3.png')} alt="" /></Link></div>
 	            	<div className="ToSnapUp">
 	            		<Link to="" className="ToSnapUp_link">
@@ -121,9 +173,24 @@ class AppComponent extends Component{
 	            		<div className="getlist">
 	            			<ul className="list">
 	            				<li>
-	            					<Link to="" className="list_watch_picture"><img src="" /></Link>
-	            					<Link to=""><p className="list_watch_name">星座系列1460.75.00欧米茄  石英女表 星座系列1460.75.00</p></Link>
-	            					<p>￥15000.00</p>
+	            					<Link to="" className="list_watch_picture"><img src={require('../../static/imgs/4.png')} /></Link>
+	            					<Link to="" className="list_watch_name"><p className="list_watch_name_content">星座系列1460.75.00欧米茄  石英女表 星座系列1460.75.00</p></Link>
+	            					<p className="list_watch_price">￥15000.00</p>
+	            				</li>
+	            				<li>
+	            					<Link to="" className="list_watch_picture"><img src={require('../../static/imgs/4.png')} /></Link>
+	            					<Link to="" className="list_watch_name"><p className="list_watch_name_content">星座系列1460.75.00欧米茄  石英女表 星座系列1460.75.00</p></Link>
+	            					<p className="list_watch_price">￥15000.00</p>
+	            				</li>
+	            				<li>
+	            					<Link to="" className="list_watch_picture"><img src={require('../../static/imgs/4.png')} /></Link>
+	            					<Link to="" className="list_watch_name"><p className="list_watch_name_content">星座系列1460.75.00欧米茄  石英女表 星座系列1460.75.00</p></Link>
+	            					<p className="list_watch_price">￥15000.00</p>
+	            				</li>
+	            				<li>
+	            					<Link to="" className="list_watch_picture"><img src={require('../../static/imgs/4.png')} /></Link>
+	            					<Link to="" className="list_watch_name"><p className="list_watch_name_content">星座系列1460.75.00欧米茄  石英女表 星座系列1460.75.00</p></Link>
+	            					<p className="list_watch_price">￥15000.00</p>
 	            				</li>
 	            			</ul>
 	            			<ul className="list hide"></ul>	
@@ -137,4 +204,15 @@ class AppComponent extends Component{
     }
 }
 
-export default AppComponent
+
+// ES5 ，后面改
+
+const mapStateToProps = state => ({
+    display: state.app.display,
+    height:state.app.height
+})
+
+export default connect(mapStateToProps, AppActions)(AppComponent)
+
+
+
