@@ -18,7 +18,7 @@ class AppComponent extends Component{
 		// 当前滚动条 滚动距离
 		let Height = this.props.height
 		setTimeout(function(){
-			var timer = setInterval(function(){
+			let timer = setInterval(function(){
 				let speed = Math.ceil(Height/5)
 				let _scrollTop = Height - speed
 				if(_scrollTop <= 20){
@@ -35,7 +35,7 @@ class AppComponent extends Component{
 	componentDidMount(){
 		let bannerImgWidth = -this.refs.banner_img.width ;
 		let index =0
-		let timer=setInterval(function(){
+		window.timer=setInterval(function(){
 			index++
 			if(index>4){
 				index=1
@@ -56,7 +56,9 @@ class AppComponent extends Component{
 			},30);
 		}.bind(this),3000)
 	}
-
+	componentWillUnmount(){
+		clearInterval(window.timer)
+	}
     render(){
         return (
         	<div>
