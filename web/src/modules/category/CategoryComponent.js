@@ -16,9 +16,9 @@ class CategoryComponent extends Component {
 				</nav>
 				<ul className="cate_classify clearfix">
 					<li><img src={require('../../static/styles/imgs/nanshi.jpg')} alt=""/><div className="shade"></div><h2>男士腕表</h2></li>
-					<li><img src={require('../../static/styles/imgs/nanshi.jpg')} alt=""/><div className="shade"></div><h2>男士腕表</h2></li>
-					<li><img src={require('../../static/styles/imgs/nanshi.jpg')} alt=""/><div className="shade"></div><h2>男士腕表</h2></li>
-					<li><img src={require('../../static/styles/imgs/nanshi.jpg')} alt=""/><div className="shade"></div><h2>男士腕表</h2></li>
+					<li><img src={require('../../static/styles/imgs/nvshi.jpg')} alt=""/><div className="shade"></div><h2>女士腕表</h2></li>
+					<li><img src={require('../../static/styles/imgs/qinglv.jpg')} alt=""/><div className="shade"></div><h2>情侣腕表</h2></li>
+					<li><img src={require('../../static/styles/imgs/jixie.jpg')} alt=""/><div className="shade"></div><h2>机械腕表</h2></li>
 				</ul>
 				<FooterComponent></FooterComponent>
 			</div>

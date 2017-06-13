@@ -101,6 +101,7 @@ nav.list_nav{
 			border-bottom: .03125rem solid #eee;
 			padding: 0.46875rem 0;
 			margin:0 0.3125rem;
+			font-size: 0.4375rem;
 		}
 	}
 	//筛选条件下拉： 类别
@@ -141,6 +142,11 @@ nav.list_nav{
 		h3{
 			line-height: 1.125rem;
 			font-size: .375rem;
+			color:#646464;
+			//文字超出显示省略号
+			overflow: hidden;
+			text-overflow:ellipsis;
+			white-space: nowrap;
 		}
 		.collect{
 			margin-bottom: 0.25rem;
