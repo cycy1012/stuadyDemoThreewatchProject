@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import  {Router,Route,hashHistory,Link,IndexRoute,browserHistory} from 'react-router'
 import SpinnerComponent from '../spinner/SpinnerComponent'
 import * as DetailsAction from './detailsAction'
-import global from '../../../../libs/common/global'
 import $ from '../listpage/jquery-3.1.1.js'
 
 import './details.scss'
@@ -88,7 +87,7 @@ class DetailsComponent extends Component{
 					</div>
 					<div className="detail_cont">
 						<div className="swiper-container">
-						 <SpinnerComponent show={this.props.loading}/>          
+						 	<SpinnerComponent show={this.props.loading}/>          
 						</div>
 						<div className="good_info">
 							<div className="good_title">
