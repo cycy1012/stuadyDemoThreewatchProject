@@ -22,13 +22,13 @@ class BuycarComponent extends React.Component{
             <div>
                 <div className="buycarHeader">
                     <p>购物车
-                    <Link to="" className="back"><i className="iconfont icon-fanhui"></i></Link>
-                    <Link to="" className="homepage"><i className="iconfont icon-shouyeshouye"></i></Link>
+                    <a className="back" href="javascript:history.go(-1)"><i className="iconfont icon-fanhui"></i></a>
+                    <Link to="/" className="homepage"><i className="iconfont icon-shouyeshouye"></i></Link>
                     </p>
                 </div>
                 <div className="buycarMain">
                     <ul>
-                        
+
                         <li className="prodetail">
                             <div className="checkbox">
                                 <input type="checkbox" className="choosePro"/>

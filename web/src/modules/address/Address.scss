@@ -1,0 +1,65 @@
+@import '../../static/styles/common.scss';
+@import '../../static/styles/iconfont/iconfont.css';
+
+.addressHeader{
+	position: relative;
+	height:50px;
+	p{
+		height:50px;
+		font-size:16px;
+		overflow: hidden;
+		background-color: #6040ff;
+		// background-color: $main_color;
+		color: #fff;
+		border-bottom: 0.03125rem solid #E8E8E8;
+		text-align: center;
+		line-height: 50px;
+	
+				.back{
+			// float: left;
+			height:50px;
+			width: 50px;
+			position: absolute;
+			left: 0;
+			text-decoration: none;
+			i{
+				height: 100%;
+				line-height: 50px;
+				font-size: 24px;
+				color: #fff;
+			}
+		}
+		.homepage{
+			// float: right;
+			height: 50px;
+			width: 50px;
+			position: absolute;
+			right: 0;
+			text-decoration: none;
+			i{
+				height: 100%;
+				line-height: 50px;
+				font-size: 24px;
+				color: #fff;
+			}
+		}
+	}
+}
+.addressmain{
+	.addbtn{
+		margin: 10px;
+		.add_addressbtn{
+		    width: 100%;
+		    font-size: 16px;
+		    text-align: center;
+		    padding: 11px 15px;
+		    display: block;
+		    background: none;
+		    border: none;
+		    color: #fff;
+		    background-color:#000;
+		    border-radius: 8px;
+		}
+	}
+
+}
