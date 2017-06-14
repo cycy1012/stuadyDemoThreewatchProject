@@ -1,6 +1,6 @@
 .getlist{
 					width:100%;
-					min-height:667px;
+					min-height:17.786667rem;
 					.list{
 						width:100%;
 						li{
@@ -15,7 +15,7 @@
 							.list_watch_picture{
 								display:block;
 								width:100%;
-								height:184px;
+								height:4.906667rem;
 								img{
 									width:100%;
 									height:100%
@@ -23,19 +23,19 @@
 							}
 							.list_watch_name{
 								display:block;
-								margin:12px 10px;
+								margin:.32rem .266667rem;
 								.list_watch_name_content{
 									white-space:nowrap;
 									overflow:hidden;
 									text-overflow:ellipsis;
 									color:#333;
-									font-size:14px;
+									font-size:.373333rem;
 								}
 							}
 							.list_watch_price{
-								padding:10px;
+								padding:.266667rem;
 								padding-top:0;
-								font-size:14px;
+								font-size:.373333rem;
 								color:#d8b86f;
 							}
 						}
