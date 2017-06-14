@@ -1,0 +1,64 @@
+@import '../../static/styles/common.scss';
+@import '../../static/styles/iconfont/iconfont.css';
+
+body{background:#fff}
+.search_header{
+	position:relative;
+	div{
+		float:left;
+		.icon-fanhui{
+			display:inline-block;
+			width:44px;
+			height:44px;
+			font-size:20px;
+			text-align: center;
+			line-height:44px;
+			color:#333;
+			font-weight: bold;
+		}
+	}
+	span{
+		font-size: 14px;
+		position:absolute;
+		top:17px;
+		left:52px;
+	}
+	input{
+		width:285px;
+		padding:6px 33px;
+		margin:8px 0px;
+		font-size:16px;
+		border:0;
+		border-radius:5px;
+		background:#ebebeb;
+
+	}
+	.sousuo{
+		float:right;
+		font-size: 14px;
+		margin-top:12px;
+		.sousuoWord{
+			padding:13px 8px 9px 8px;
+		}
+
+	}
+}
+.search_main{
+	padding:0 10px;
+	.search_hot{
+		font-size: 18px;
+	    font-weight: bold;
+	    padding: 10px;
+	    color: #dedede;
+	    margin-bottom: 10px;
+	}
+	.search_hotWord{
+		span{
+			padding:10px;
+			margin:5px 7px;;
+			background:#fff;
+			border-radius: 5px;
+			font-size:14px;
+		}
+	}
+}
