@@ -10,18 +10,20 @@ export default function(state = {
 	},action){
 		// console.log(state,action.type)
 		let newState = JSON.parse(JSON.stringify(state));
-		console.log(action)
 		switch(action.type){
 			case 'before':
 				newState.sendAjaxFlat = false;
+				newState.loading = true;
 				break;
 			case 'success':
 				newState.listProducts = action.listProducts;
 				newState.ajaxPage++;
 				newState.sendAjaxFlat = true;
+				newState.loading = false;
 				break;
 			case 'error':
 				newState.sendAjaxFlat = true;
+				newState.loading = false;
 				break;
 			case 'show':
 				//首先把所有隐藏			
@@ -38,5 +40,6 @@ export default function(state = {
 				newState[action.targe] = false;
 				break;
 		}
+		console.log(newState)
 		return newState;
 }
