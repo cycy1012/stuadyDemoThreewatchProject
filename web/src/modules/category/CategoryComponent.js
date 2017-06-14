@@ -2,14 +2,22 @@ import React, {Component} from 'react'
 import {Router, Route, hashHistory, Link, IndexRoute, browserhistory} from 'react-router'
 
 import './Category.scss'
+import erp from '../global.js'
 import FooterComponent from '../footer/FooterComponent'
 
 class CategoryComponent extends Component {
+	search(event){
+		if(event.keyCode === 13){
+			let val = this.refs.input.value;
+			hashHistory.push('listPage?keyword=' + val);			
+			console.log(val)
+		}	
+	}
 	render(){
 		return(
 			<div className="cate_wrap">
 				<header className="cate_header">
-					<input type="text" placeholder="请输入商品关键字"/>
+					<input type="text" placeholder="请输入商品关键字" onKeyDown={this.search.bind(this)} ref="input"/>
 				</header>	
 				<nav className="cate_nav">
 					<h2><span>分类</span></h2>

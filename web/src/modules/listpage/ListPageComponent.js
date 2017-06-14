@@ -4,13 +4,12 @@ import {Router, Route, hashHistory, Link, IndexRoute, browserhistory} from 'reac
 import $ from './jquery-3.1.1.js'
 
 import './ListPage.scss'
-// import "../../static/styles/imgs/watch.png"
 import FooterComponent from '../footer/FooterComponent'
 import SpinnerComponent from '../spinner/SpinnerComponent.js'
 
 import * as ListPageActions from './listPageAction'
-import erp from '../global.js'
-// const baseUrl = 'http://10.3.133.50:8888/searchProduct';
+import erp from '../../utils/global.js'
+
 class ListPageCompoennt extends Component {
 	constructor(props){
 		super(props);
@@ -18,6 +17,66 @@ class ListPageCompoennt extends Component {
 		// 	sendAjaxFlat : true,
 		// 	responseData :[]
 		// }
+	}
+	componentWillMount(){
+		let keyword = this.props.location.query.keyword;
+		this.sendAjaxGetProducts(keyword);
+		// console.log(responseData);
+		// this.props.getProducts().then(response => {
+		// 	console.log(response);
+  //           // if(response.body.status){
+  //           //     hashHistory.push('/login')
+  //           // }else{
+  //           //     console.log("用户名已经注册")
+  //           // }
+  //       })
+	}
+	componentDidMount(){
+		// console.log(document.getElementById('list'));
+		// console.log(this.props.location.query,'===');
+	}
+	componentWillUpdate(){
+		console.log('Will Updata',this.props.loading);
+		var targe = document.getElementById('list').childNodes;
+		console.log(targe)
+ 	// 	document.getElementById('list').append(this.props.listProducts.map(function(item, index){
+		// 	return (
+		// 		<li><Link to={"/details?id=" + item.addtime}>
+		// 			<img src={"https://www.watchvip.cn/" + item.appthumb} alt=""/>
+		// 			<h3>{item.name}</h3>
+		// 			<div className="collect clearfix">
+		// 				<p className="price">{item.goods_price}</p>
+		// 				<p className="like"><i className="iconfont icon-xin"></i>{item.click}</p>
+		// 			</div>
+		// 		</Link></li>
+		// 	)
+		// }));	
+		// console.log(this.props.listProducts);
+		// document.getElementById('list').append(aa);
+	}
+
+	//发送请求获取商品列表
+	sendAjaxGetProducts(keyword){
+		// let keyword = this.props.location.query.keyword;
+		$.ajax({
+			url : erp.baseUrl + 'searchProduct',
+			dataType : 'json',
+			type : 'post',
+			data : {page : this.props.ajaxPage , classify : keyword},
+			beforeSend:function(){
+				this.props.getProducts('before', {}, this.props.sendAjaxFlat);
+			}.bind(this),
+			success:function(response){	
+				this.props.getProducts('success', response, this.props.sendAjaxFlat);		
+			}.bind(this),
+			error:function(){
+				this.props.getProducts('error', {}, this.props.sendAjaxFlat);
+			}.bind(this)
+		});		
+        // this.props.getProducts(this.props.ajaxPage).then(
+        //     response =>{
+        //    		console.log(response)
+        // })
 	}
 
 	//点击筛选的事件
@@ -46,66 +105,8 @@ class ListPageCompoennt extends Component {
 		// 		break;				
 		// }
 	}
-	//组件加载前执行
-	componentWillMount(){
-		this.sendAjaxGetProducts();
-		// console.log(responseData);
-		// this.props.getProducts().then(response => {
-		// 	console.log(response);
-  //           // if(response.body.status){
-  //           //     hashHistory.push('/login')
-  //           // }else{
-  //           //     console.log("用户名已经注册")
-  //           // }
-  //       })
-	}
 
-	componentDidMount(){
-		// console.log(document.getElementById('list'));
-		console.log(this.props.location.query,'===');
-	}
-	componentWillUpdate(){
-		console.log('Will Updata');
- 		document.getElementById('list').append(this.props.listProducts.map(function(item, index){
-			// console.log(item);
-			return (
-				<li><Link to={"/details?id=" + item.addtime}>
-					<img src={"https://www.watchvip.cn/" + item.appthumb} alt=""/>
-					<h3>{item.name}</h3>
-					<div className="collect clearfix">
-						<p className="price">{item.goods_price}</p>
-						<p className="like"><i className="iconfont icon-xin"></i>{item.click}</p>
-					</div>
-				</Link></li>
-			)
-		}));	
-		console.log(this.props.listProducts);
-		// document.getElementById('list').append(aa);
-	}
-	//发送请求获取商品列表
-	sendAjaxGetProducts(){
-		let keyword = this.props.location.query.keyword;
-		$.ajax({
-			url : erp.baseUrl + 'searchProduct',
-			dataType : 'json',
-			type : 'post',
-			data : {page : this.props.ajaxPage , classify : keyword},
-			beforeSend:function(){
-				this.props.getProducts('before', {}, this.props.sendAjaxFlat);
-			}.bind(this),
-			success:function(response){	
-				console.log(response)
-				this.props.getProducts('success', response, this.props.sendAjaxFlat);		
-			}.bind(this),
-			error:function(){
-				this.props.getProducts('error', {}, this.props.sendAjaxFlat);
-			}.bind(this)
-		});		
-        // this.props.getProducts(this.props.ajaxPage).then(
-        //     response =>{
-        //    		console.log(response)
-        // })
-	}
+	//页面滚动事件
 	onScrollHandle(){
 		var wrapScrollTop = this.refs.wrap.scrollTop;
 		var wrapOffsetHieght = this.refs.list.offsetHeight;
@@ -115,6 +116,13 @@ class ListPageCompoennt extends Component {
 		}
 		// console.log(wrapScrollTop,windowInnerHeight,wrapOffsetHieght)
 	}
+
+	//搜索事件
+	search(){
+		let val = this.refs.input.value;
+		this.sendAjaxGetProducts(val)
+	}
+
 
 	render(){
 		return(
@@ -126,7 +134,7 @@ class ListPageCompoennt extends Component {
 				</header>
 				<div className="list_wrap" onScroll = {this.onScrollHandle.bind(this)} ref="wrap">
 				<nav className="list_nav">
-					<i className="iconfont icon-sousuo_sousuo i_search"></i><input type="text" placeholder="请输入商品关键字"/>
+					<i className="iconfont icon-sousuo_sousuo i_search" onClick={this.search.bind(this)}></i><input type="text" placeholder="请输入商品关键字" ref="input"/>
 				</nav>
 				<div className="list_filter">
 					<p onClick = {this.classify.bind(this, 'filter_son0')}>类别<i className="iconfont icon-30"></i></p>
@@ -212,7 +220,7 @@ class ListPageCompoennt extends Component {
 						</li>*/}										
 					</ul>
 				</div></div>
-				<SpinnerComponent show={this.props.show}/>
+				<SpinnerComponent show={this.props.loading}/>
 				<FooterComponent/>
 			</div>
 
