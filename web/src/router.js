@@ -10,6 +10,8 @@ import MemberCenterComponent from './modules/memberCenter/memberCenterComponent'
 import DetailsComponent from './modules/details/detailsComponent'
 import BuycarComponent from './modules/buycar/BuycarComponent'
 import OrderpageComponent from './modules/orderpage/OrderpageComponent'
+import AddressComponent from './modules/address/AddressComponent'
+import Add_addressComponent from './modules/address/Add_addressComponent'
 
 export default (
     <Route>
@@ -20,7 +22,9 @@ export default (
         <Route path = "details" component={DetailsComponent}/>
         <Route path="buycar" component={BuycarComponent} />
         <Route path="orderpage" component={OrderpageComponent} />
-        <Route path="listPage/" component={ListPageComponent}/>
+        <Route path="listPage" component={ListPageComponent}/>
         <Route path="category" component={CategoryComponent}/>
+        <Route path="address" component={AddressComponent} />
+        <Route path="add_address" component={Add_addressComponent} />
     </Route>
 )

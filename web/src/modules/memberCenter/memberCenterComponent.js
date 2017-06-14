@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import * as memberCenterActions from './memberCenterAction'
 // import SpinnerCommponent from '../spinner/SpinnerCommponent'
 import './memberCenter.scss'
+import  {Router,Route,hashHistory,Link,IndexRoute,browserHistory} from 'react-router'
 import BackgroundTop from '../../static/styles/images/watchPic.jpg'
 import MemberHead from '../../static/styles/images/memberLogo.jpg'
 
@@ -14,6 +15,12 @@ class MemberCenterActions extends Component{
 	MemberClose(){
 		console.log(this.refs.bottom_close.style.display)
 		this.refs.bottom_close.style.display="none";
+	}
+	dingdan(){
+		  window.location.hash = 'orderpage'
+	}
+	shopCart(){
+		window.location.hash = 'buycar'
 	}
 	render(){
 		return (
@@ -38,11 +45,12 @@ class MemberCenterActions extends Component{
 						</ul>
 					</div>			
 					<div className="myOrder">
-						<div className="orderTop clearfix">
+						<div className="orderTop clearfix" onTouchStart={this.dingdan.bind(this)}>
 							<span>我的订单</span>
 							<span>></span>
 							<span>查看我的全部订单</span>
 						</div>
+
 						<div className="orderTab">
 							<div className="daifukuan">
 								<span className="iconfont icon-daifukuan"></span>
@@ -77,7 +85,7 @@ class MemberCenterActions extends Component{
 							<span>></span>
 						</div>
 					</div>
-					<div className="carlist">
+					<div className="carlist" onTouchStart={this.shopCart.bind(this)}>
 						<div className="myCarList clearfix">
 							<div>
 								<span className="iconfont icon-gouwuche"></span>

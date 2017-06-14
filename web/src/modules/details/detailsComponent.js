@@ -3,27 +3,42 @@ import {connect} from 'react-redux'
 import  {Router,Route,hashHistory,Link,IndexRoute,browserHistory} from 'react-router'
 import SpinnerComponent from '../spinner/SpinnerComponent'
 import * as DetailsAction from './detailsAction'
-import global from '../../../../libs/common/global'
+import erp from '../global.js'
 import $ from '../listpage/jquery-3.1.1.js'
 
 import './details.scss'
 
 class DetailsComponent extends Component{
 	constructor(props){
-	        super(props)
+        super(props)
     }
     goBack(){
     	window.history.go(-1);
     }
-    componentWillMount(){console.log(this.props.location.query._id)
+    componentWillMount(){
 		var data_name = this.props.location.query._id;
-		// $.ajax({
-		// 	url:'http://10.3.133.50:8888/'+'',
-		// 	type:post,
-		// 	data:{id:data_name}
+		$.ajax({
+			url:'http://10.3.133.50:8888/'+'gainProductById',
+			type:'post',
+			data:{'_id':data_name},
+			dataType:'json',
+			async:false,
+			success:function(response){console.log(response)
+				window.obj = response[0];
+				window.preview = obj.preview;
+				window.old_price = obj.old_price;
+				window.price = obj.price;
+				window.sale_number = obj.sale_number;
+				window.mesg = obj.biaodi;
+				window.biaojing = obj.biaojing;
+				window.biaokou = obj.biaokou;
 
-
-		// })
+				this.props.details('success');
+			}.bind(this),
+			error:function(){
+				this.props.details('error');
+			}.bind(this)
+		})
     }
     componentDidMount(){
     	window.onscroll=function(){
@@ -35,7 +50,7 @@ class DetailsComponent extends Component{
     	}
     }
     componentWillUnmount(){
-    	window.onscroll=null;
+    	// window.onscroll=null;
     }
     render(){
     	return(
@@ -65,7 +80,7 @@ class DetailsComponent extends Component{
 							<div className="info_right">
 								<dic className="pri">￥<span id="marketprice">无</span></dic>
 								<div className="mesg">
-									库存：<span id="stock">暂无信息</span>件
+									库存:<span id="stock">{window.sale_number}</span>件
 								</div>
 								<div className="option">请选择规格</div>
 							</div>
@@ -88,16 +103,18 @@ class DetailsComponent extends Component{
 					</div>
 					<div className="detail_cont">
 						<div className="swiper-container">
+							<img src={erp.baseUrl+'upload/'+window.preview} alt=""/>
 						 <SpinnerComponent show={this.props.loading}/>          
+						
 						</div>
 						<div className="good_info">
 							<div className="good_title">
 							</div>
 						</div>
 						<div className="good_price">
-							￥<d id="marketpric">空</d>
-							<span className="productprice">市场价&nbsp;￥<d id="yuan">空</d></span>
-							<span className="stockSal clearfix">库存:<d id="stock_nem">空</d>&nbsp;销量:<d id="salesNum">空</d></span>
+							￥<d id="marketpric">{window.price }</d>
+							<span className="productprice">市场价&nbsp;￥<d id="yuan">{window.old_price}</d></span>
+							<span className="stockSal clearfix">库存:{window.sale_number}<d id="stock_nem"></d>&nbsp;销量:<d id="salesNum">{window.sale_number+4}</d></span>
 						</div>
 						<div className="good_choose" onTouchStart={DetailsAction.goodChoose.bind(this)}>
 							<span id="staNum">
@@ -107,7 +124,7 @@ class DetailsComponent extends Component{
 						</div>
 						<div className="good_main">
 							<div className="menu" onTouchStart={DetailsAction.qiehuan.bind(this)}>
-								<div id="nav1" className="nav navon">
+								<div id="nav1"  className="nav navon">
 									图文详情
 								</div>
 								<div id="nav2" className="nav">
@@ -120,10 +137,13 @@ class DetailsComponent extends Component{
 									同店推荐
 								</div>
 							</div>
-							<div className="tab_con" id="con_1">
+							<div className="tab_con" style={{display:'block'}} id="con_1">
+								<img src={erp.baseUrl+'upload/'+window.preview} alt=""/>
+								<img src={erp.baseUrl+'upload/'+window.preview} alt=""/>
+								<img src={erp.baseUrl+'upload/'+window.preview} alt=""/>
 							</div>
 							<div className="tab_con" id="con_2">
-								无任何产品参数
+								{window.biaojing+window.biaokou}
 							</div>
 							<div className="tab_con" id="con_3">
 								暂时没有任何评价
@@ -146,20 +166,23 @@ class DetailsComponent extends Component{
 							<i className="iconfont icon-shoucang-shoucang"></i>
 							<span>收藏</span>
 						</div>
-						<div className="detail_cart">
-							<i className="iconfont icon-gouwuche"></i>
-							<span>购物车</span>
-							<b id="btn_addCart">1</b>
-						</div>
+						<Link  to="buycar">
+							<div className="detail_cart">
+								<i className="iconfont icon-gouwuche"></i>
+								<span>购物车</span>
+								<b id="btn_addCart">1</b>
+							</div>
+						</Link>
 						<div className="addCart"  onTouchStart={DetailsAction.addCart.bind(this)}>
-
 							<span className="success">添加成功</span>
 							加入购物车
 						</div>
-						<div className="detail_buy">
-							<div className="backTop" onTouchStart={DetailsAction.backTop.bind(this)}><i className='iconfont icon-fanhuidingbu'></i></div>
-							立即购买
-						</div>
+						<Link to="login">
+							<div className="detail_buy">
+								<div className="backTop" onTouchStart={DetailsAction.backTop.bind(this)}><i className='iconfont icon-fanhuidingbu'></i></div>
+								立即购买
+							</div>
+						</Link>
 					</div>
 				</div>
     		)

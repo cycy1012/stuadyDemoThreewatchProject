@@ -1,14 +1,11 @@
 import * as constants from '../../redux/commonConstant'
 import $ from '../listpage/jquery-3.1.1.js'
 
-export function details(username, password){
+export function details(type){
     return {
-        types: [constants.REQUEST, constants.SUCCESS, constants.FAILURE],
-        
-
+		type: type
     }
 }
-
 export function qiehuan(){
 	var btn_nav = $('.nav');
 	btn_nav.on('click',function(){
@@ -22,7 +19,7 @@ export function addCart(){
 	// $('.success').css('display','block');
 	// $('#btn_addCart').css('display','block')
 	$('#btn_addCart').show();
-	$('.success').stop(true).show(200).delay(400).hide(300);		
+	// $('.success').stop(true).show(200).delay(400).hide(300);		
 }
 export function goodChoose(){
 	var btn_choose=$('.good_choose');
@@ -38,8 +35,15 @@ export function goodChoose(){
 		})
 } 
 
-export function backTop(){console.log(scrollY)
-	window.scrollY=0;
+export function backTop(){console.log(999,scrollY)
+	window.onscroll=function(){
+			if(scrollY>20){
+				$('.backTop').fadeIn(500);
+			}else{
+				$('.backTop').hide();
+			}
+		}	
+	window.scrollTo(0,0);
 	$('.backTop').animate({
 		opacity:0,
 		top:20
