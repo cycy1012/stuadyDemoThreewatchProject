@@ -14,17 +14,15 @@ export function filterDisplay(elem, targe){
 }
 
 export function getProducts(resState, response, sendAjaxFlat){
-	console.log('Action')
+	// console.log('Action')
 	// console.log(resState)
 	// console.log(response)
-	var data = response.data;
+	// var data = response.data;//php接口
 	return{
 		type: resState, 
-		listProducts: data,
+		listProducts: response,
 		sendAjaxFlat: sendAjaxFlat
-	}
-	
-	
+	}	
 	// return{
 	// 	types: [constants.REQUEST, constants.SUCCESS, constants.FAILURE],
 	// 	path: 'http://localhost/work/steal.php',
@@ -32,3 +30,14 @@ export function getProducts(resState, response, sendAjaxFlat){
 	// 	query: {}
 	// }
 }
+
+
+// export function getProducts(page){
+// 	return{
+// 		types: [constants.REQUEST, constants.SUCCESS, constants.FAILURE],
+// 		path: 'http://10.3.133.20/work/steal.php',
+// 		method: 'get',
+// 		query: {page : page}
+// 	}
+	
+// }
