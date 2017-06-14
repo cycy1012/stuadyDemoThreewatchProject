@@ -14,9 +14,6 @@ export function filterDisplay(elem, targe){
 }
 
 export function getProducts(resState, response, sendAjaxFlat){
-	// console.log('Action')
-	// console.log(resState)
-	// console.log(response)
 	// var data = response.data;//php接口
 	return{
 		type: resState, 
