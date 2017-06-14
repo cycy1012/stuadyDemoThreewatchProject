@@ -20,7 +20,7 @@ export default (
         <Route path = "details" component={DetailsComponent}/>
         <Route path="buycar" component={BuycarComponent} />
         <Route path="orderpage" component={OrderpageComponent} />
-        <Route path="listPage" component={ListPageComponent}/>
+        <Route path="listPage/" component={ListPageComponent}/>
         <Route path="category" component={CategoryComponent}/>
     </Route>
 )

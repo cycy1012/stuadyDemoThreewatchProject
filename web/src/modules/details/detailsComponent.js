@@ -3,25 +3,53 @@ import {connect} from 'react-redux'
 import  {Router,Route,hashHistory,Link,IndexRoute,browserHistory} from 'react-router'
 import SpinnerComponent from '../spinner/SpinnerComponent'
 import * as DetailsAction from './detailsAction'
+import global from '../../../../libs/common/global'
+import $ from '../listpage/jquery-3.1.1.js'
+
 import './details.scss'
 
 class DetailsComponent extends Component{
 	constructor(props){
 	        super(props)
     }
+    goBack(){
+    	window.history.go(-1);
+    }
+    componentWillMount(){console.log(this.props.location.query._id)
+		var data_name = this.props.location.query._id;
+		// $.ajax({
+		// 	url:'http://10.3.133.50:8888/'+'',
+		// 	type:post,
+		// 	data:{id:data_name}
+
+
+		// })
+    }
+    componentDidMount(){
+    	window.onscroll=function(){
+			if(scrollY>20){
+				$('.backTop').fadeIn(500);
+			}else{
+				$('.backTop').hide();
+			}
+    	}
+    }
+    componentWillUnmount(){
+    	window.onscroll=null;
+    }
     render(){
     	return(
 				<div className='detaulsContainer'>
 					<div className="detail_head">
-						<div className="pic_left">
-							<i className="iconfont icon-jinlingyingcaiicon01"></i>
+						<div className="pic_left" onTouchStart={this.goBack.bind(this)}>
+							<i className="iconfont icon-fanhui"></i>
 						</div>
 						<div className="pic_right">
 							<div className="btn_car">
-								<i className="iconfont icon-gouwuche1"></i>
+								<i className="iconfont icon-wangwang"></i>
 							</div>
 							<div className="btn_more">
-								<i className="iconfont icon-gengduo1"></i>
+								<i className="iconfont icon-gengduo"></i>
 							</div>
 							<div className="hide_fun">
 								<p className="fun_menu" id="fun_shou"><i className="iconfont icon-shouye"></i>首页</p>
@@ -60,9 +88,7 @@ class DetailsComponent extends Component{
 					</div>
 					<div className="detail_cont">
 						<div className="swiper-container">
-						    <div className="swiper-wrapper">
-						    </div>
-						    <div className="swiper-pagination"></div>	    
+						 <SpinnerComponent show={this.props.loading}/>          
 						</div>
 						<div className="good_info">
 							<div className="good_title">
@@ -73,14 +99,14 @@ class DetailsComponent extends Component{
 							<span className="productprice">市场价&nbsp;￥<d id="yuan">空</d></span>
 							<span className="stockSal clearfix">库存:<d id="stock_nem">空</d>&nbsp;销量:<d id="salesNum">空</d></span>
 						</div>
-						<div className="good_choose">
+						<div className="good_choose" onTouchStart={DetailsAction.goodChoose.bind(this)}>
 							<span id="staNum">
 								请选择规格及数量
 							</span>
 							<i className="iconfont icon-youjiantou" className="jiantou"></i>
 						</div>
 						<div className="good_main">
-							<div className="menu">
+							<div className="menu" onTouchStart={DetailsAction.qiehuan.bind(this)}>
 								<div id="nav1" className="nav navon">
 									图文详情
 								</div>
@@ -112,7 +138,7 @@ class DetailsComponent extends Component{
 							</div>	
 						</div>
 						<div className="good_copyright">
-							<i className="iconfont icon-ic_copyright_px"></i>&nbsp;版权所有&nbsp;sex products情趣用品
+							<i className="iconfont icon-ic_copyright_px"></i>&nbsp;版权所有&nbsp;名表汇有限集团
 						</div>
 					</div>
 					<div className="detail_foot">
@@ -121,15 +147,17 @@ class DetailsComponent extends Component{
 							<span>收藏</span>
 						</div>
 						<div className="detail_cart">
-							<i className="iconfont icon-gouwuche1"></i>
+							<i className="iconfont icon-gouwuche"></i>
 							<span>购物车</span>
 							<b id="btn_addCart">1</b>
 						</div>
-						<div className="addCart">
+						<div className="addCart"  onTouchStart={DetailsAction.addCart.bind(this)}>
+
 							<span className="success">添加成功</span>
 							加入购物车
 						</div>
 						<div className="detail_buy">
+							<div className="backTop" onTouchStart={DetailsAction.backTop.bind(this)}><i className='iconfont icon-fanhuidingbu'></i></div>
 							立即购买
 						</div>
 					</div>
