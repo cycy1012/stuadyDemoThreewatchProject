@@ -1,0 +1,141 @@
+@import 'base';
+
+//头部样式
+#header{
+	width: 100%;
+	height: 8%;
+	background: #1FAF96;
+	h2{
+		line-height: 60px;
+		margin-left: 30px;
+	}
+}
+//中心内容的样式
+#main{
+	height: 92%;
+	.list{
+		width: 13%;
+		height: 100%;
+		background: #2B3946;
+		float: left;
+		padding-top: 20px;
+		.message{
+			li{
+				font-size: 12px;
+				color: #1FAF96;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				&:hover{
+					background: #273542;
+					color: #fff;
+				}
+			}
+			.message_list{
+				display: none;
+				background: #273542;
+				&>li{
+					color: #fff;
+				}
+			}
+		} 
+	}
+	.msg{
+		width: 87%;
+		height: 100%;
+		background: #EBEFF2;
+		float: left;
+		.tab_title{
+			height: 50px;
+			width: 98%;
+			background: #495B69;
+			margin-top: 10px;
+			margin-left: 1%;
+			ul{
+				height: 50px;
+				li{
+					color: #fff;
+					float: left;
+					line-height: 50px;
+					padding:0 30px;
+					margin-left: 40px;
+					text-align: center;
+				}
+			}
+		}
+		.tab_main{
+			width: 98%;
+			margin-left: 1%;
+			.one{
+				margin-top: 10px;
+				span{
+					font-size: 14px;
+					margin-left: 30px;
+				}
+				input{
+					width: 150px;
+					height: 25px;
+					border-radius: 1px;
+
+				}
+			}
+		}
+		.submit_data{
+			width: 80px;
+			height: 30px;
+			background: #495B69;
+			border-radius: 5px;
+			margin:60px 500px;
+			outline: none;
+			color: #fff;
+		}
+		.picture{
+			width: 98%;
+			height: 60px;
+			margin-left: 1%;
+			margin-top: 10px;
+			.zuo{
+				font-size: 14px;
+			}
+			.you{
+				margin-top: 5px;
+				input{
+					margin-left: 30px;
+					margin-top: 10px;
+				}
+			}
+		}
+		.bannerPic{
+			width: 98%;
+			height: 60px;
+			margin-left: 1%;
+			margin-top: 10px;
+			.zuo{
+				font-size: 14px;
+			}
+			.you{
+				margin-top: 5px;
+				input{
+					margin-left: 30px;
+					margin-top: 10px;
+				}
+			}
+		}
+		.listPic{
+			width: 98%;
+			height: 60px;
+			margin-left: 1%;
+			margin-top: 40px;
+			.zuo{
+				font-size: 14px;
+			}
+			.you{
+				margin-top: 5px;
+				input{
+					margin-left: 30px;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}

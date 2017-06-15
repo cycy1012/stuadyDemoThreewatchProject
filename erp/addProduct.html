@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/addProduct.css">
+	<script src="js/jquery/require.js" data-main="js/addProduct.js"></script>
+</head>
+<body>
+	<div id="header">
+		<h2>后台管理系统</h2>
+	</div>
+	<div id="main">
+		<div class="list">
+			<ul class="message">
+				<li class="liOne">商品信息</li>
+				<ul class="message_list">
+						<li class="addPro">添加商品</li>
+						<li class="listPro">商品列表</li>
+						<li class="changePro">修改数据</li>
+				</ul>
+				<li>入库信息</li>
+				<li>系统设置</li>
+				<li>账户信息</li>
+			</ul>
+		</div>
+		<div class="msg">
+			<div class="tab_title">
+				<ul>
+					<li>数据上传</li>
+					<li>图片上传</li>
+				</ul>
+			</div>
+			<form>
+				<div class="tab_main">
+					<div class="one">
+						<span>商品名称:</span>
+						<input type="text" id="name">
+						<span>商品现价:</span>
+						<input type="text" id="price">
+						<span>商品原价:</span>
+						<input type="text" id="old_price">
+						<span>商品品牌:</span>
+						<input type="text" id="pinpai">
+					</div>
+					<div class="one">
+						<span>商品运费:</span>
+						<input type="text" id="fare">
+						<span>售出数量:</span>
+						<input type="text" id="sale_number">
+						<span>使用人群:</span>
+						<input type="text" id="people">
+						<span>商品型号:</span>
+						<input type="text" id="xinghao">
+					</div>
+					<div class="one">
+						<span>名称机芯:</span>
+						<input type="text" id="jixin">
+						<span>商品表扣:</span>
+						<input type="text" id="biaokou">
+						<span>商品表壳:</span>
+						<input type="text" id="biaoke">
+						<span>商品表镜:</span>
+						<input type="text" id="biaojing">
+					</div>
+					<div class="one">
+						<span>商品表底:</span>
+						<input type="text" id="biaodi">
+						<span>表盘大小:</span>
+						<input type="text" id="big">
+						<span>表盘形状:</span>
+						<input type="text" id="xingzhuang">
+						<span>表盘刻度:</span>
+						<input type="text" id="kedu">
+					</div>
+					<div class="one">
+						<span>表带颜色:</span>
+						<input type="text" id="color">
+						<span>表带材质:</span>
+						<input type="text" id="caizhi">
+						<span>商品防水:</span>
+						<input type="text" id="fangshui">
+						<span>商品证书:</span>
+						<input type="text" id="zhengshu">
+					</div>
+					<div class="one">
+						<span>商品区间:</span>
+						<input type="text" id="qujian">
+						<span>应用场景:</span>
+						<input type="text" id="changjing">
+						<span>商品功能:</span>
+						<input type="text" id="gongneng">
+						<span>商品专区:</span>
+						<input type="text" id="zhuangqu">
+					</div>
+				</div>
+				<!-- 图片上传 -->
+				<div class="picture">
+			      <p class="zuo">预览图：</p>
+			      <div class="you">
+			      	<input type="file" name="preview">
+			      </div>
+			    </div>
+			   <!-- 轮播图 -->
+			    <div class="bannerPic">
+			      <p class="zuo">轮播图：</p>
+			      <div class="you">
+			        <input type="file" name="bannerImg" id="input">
+			        <input type="file" name="bannerImg" id="input">
+			        <input type="file" name="bannerImg" id="input">
+			        <input type="file" name="bannerImg" id="input">
+			        <input type="file" name="bannerImg" id="input">
+			        <input type="file" name="bannerImg" id="input">
+			        <!-- <p class="select">请选择要上传的文件...  注意：最多只能上传8张图片</p> -->
+			      </div>
+			    </div>
+			    <!-- 列表图 -->
+			     <div class="listPic">
+			      	<p class="zuo">列表图：</p>
+				      	<div class="you js_addinput">
+					        <input type="file" name="listImg" id="input">
+					        <input type="file" name="listImg" id="input">
+					        <input type="file" name="listImg" id="input">
+					        <input type="file" name="listImg" id="input">
+					        <input type="file" name="listImg" id="input">
+					        <input type="file" name="listImg" id="input">
+					       <!--  <p class="select">请选择要上传的文件... 注意：最多只能上传20张图片  点击我添加剩余图片</p> -->
+				      </div>
+			    </div>
+		    </form>
+			<button class="submit_data">提交</button>
+		</div>
+	</div>
+</body>
+</html>

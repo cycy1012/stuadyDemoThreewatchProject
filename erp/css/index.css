@@ -1,0 +1,272 @@
+@charset "UTF-8";
+/*重置样式表*/
+/*==========样式重置===========*/
+html, body {
+  width: 100%;
+  height: 100%; }
+
+html {
+  font-size: 64px; }
+
+body, h1, h2, h3, h4, h5, h6, p, a, input, img, ul, li, ol, dl, dt, dd {
+  padding: 0;
+  margin: 0; }
+
+ul, ol {
+  list-style: none; }
+
+img {
+  display: block;
+  border: 0; }
+
+input {
+  outline: none; }
+
+body {
+  font-size: 12px; }
+
+i, em {
+  font-style: normal; }
+
+a {
+  text-decoration: none;
+  color: #000; }
+
+img {
+  border: 0;
+  display: block; }
+
+* {
+  box-sizing: border-box; }
+
+#header {
+  width: 100%;
+  height: 8%;
+  background: #1FAF96; }
+  #header h2 {
+    line-height: 60px;
+    margin-left: 30px; }
+
+#main {
+  height: 92%; }
+  #main .list {
+    width: 13%;
+    height: 100%;
+    background: #2B3946;
+    float: left;
+    padding-top: 20px; }
+    #main .list .message li {
+      font-size: 12px;
+      color: #1FAF96;
+      height: 40px;
+      line-height: 40px;
+      text-align: center; }
+      #main .list .message li:hover {
+        background: #273542;
+        color: #fff; }
+    #main .list .message .message_list {
+      display: none;
+      background: #273542; }
+      #main .list .message .message_list > li {
+        color: #fff; }
+  #main .msg {
+    overflow-y: auto;
+    width: 87%;
+    height: 100%;
+    background: #EBEFF2;
+    float: left; }
+    #main .msg .search {
+      height: 50px;
+      width: 100%;
+      background: #fff;
+      margin-top: 10px; }
+      #main .msg .search .searchText {
+        width: 250px;
+        height: 30px;
+        background: #EBEFF2;
+        border: 0;
+        margin-left: 10px;
+        margin-top: 10px;
+        border-radius: 30px;
+        text-indent: 5%;
+        font-size: 12px; }
+      #main .msg .search .search_btn {
+        border: 0;
+        width: 45px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        border-radius: 5px;
+        outline: none; }
+    #main .msg .container .product_title {
+      height: 40px;
+      background: #495B69;
+      margin-top: 10px; }
+      #main .msg .container .product_title .product_list {
+        height: 40px; }
+        #main .msg .container .product_title .product_list > li {
+          float: left;
+          color: #fff;
+          line-height: 40px;
+          margin-left: 5.1%; }
+    #main .msg .container .product_main table {
+      border-collapse: collapse; }
+      #main .msg .container .product_main table .trOne {
+        background: #fff; }
+        #main .msg .container .product_main table .trOne:nth-child(2n) {
+          background: #F8F8FA; }
+        #main .msg .container .product_main table .trOne td {
+          height: 60px;
+          width: 10%;
+          text-align: center; }
+          #main .msg .container .product_main table .trOne td img {
+            height: 60px;
+            width: 60px;
+            margin-left: 40px; }
+          #main .msg .container .product_main table .trOne td .delBtn {
+            border: 0;
+            font-size: 16px;
+            border-radius: 50%;
+            outline: none; }
+          #main .msg .container .product_main table .trOne td .changeBtn {
+            border: 0;
+            font-size: 16px;
+            border-radius: 50%;
+            outline: none; }
+
+.change_main {
+  width: 800px;
+  height: 450px;
+  border: 1px solid #ccc;
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  background: #EBEFF2;
+  overflow-y: auto;
+  display: none;
+  z-index: 100; }
+  .change_main .topMsg {
+    height: 60px;
+    background: #495B69; }
+    .change_main .topMsg h2 {
+      color: #fff;
+      line-height: 60px;
+      margin-left: 20px; }
+  .change_main .tab_main {
+    width: 98%;
+    margin-left: 1%; }
+    .change_main .tab_main .two {
+      margin-top: 10px;
+      margin-left: 300px; }
+      .change_main .tab_main .two span {
+        font-size: 14px;
+        margin-left: 10px; }
+      .change_main .tab_main .two input {
+        width: 100px;
+        height: 25px;
+        border-radius: 1px; }
+    .change_main .tab_main .one {
+      margin-top: 15px; }
+      .change_main .tab_main .one span {
+        font-size: 14px;
+        margin-left: 10px; }
+      .change_main .tab_main .one input {
+        width: 100px;
+        height: 25px;
+        border-radius: 1px; }
+    .change_main .tab_main .changeBtns {
+      width: 80px;
+      height: 30px;
+      background: #495B69;
+      border-radius: 5px;
+      margin-top: 50px;
+      margin-left: 300px;
+      outline: none;
+      color: #fff; }
+    .change_main .tab_main .close {
+      width: 80px;
+      height: 30px;
+      background: #495B69;
+      border-radius: 5px;
+      margin-left: 30px;
+      outline: none;
+      color: #fff; }
+
+.search_main {
+  min-height: 330px;
+  width: 87%;
+  position: absolute;
+  left: 13%;
+  top: 29%;
+  display: none;
+  overflow-y: auto; }
+  .search_main table {
+    border-collapse: collapse; }
+    .search_main table .trtwo {
+      background: #fff; }
+      .search_main table .trtwo:nth-child(2n) {
+        background: #F8F8FA; }
+      .search_main table .trtwo td {
+        height: 60px;
+        width: 10%;
+        text-align: center; }
+        .search_main table .trtwo td img {
+          height: 60px;
+          width: 60px;
+          margin-left: 40px; }
+        .search_main table .trtwo td .delBtn {
+          border: 0;
+          font-size: 16px;
+          border-radius: 50%;
+          outline: none; }
+        .search_main table .trtwo td .changeBtn {
+          border: 0;
+          font-size: 16px;
+          border-radius: 50%;
+          outline: none; }
+  .search_main .topMsg {
+    height: 60px;
+    background: #495B69; }
+    .search_main .topMsg h2 {
+      color: #273542;
+      line-height: 60px;
+      margin-left: 20px; }
+  .search_main .tab_main {
+    width: 98%;
+    margin-left: 1%; }
+    .search_main .tab_main .two {
+      margin-top: 10px;
+      margin-left: 340px; }
+      .search_main .tab_main .two span {
+        font-size: 14px;
+        margin-left: 10px; }
+      .search_main .tab_main .two input {
+        width: 150px;
+        height: 25px;
+        border-radius: 1px; }
+    .search_main .tab_main .one {
+      margin-top: 15px; }
+      .search_main .tab_main .one span {
+        font-size: 14px;
+        margin-left: 10px; }
+      .search_main .tab_main .one input {
+        width: 150px;
+        height: 25px;
+        border-radius: 1px; }
+    .search_main .tab_main .changeBtns {
+      width: 80px;
+      height: 30px;
+      background: #495B69;
+      border-radius: 5px;
+      margin-top: 50px;
+      margin-left: 380px;
+      outline: none;
+      color: #fff; }
+    .search_main .tab_main .close {
+      width: 80px;
+      height: 30px;
+      background: #495B69;
+      border-radius: 5px;
+      margin-left: 30px;
+      outline: none;
+      color: #fff; }
