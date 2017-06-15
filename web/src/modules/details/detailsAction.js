@@ -35,14 +35,8 @@ export function goodChoose(){
 		})
 } 
 
-export function backTop(){console.log(999,scrollY)
-	window.onscroll=function(){
-			if(scrollY>20){
-				$('.backTop').fadeIn(500);
-			}else{
-				$('.backTop').hide();
-			}
-		}	
+export function backTop(){console.log(scrollY)
+	
 	window.scrollTo(0,0);
 	$('.backTop').animate({
 		opacity:0,
