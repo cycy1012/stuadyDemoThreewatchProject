@@ -17,7 +17,7 @@ export default function(state = {
 				break;
 			case 'success':
 				console.log(newState.listProducts,'====');
-				action.listProducts.map(function(item){
+				(action.listProducts||[]).map(function(item){
 					newState.listProducts.push(item);
 				});
 				newState.ajaxPage++;

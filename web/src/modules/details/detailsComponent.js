@@ -33,6 +33,7 @@ class DetailsComponent extends Component{
 				window.mesg = obj.biaodi;
 				window.biaojing = obj.biaojing;
 				window.biaokou = obj.biaokou;
+				window.name = obj.name;
 
 				this.props.details('success');
 			}.bind(this),
@@ -55,25 +56,21 @@ class DetailsComponent extends Component{
     }
     render(){
     	return(
-				<div className='detaulsContainer'>
+				<div className='detailContainer'>
 					<div className="detail_head">
 						<div className="pic_left" onTouchStart={this.goBack.bind(this)}>
 							<i className="iconfont icon-fanhui"></i>
 						</div>
+						<ul className="detail_head_tab">
+							<li>商品</li>
+							<li>详情</li>
+							<li>售后</li>
+							<li>评价</li>
+						</ul>
 						<div className="pic_right">
-							<div className="btn_car">
-								<i className="iconfont icon-wangwang"></i>
-							</div>
-							<div className="btn_more">
-								<i className="iconfont icon-gengduo"></i>
-							</div>
-							<div className="hide_fun">
-								<p className="fun_menu" id="fun_shou"><i className="iconfont icon-shouye"></i>首页</p>
-								<p className="fun_menu" id="fun_member"><i className="iconfont icon-huiyuanzhongxin"></i>会员中心</p>
-							</div>
+							<i className="iconfont icon-gengduo"></i>
 						</div>
 					</div>
-					<div className="detail_pic"></div>
 					<div className="detail_bottom">
 						<div className="bottom_info">
 							<div className="info_left">
@@ -110,12 +107,15 @@ class DetailsComponent extends Component{
 						</div>
 						<div className="good_info">
 							<div className="good_title">
+								<h1>{window.name}</h1>
 							</div>
 						</div>
 						<div className="good_price">
-							￥<d id="marketpric">{window.price }</d>
-							<span className="productprice">市场价&nbsp;￥<d id="yuan">{window.old_price}</d></span>
-							<span className="stockSal clearfix">库存:{window.sale_number}<d id="stock_nem"></d>&nbsp;销量:<d id="salesNum">{window.sale_number+4}</d></span>
+							<span className="money">￥</span>
+							<span id="marketpric">{window.price}</span>
+							<span className="productprice">市场价&nbsp;￥<s id="yuan">{window.old_price}</s></span>
+							<span className="stockSal clearfix">库存:&nbsp;{window.sale_number}</span>
+							<span className="sale_num">销量:&nbsp;{window.sale_number}</span>
 						</div>
 						<div className="good_choose" onTouchStart={DetailsAction.goodChoose.bind(this)}>
 							<span id="staNum">
@@ -123,43 +123,26 @@ class DetailsComponent extends Component{
 							</span>
 							<i className="iconfont icon-youjiantou" className="jiantou"></i>
 						</div>
-						<div className="good_main">
-							<div className="menu" onTouchStart={DetailsAction.qiehuan.bind(this)}>
-								<div id="nav1"  className="nav navon">
-									图文详情
-								</div>
-								<div id="nav2" className="nav">
-									产品参数
-								</div>
-								<div id="nav3" className="nav">
-									用户评价
-								</div>
-								<div id="nav4" className="nav">
-									同店推荐
-								</div>
-							</div>
-							<div className="tab_con" style={{display:'block'}} id="con_1">
-								<img src={erp.baseUrl+'upload/'+window.preview} alt=""/>
-								<img src={erp.baseUrl+'upload/'+window.preview} alt=""/>
-								<img src={erp.baseUrl+'upload/'+window.preview} alt=""/>
-							</div>
-							<div className="tab_con" id="con_2">
-								{window.biaojing+window.biaokou}
-							</div>
-							<div className="tab_con" id="con_3">
-								暂时没有任何评价
-							</div>
-							<div className="tab_con" id="con_4">
-								<div id="recommad">
-									<div className="good_mesg" data-goodsid="">
-										暂时没有信息
-									</div>
-								</div>
-
-							</div>	
+						<div className="good_tab">
+							<ul>
+								<li>
+									<i className="iconfont icon-xiangqing"></i>
+									<p>鉴定认证</p>
+								</li>
+								<li>
+									<i className="iconfont icon-anniu"></i>
+									<p>全球保修</p>	
+								</li>
+								<li>
+									<i className="iconfont icon-closeaccount"></i>
+									<p>支持退货</p>	
+								</li>
+							</ul>
 						</div>
-						<div className="good_copyright">
-							<i className="iconfont icon-ic_copyright_px"></i>&nbsp;版权所有&nbsp;名表汇有限集团
+						<div className="detail_parameter">
+							<div className="parameter">
+								<p>商品参数</p>
+							</div>
 						</div>
 					</div>
 					<div className="detail_foot">
@@ -170,17 +153,14 @@ class DetailsComponent extends Component{
 						<Link  to="buycar">
 							<div className="detail_cart">
 								<i className="iconfont icon-gouwuche"></i>
-								<span>购物车</span>
-								<b id="btn_addCart">1</b>
+								<span>购物车</span>	
 							</div>
 						</Link>
 						<div className="addCart"  onTouchStart={DetailsAction.addCart.bind(this)}>
-							<span className="success">添加成功</span>
 							加入购物车
 						</div>
 						<Link to="login">
 							<div className="detail_buy">
-								<div className="backTop" onTouchStart={DetailsAction.backTop.bind(this)}><i className='iconfont icon-fanhuidingbu'></i></div>
 								立即购买
 							</div>
 						</Link>
