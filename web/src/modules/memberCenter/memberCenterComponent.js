@@ -4,16 +4,15 @@ import * as memberCenterActions from './memberCenterAction'
 // import SpinnerCommponent from '../spinner/SpinnerCommponent'
 import './memberCenter.scss'
 import  {Router,Route,hashHistory,Link,IndexRoute,browserHistory} from 'react-router'
+import FooterComponent from '../footer/FooterComponent.js'
 import BackgroundTop from '../../static/styles/images/watchPic.jpg'
 import MemberHead from '../../static/styles/images/memberLogo.jpg'
 
 class MemberCenterActions extends Component{
 	constructor(props){
         super(props);
-       
     }	
 	MemberClose(){
-		console.log(this.refs.bottom_close.style.display)
 		this.refs.bottom_close.style.display="none";
 	}
 	dingdan(){
@@ -22,28 +21,37 @@ class MemberCenterActions extends Component{
 	shopCart(){
 		window.location.hash = 'buycar'
 	}
+	xinxi(){
+		window.location.hash= 'login'
+	}
 	render(){
 		return (
+			<div>
 			<div id="container">
 				<header className= 'header_main'>
 					<div className="title clearfix">
-						<img src={BackgroundTop} alt=""/>
-						<div className="memberSet">
-								设置
-						</div>
+						<Link to='settingUp'>
+							<div className="memberSet">
+									设置
+							</div>
+						</Link>	
 						<div className= 'headPic'>
 							<img src={MemberHead} alt=""/>
+							<div className="user">dfdsafsa
+
+							</div>						
 						</div>
+						<div className='user-behavior clearfix'>
+							<ul>
+								<li><a><p>0</p><p className='baby'>收藏宝贝</p></a></li>
+								<li><a ><p>0</p><p className='baby'>收藏店铺</p></a></li>
+								<li><a ><p>0</p><p className='baby' id='babyboder'>我的积分</p></a></li>
+							</ul>
+					</div>						
 					</div>
 				</header>
 				<main className='member_main'>	
-					<div className='user-behavior clearfix'>
-						<ul>
-							<li><a><p>0</p><p>收藏宝贝</p></a></li>
-							<li><a ><p>0</p><p>收藏店铺</p></a></li>
-							<li><a ><p>0</p><p>我的足迹</p></a></li>
-						</ul>
-					</div>			
+								
 					<div className="myOrder">
 						<div className="orderTop clearfix" onTouchStart={this.dingdan.bind(this)}>
 							<span>我的订单</span>
@@ -74,7 +82,7 @@ class MemberCenterActions extends Component{
 							</div>
 						</div>
 					</div>
-					<div className="myData clearfix">
+					<div className="myData clearfix" onTouchStart={this.xinxi.bind(this)}>
 						<div>
 							<span className="iconfont icon-wo"></span>
 						</div>
@@ -101,32 +109,54 @@ class MemberCenterActions extends Component{
 					<div className="carlist">
 						<div className="myCarList clearfix">
 							<div>
+								<span className="iconfont icon-quanbudingdan"></span>
+							</div>
+							<div>
+								<span className="word">我的浏览</span>
+							</div>
+							<div id="gt">
+								<span>></span>
+							</div>
+						</div>
+					</div>	
+
+					<div className="carlist">
+						<div className="myCarList clearfix">
+							<div>
 								<span className="iconfont icon-wodezuji"></span>
 							</div>
 							<div>
-								<span className="word">我的</span>
+								<span className="word">我的足迹</span>
 							</div>
 							<div id="gt">
 								<span>></span>
 							</div>
 						</div>
 					</div>
-					<div className="copyright">
-						<p>版权所有 ©名表汇 </p>
-					</div>
-				</main>
-				<footer className= 'footer_main'>
-						<div></div>
-						<div className="quit"><a href="">退出</a></div>
-						<div className="fankui"><a href="">意见反馈</a></div>
-						<div className="computer"><a href="">电脑版</a>
+					<div className="carlist">
+						<div className="myCarList clearfix">
+							<div>
+								<span className="iconfont icon-xiaolvdashiicon02-copy-copy"></span>
+							</div>
+							<div>
+								<span className="word">帮助中心</span>
+							</div>
+							<div id="gt">
+								<span>></span>
+							</div>
 						</div>
-				</footer>
+					</div>									
+				</main>
+
 				<div className='ad' ref='bottom_close'>
 					<span><i  id='btnClose' className='iconfont icon-cha' onClick={this.MemberClose.bind(this)}></i><i className='iconfont icon-shoubiao' id='btnLogo'></i></span>
 					<span className= 'fontWord'>登录客户端，转领神秘好礼 ！</span>
 					<div className= 'lingqu'>立即领取</div>
 				</div>
+				
+
+		</div>
+		<FooterComponent/>
 		</div>
 		)
 	}

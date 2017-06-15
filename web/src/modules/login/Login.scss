@@ -2,8 +2,7 @@
 @import '../../static/styles/base.scss';
 
 body{
-	background:#f2f2f2;
-	// padding-top:3.28125rem;
+	// background:#f2f2f2;
 }
 	.loginScss{
 		.loginTop{
@@ -29,14 +28,15 @@ body{
 				height: 4.6875rem;
 			}	
 		}
-		form{
+		.loginForm{
 			width:100%;
 			position: relative;
 			// margin-top:3.28125rem;
 			position:relative;
 			div{background:#fff;}
-			.phone,.password{
+			#loginUser,#loginPas{
 				height:1.4rem;
+				background: #fff;
 				width:100%;
 				padding-left:5.5%;
 				border:none;
@@ -68,10 +68,12 @@ body{
 				margin-left:5.5%;
 				margin-right:5.5%;
 			}
-			.phone{
+			#loginUser{
+				background: #FFF;
 				border-top:0.03125rem solid #ccc;
 			}
-			.password{
+			#loginPas{
+				background: #FFF;
 				border-bottom:0.03125rem solid #ccc;
 			}
 			p{

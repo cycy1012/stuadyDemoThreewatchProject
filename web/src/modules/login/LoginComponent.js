@@ -34,6 +34,8 @@ class LoginComponent extends Component {
               alert(response.body.message)
             }else{
                 this.props.loading=true;
+                var phoneNum = this.refs.username.value;
+                window.sessionStorage.setItem('phone',phoneNum)
                 hashHistory.push('/memberCenter')
             }
         })
@@ -80,12 +82,12 @@ class LoginComponent extends Component {
             <div className= 'loginScss'>
                 <div className= 'loginTop'>名表汇登录</div>
                 <div className= 'logoImg'><img src={require('../../static/styles/images/watchLogo.jpg')} alt=""/></div>
-                <form>
+                <form className="loginForm">
                     <div>
-                        <input type="text"  ref="username" className="phone" placeholder="请填写手机号/用户名" onChange={this.loginUsername.bind(this)} />
+                        <input type="text" id="loginUser"  ref="username" className="phone" placeholder="请填写手机号/用户名" onChange={this.loginUsername.bind(this)} />
                         <i id='Login_cha' ref="usercha" className= 'iconfont icon-cha' onTouchStart={this.qingchu.bind(this)}></i>
                         <hr/>
-                        <input type="password" onChange={this.loginPassword.bind(this)}   ref="password" className="password" placeholder="请填写6-12位密码，包含字母和数字" />
+                        <input type="password" id="loginPas" onChange={this.loginPassword.bind(this)}   ref="password" className="password" placeholder="请填写6-12位密码，包含字母和数字" />
                         <i id='Login_show' ref="yincang1" className= 'iconfont icon-yincang1' onTouchStart={this.eyes.bind(this)}></i>
                         <i id='Login_showpas'  ref="showpas"  className= 'iconfont icon-cha' onTouchStart={this.qingkongPas.bind(this)}></i>
                     </div>
