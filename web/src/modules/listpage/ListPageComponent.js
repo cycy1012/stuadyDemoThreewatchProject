@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import ReactDOM from 'react-dom'
 import {Router, Route, hashHistory, Link, IndexRoute, browserhistory} from 'react-router'
 import $ from './jquery-3.1.1.js'
 
@@ -13,10 +14,10 @@ import erp from '../../utils/global.js'
 class ListPageCompoennt extends Component {
 	constructor(props){
 		super(props);
-		// this.state = {
-		// 	sendAjaxFlat : true,
-		// 	responseData :[]
-		// }
+		this.state = {
+			sendAjaxFlat : true,
+			responseData :[]
+		}
 	}
 	componentWillMount(){
 		let keyword = this.props.location.query.keyword;
@@ -36,9 +37,9 @@ class ListPageCompoennt extends Component {
 		// console.log(this.props.location.query,'===');
 	}
 	componentWillUpdate(){
-		console.log('Will Updata',this.props.loading);
+		console.log('Component Will Updata');
 		var targe = document.getElementById('list').childNodes;
-		console.log(targe)
+		// console.log(targe)
  	// 	document.getElementById('list').append(this.props.listProducts.map(function(item, index){
 		// 	return (
 		// 		<li><Link to={"/details?id=" + item.addtime}>
@@ -130,7 +131,7 @@ class ListPageCompoennt extends Component {
 				<header className="list_header">
 					<a className="iconfont icon-fanhui" href="javascript:history.go(-1);"></a>
 					<h1>所有产品</h1>
-					<a className="iconfont icon-gouwuche"></a>
+					<a className="iconfont icon-gouwuche" href="#/buycar"></a>
 				</header>
 				<div className="list_wrap" onScroll = {this.onScrollHandle.bind(this)} ref="wrap">
 				<nav className="list_nav">
@@ -187,8 +188,8 @@ class ListPageCompoennt extends Component {
 									<img src={erp.uploadUrl + item.preview} alt=""/>
 									<h3>{item.name}</h3>
 									<div className="collect clearfix">
-										<p className="price">{item.goods_price}</p>
-										<p className="like"><i className="iconfont icon-xin"></i>{item.click}</p>
+										<p className="price">{item.price}</p>
+										<p className="like"><i className="iconfont icon-xin"></i>{item.sale_number}</p>
 									</div>
 								</Link></li>	)			
 							})

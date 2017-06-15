@@ -13,7 +13,6 @@ class FooterComponent extends Component {
 					<li><Link to="/"><i className="iconfont icon-shouyeshouye"></i><span>首页</span></Link></li>
 					<li><Link to="category"><i className="iconfont icon-tubiao3"></i><span>分类</span></Link></li>
 					<li><Link to="buycar"><i className="iconfont icon-gouwuche"></i><span>购物车</span></Link></li>
-					<li><Link to="category"><i className="iconfont icon-xiaoxi"></i><span>消息</span></Link></li>
 					<li><Link to="login"><i className="iconfont icon-wo"></i><span>我的</span></Link></li>
 				</ul>
 			</footer>

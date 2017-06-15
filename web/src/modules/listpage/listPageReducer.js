@@ -16,7 +16,10 @@ export default function(state = {
 				newState.loading = true;
 				break;
 			case 'success':
-				newState.listProducts = action.listProducts;
+				console.log(newState.listProducts,'====');
+				action.listProducts.map(function(item){
+					newState.listProducts.push(item);
+				});
 				newState.ajaxPage++;
 				newState.sendAjaxFlat = true;
 				newState.loading = false;
@@ -40,6 +43,5 @@ export default function(state = {
 				newState[action.targe] = false;
 				break;
 		}
-		console.log(newState)
 		return newState;
 }
