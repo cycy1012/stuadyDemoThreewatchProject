@@ -2,7 +2,7 @@
 @import "variable";
 
 html {
-    font-family: 'Microsoft YaHei',"Comic Sans MS","幼圆","黑体",sans-serif;
+    
     /* 1 */
     -ms-text-size-adjust: 100%;
     /* 2 */
@@ -13,6 +13,7 @@ html {
     margin: 0;
 }
 body{
+    font-family: 'Microsoft YaHei',"Comic Sans MS","幼圆","黑体",sans-serif;
     height:100%;
     padding: 0;
     margin: 0;

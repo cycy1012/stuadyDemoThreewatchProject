@@ -1,0 +1,81 @@
+@import '../../static/styles/common.scss';
+@import '../../static/styles/base.scss';
+@import '../../static/styles/iconfont/iconfont.css';
+.settingUp{
+	.setTop{
+		position: relative;
+		height: 1.4rem;
+		p{
+			height: 1.4rem;
+			font-size:16px;
+			overflow: hidden;
+			background-color: #D8B770;
+			color: #fff;
+			border-bottom: 0.03125rem solid #E8E8E8;
+			padding-left: 0.825rem;
+			line-height:  1.4rem;
+			.back{
+				padding-left: 0.078125rem;
+				height: 1.4rem;
+				width:  1.0rem;
+				position: absolute;
+				left: 0;
+				text-decoration: none;
+				i{
+					height: 100%;
+					line-height:  1.4rem;
+					font-size: 20px;
+					color: #fff;
+				}
+			}
+			.homepage{
+				// float: right;
+				height:  1.4rem;
+				width:  1.4rem;
+				position: absolute;
+				right: 0;
+				text-decoration: none;
+				i{
+					padding-left: 0.240625rem;
+					height: 100%;
+					line-height:  1.4rem;
+					font-size: 24px;
+					color: #fff;
+				}
+			}
+		}
+
+	}	
+	.setmain{
+		.setTitle{
+			height: 1.5rem;
+			font-size: 14px;
+			font-family: 'Microsoft YaHei';
+			line-height: 1.5rem;
+			background: #fff;
+			color: inherit;
+			border-bottom: 0.015625rem solid #F6F6F6;
+			padding-left: 0.46875rem;
+			b{
+				float: right;
+				margin-right: 0.546875rem;
+				color:#ccc;
+				font-size: 18px;
+			}
+		}
+	}
+	.setExit{
+		width:89%;
+		text-align: center;
+		line-height: 1.25rem;
+		height:1.25rem;
+		margin-top:0.559375rem;
+		margin-left:5.5%;
+		margin-right:5.5%;
+		color:#fff;
+		background:#DFBF77;
+		border:none;
+		border-radius:0.078125rem;
+		font-size:16px;
+	}
+}

@@ -10,12 +10,14 @@ import CategoryComponent from './modules/category/CategoryComponent'
 import ListPageComponent from './modules/listpage/ListPageComponent'
 import RegisterComponent from './modules/register/registerComponent'
 import MemberCenterComponent from './modules/memberCenter/memberCenterComponent'
+import SettingUpComponent from './modules/settingUp/settingUpComponent'
 import DetailsComponent from './modules/details/detailsComponent'
 import BuycarComponent from './modules/buycar/BuycarComponent'
 import OrderpageComponent from './modules/orderpage/OrderpageComponent'
 import AddressComponent from './modules/address/AddressComponent'
 import Add_addressComponent from './modules/address/Add_addressComponent'
 import SearchComponent from './modules/search/SearchComponent'
+
 
 
 
@@ -37,5 +39,6 @@ export default (
         <Route path="category" component={CategoryComponent}/>
         <Route path="address" component={AddressComponent} />
         <Route path="add_address" component={Add_addressComponent} />
+        <Route path="settingUp" component={SettingUpComponent} />
     </Route>
 )
