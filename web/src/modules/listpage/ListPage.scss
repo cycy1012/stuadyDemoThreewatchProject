@@ -27,10 +27,10 @@ header.list_header{
 		}
 	}
 	//头部标题
-	h1{
-		font-size: .5rem;
-		flex:70%;
-	}
+	// h1{
+	// 	font-size: .5rem;
+	// 	flex:70%;
+	// }
 }
 .list_wrap{
 	flex:1;
@@ -38,30 +38,31 @@ header.list_header{
 }
 //搜索栏
 nav.list_nav{
-	background-color: #F5F5F5;
-	height:1.375rem;
+	// background-color: #F5F5F5;
+	flex:70%;
+	height:1.173333rem;
 	text-align: center;
 	position: relative;
 	.i_search{
 		position: absolute;
 		display: block;
-		font-size: 0.5rem;
+		font-size: .373333rem;
 		width:1.125rem;
 		z-index: 10;
-		left:3%;
-		top:0.21875rem;
+		left:0;
+		top:.24rem;
 		line-height: 0.9375rem;
 	}
 	input{
 		border:none;
 		height:0.90625rem;
-		font-size: .375rem;
+		font-size: 0.4375rem;
 		// width:9.375rem;
-		width:95%;
-		margin-top: 0.1875rem;
+		width:100%;
+		margin-top: .213333rem;
 		text-align: center;
 		border-radius: .0625rem;
-		background-color: #E8E8E8;
+		// background-color: #E8E8E8;
 	}
 }
 //筛选栏
@@ -72,9 +73,9 @@ nav.list_nav{
 	p{
 		text-align: center;
 		flex:25%;
-		height: 1.25rem;
-		line-height: 1.25rem;
-		font-size: .5rem;
+		height: 1.09375rem;
+		line-height:1.09375rem;
+		font-size: 0.4375rem;
 		border:.03125rem solid #EEE;
 		position: relative;
 		.icon-30{
@@ -100,7 +101,7 @@ nav.list_nav{
 		top:1.25rem;
 		overflow-y:auto;
 		overflow-x:hidden;
-		max-height:12.1875rem;		
+		max-height:13.7rem;		
 		li{
 			border-bottom: .03125rem solid #eee;
 			padding: 0.46875rem 0;
