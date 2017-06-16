@@ -8,6 +8,8 @@ import {connect} from 'react-redux'
 import "./App.scss"
 import * as AppActions from './AppAction.js'
 import FooterComponent from '../footer/FooterComponent.js'
+import BannerComponent from '../banner/BannerComponent'
+import XianshiComponent from '../app/XianshiComponent'
 import pic1 from '../../static/imgs/1.png'
 import pic2 from '../../static/imgs/2.png'
 import erp from "../../utils/global"
@@ -45,42 +47,11 @@ class AppComponent extends Component{
 	componentDidMount(){
 		hashHistory.push('appRenqi')
 
-		if(!this.refs.banner_mask){
-			return
-		}
-		let bannerImgWidth = -this.refs.banner_img.width
-		let index =0;
-		clearInterval(window.timer)
-		window.timer=setInterval(function(){
-			index++
-			if(index>4){
-				index=1
-			}
-			let targetLeft = bannerImgWidth*index
-			let speed = 20
-			clearInterval(window.scrollTimer)
-			window.scrollTimer = setInterval(()=>{
-				let currentLeft = this.refs.banner_mask.offsetLeft
-				if(currentLeft === 4*bannerImgWidth){
-					this.refs.banner_mask.style.left = 0 + 'px'
-				}else{
-					if(currentLeft <= targetLeft){
-						clearInterval(window.scrollTimer)
-						currentLeft = targetLeft + speed
-					}
-					this.refs.banner_mask.style.left = currentLeft - speed + 'px'
-				}			
-			},30)
-		}.bind(this),3000)
-
-		
-
-		// 实现左上角功能
+	// 实现左上角功能
 		$('.hengmian').click(function(){
-			
-			$('.app_aside').animate({width:260}).show()
-			$('.app_container').animate({left:260})
-			$('.app_aside_mask').show().animate({left:260,opacity:0.7})
+			$('.app_aside').animate({width:'81.25%'}).show()
+			$('.app_container').animate({left:'81.25%'})
+			$('.app_aside_mask').show().animate({left:'81.25%',opacity:0.7})
 		})
 		$('.app_aside_mask').click(function(){
 			$('.app_aside').animate({width:0},function(){
@@ -92,26 +63,8 @@ class AppComponent extends Component{
 			})
 		})
 
-		$('.app_aside_nanshi').click(function(){
-
-			location.href=erp.localhost + 'index.html#/listPage' + '?keyword=' + '男'
-		})
-		$('.app_aside_nvshi').click(function(){
-			location.href=erp.localhost + 'index.html#/listPage' + '?keyword=' + '女'
-		})
-		$('.app_aside_qinglv').click(function(){
-			location.href=erp.localhost + 'index.html#/listPage' + '?keyword=' + '情侣'
-		})
-		$('.app_aside_jixie').click(function(){
-			location.href=erp.localhost + 'index.html#/listPage' + '?keyword=' + '机械'
-		})
-
-
 	}
-	componentWillUnmount(){
-		clearInterval(window.timer)
-		clearInterval(window.scrollTimer)
-	}
+	
 
 
     render(){
@@ -126,16 +79,16 @@ class AppComponent extends Component{
             		</div>
             		<div className="app_aside_two">
 						<div>
-							<p className="app_aside_nanshi">男士腕表<span>></span></p>
+							<Link to={"listPage?keyword=男"}><p className="app_aside_nanshi">男士腕表<span>></span></p></Link>
 						</div>
 						<div>
-							<p className="app_aside_nvshi">女士腕表<span>></span></p>
+							<Link to={"listPage?keyword=女"}><p className="app_aside_nvshi">女士腕表<span>></span></p></Link>
 						</div>
 						<div>
-							<p className="app_aside_qinglv">情侣腕表<span>></span></p>
+							<Link to={"listPage?keyword=情侣"}><p className="app_aside_qinglv">情侣腕表<span>></span></p></Link>
 						</div>
 						<div>
-							<p className="app_aside_jixie">机械腕表<span>></span></p>
+							<Link to={"listPage?keyword=机械"}><p className="app_aside_jixie">机械腕表<span>></span></p></Link>
 						</div>
             		</div>
             	</aside>
@@ -149,18 +102,8 @@ class AppComponent extends Component{
 	            	</header>
 	            	<main className="app_main" ref="app_main" onScroll={this.onScrollHandler.bind(this)} style={{height:this.props.height}}>
 	            		<div className="backToTop" ref="backTop" onClick={this.backtotopfn.bind(this)} style={{display:this.props.display}}><span className="iconfont icon-fanhuidingbu"></span></div>
-	            		
 
-	            		<section className="banner" ref="banner">
-							<div className="banner_mask" ref="banner_mask">
-								<img src={require('../../static/imgs/6.png')} alt="" ref="banner_img"/>
-								<img src={require('../../static/imgs/1.png')} alt="" />
-								<img src={require('../../static/imgs/5.png')} alt="" />
-								<img src={require('../../static/imgs/2.png')} alt="" />
-								<img src={require('../../static/imgs/6.png')} alt="" />
-							</div>
-		            	</section>
-
+	            		<BannerComponent/>
 
 		            	<div className="linkPic"><Link to=""><img src={require('../../static/imgs/3.png')} alt="" /></Link></div>
 		            	<div className="ToSnapUp">
@@ -175,32 +118,9 @@ class AppComponent extends Component{
 		            			<span className="iconfont icon-iconfontright"></span>	
 		            		</Link>
 		            		<div className="recommend">
-								<ul>
-									<li>
-										<div><img src={require('../../static/imgs/4.png')} alt="" /></div>
-										<p>浪琴浪琴运动系列33913987 男表</p>
-									</li>
-									<li>
-										<div><img src={require('../../static/imgs/nanshi.jpg')} alt="" /></div>
-										<p>浪琴浪琴运动系列33913987 男表</p>
-									</li>
-									<li>
-										<div><img src={require('../../static/imgs/nvshi.jpg')} alt="" /></div>
-										<p>浪琴浪琴运动系列33913987 男表</p>
-									</li>
-									<li>
-										<div><img src={pic2} alt="" /></div>
-										<p>浪琴浪琴运动系列33913987 男表</p>
-									</li>
-									<li>
-										<div><img src={pic1} alt="" /></div>
-										<p>浪琴浪琴运动系列33913987 男表</p>
-									</li>
-									<li>
-										<div><img src={pic2} alt="" /></div>
-										<p>浪琴浪琴运动系列33913987 男表</p>
-									</li>
-								</ul>
+
+								<XianshiComponent/>
+
 		            		</div>
 		            	</div>
 		        		<div className="watchOption">

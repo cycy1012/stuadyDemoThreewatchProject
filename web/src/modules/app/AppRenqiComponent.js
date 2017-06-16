@@ -24,6 +24,7 @@ class AppRenqiComponent extends Component{
 		return(
 			<div className="getlist">
     			<ul className="list">
+                {console.log(this.state.response)}
     				{this.state.response.map(function(item){
                         return   <li>
                                     <Link to={"details?_id=" + item._id} className="list_watch_picture"><img src={erp.uploadUrl + item.preview} /></Link>
