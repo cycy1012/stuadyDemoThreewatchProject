@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import ReactDOM from 'react-dom'
 import {Router, Route, hashHistory, Link, IndexRoute, browserHistory} from 'react-router'
-import $ from './jquery-3.1.1.js'
+
 
 import './ListPage.scss'
 import FooterComponent from '../footer/FooterComponent'
@@ -10,6 +10,10 @@ import SpinnerComponent from '../spinner/SpinnerComponent'
 
 import * as ListPageActions from './listPageAction'
 import erp from '../../utils/global.js'
+
+
+//模拟数据
+let brandArr = ['江诗丹顿', '积家', '宝珀','帝舵','摩凡陀','宝诗龙','梵克雅宝','罗杰杜彼','伯爵','格拉苏蒂原创','帕玛强尼','芝柏','法穆兰','雅克德罗','雅克德罗'];
 
 class ListPageCompoennt extends Component {
 	constructor(props){
@@ -22,34 +26,29 @@ class ListPageCompoennt extends Component {
 	componentWillMount(){
 		let keyword = this.props.location.query.keyword;
 		this.sendAjaxGetProducts(keyword, true);
-		// console.log(responseData);
-		// this.props.getProducts().then(response => {
-		// 	console.log(response);
-		//})
-	}
-	componentWillUpdate(){
-		console.log('Component Will Updata');
 	}
 
 	//发送请求获取商品列表
 	sendAjaxGetProducts(keyword, wipeCache){
 		// let keyword = this.props.location.query.keyword;
-		$.ajax({
-			url : erp.baseUrl + 'searchProduct',
-			dataType : 'json',
-			type : 'post',
-			data : {page : this.props.ajaxPage , classify : keyword},
-			beforeSend:function(){
-				this.props.getProducts('before', {}, this.props.sendAjaxFlat, wipeCache);
-			}.bind(this),
-			success:function(response){	
-				this.props.getProducts('success', response, this.props.sendAjaxFlat, this.props.wipeCache);		
-			}.bind(this),
-			error:function(){
-				this.props.getProducts('error', {}, this.props.sendAjaxFlat, this.props.wipeCache);
-			}.bind(this)
-		});		
-        // this.props.getProducts(this.props.ajaxPage).then(
+		// $.ajax({
+		// 	url : erp.baseUrl + 'searchProduct',
+		// 	dataType : 'json',
+		// 	type : 'post',
+		// 	data : {page : this.props.ajaxPage , classify : keyword},
+		// 	beforeSend:function(){
+		// 		this.props.getProducts('before', {}, this.props.sendAjaxFlat, wipeCache);
+		// 	}.bind(this),
+		// 	success:function(response){	
+		// 		this.props.getProducts('success', response, this.props.sendAjaxFlat, this.props.wipeCache);		
+		// 	}.bind(this),
+		// 	error:function(){
+		// 		this.props.getProducts('error', {}, this.props.sendAjaxFlat, this.props.wipeCache);
+		// 	}.bind(this)
+		// });	
+	
+		this.props.sendAjaxFlat && this.props.getProducts(keyword, this.props.ajaxPage, wipeCache);
+        // this.props.getProducts(keyword, page, wipeCache).then(
         //     response =>{
         //    		console.log(response)
         // })
@@ -70,6 +69,7 @@ class ListPageCompoennt extends Component {
 		let wrapOffsetHieght = this.refs.list.offsetHeight;
 		let windowInnerHeight = window.innerHeight;
 		if((wrapScrollTop >= (wrapOffsetHieght - windowInnerHeight - 10)) && this.props.sendAjaxFlat){
+			console.warn('保留数据');
 			let keyword = this.props.location.query.keyword;
 			this.sendAjaxGetProducts(keyword, false)
 		}
@@ -87,7 +87,18 @@ class ListPageCompoennt extends Component {
 			val = this.refs.input.value;
 		}
 		hashHistory.push('/listPage?keyword=' + val);
-		this.sendAjaxGetProducts(val, true)
+		this.sendAjaxGetProducts(val, true);
+		console.warn('重置数据');
+	}
+
+	//input回车搜索
+	keyDown(event){
+		if(event.keyCode === 13){
+			let val = this.refs.input.value;
+			hashHistory.push('listPage?keyword=' + val);
+			this.sendAjaxGetProducts(val, true);
+			console.warn('重置数据');
+		}	
 	}
 
 	//筛选
@@ -105,7 +116,7 @@ class ListPageCompoennt extends Component {
 					{/*<h1>所有产品</h1>*/}
 					<nav className="list_nav">
 						<i className="iconfont icon-sousuo_sousuo i_search" onTouchStart={this.search.bind(this)}></i>
-						<input type="text" placeholder="请输入商品关键字" ref="input"/>
+						<input type="text" placeholder="请输入商品关键字"  onKeyDown={this.keyDown.bind(this)} ref="input"/>
 					</nav>
 					<a className="iconfont icon-gouwuche" href="#/buycar"></a>
 				</header>
@@ -129,16 +140,13 @@ class ListPageCompoennt extends Component {
 					</div>
 					<div className="filter-com filter-son1" style={{display : this.props.filter_son1?'block':'none'}} ref="filter_son1">
 						<ul>
-							<li>罗杰杜彼</li>
-							<li>积家</li>
-							<li>宝珀</li>
-							<li>帝舵</li>
-							<li>摩凡陀</li>
-							<li>摩凡陀</li>
-							<li>摩凡陀</li>
-							<li>摩凡陀</li>
-							<li>摩凡陀</li>
-							<li>摩凡陀</li>
+							{
+								brandArr.map(function(item){
+									return(
+										<li>{item}</li>
+									)
+								})
+							}
 						</ul>
 					</div>
 					<div className="filter-com filter-son2" style={{display : this.props.filter_son2?'block':'none'}} ref="filter_son2">
