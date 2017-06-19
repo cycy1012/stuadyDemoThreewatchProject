@@ -10,7 +10,7 @@ export default function(state = {loading: true}, action){
         case 'error':
             reState.loading = false
             break;
-        case types.SUCCESS:
+        case types.L_SUCCESS:
             if(action.body){
                 reState.data = action.body 
             }
