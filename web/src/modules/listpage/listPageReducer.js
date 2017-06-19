@@ -34,6 +34,7 @@ export default function(state = {
 			    break;
 
 			case types.SUCCESS:
+			console.log(111)
 				//wipeCache布尔类型,如果清空缓存(为true时)，则列表页的数据完全根据返回的数据生成
 				//否则保留之前的数据，列表页继续往下加载
 				//（用于条件筛选时重新加载列表页，懒加载时不清空缓存）
