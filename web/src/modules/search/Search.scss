@@ -6,13 +6,14 @@ body{background:#fff}
 	position:relative;
 	div{
 		float:left;
+		width:11.72%;
 		.icon-fanhui{
 			display:inline-block;
-			width:1.173333rem;
+			width:100%;
 			height:1.173333rem;
 			font-size:.533333rem;
 			text-align: center;
-			line-height:1.173333rem;
+			line-height:250%;
 			color:#333;
 			font-weight: bold;
 		}
@@ -21,10 +22,10 @@ body{background:#fff}
 		font-size: .373333rem;
 		position:absolute;
 		top:.453333rem;
-		left:1.386667rem;
+		left:13%;
 	}
 	input{
-		width:7.6rem;
+		width:74.56%;
 		padding:.16rem .88rem;
 		margin:.213333rem 0rem;
 		font-size:.426667rem;
@@ -34,11 +35,13 @@ body{background:#fff}
 
 	}
 	.sousuo{
+		width:13.72%;
 		float:right;
 		font-size: .373333rem;
 		margin-top:.32rem;
 		.sousuoWord{
-			padding:.346667rem .213333rem .24rem .213333rem;
+			margin-left:25%;
+			line-height:1.7;
 		}
 
 	}
@@ -55,7 +58,8 @@ body{background:#fff}
 	.search_hotWord{
 		span{
 			padding:.266667rem;
-			margin:.133333rem .186667rem;;
+			// margin:.133333rem .186667rem;
+			margin:3% 0% 3% 3%;
 			background:#fff;
 			border-radius: .133333rem;
 			font-size:.373333rem;

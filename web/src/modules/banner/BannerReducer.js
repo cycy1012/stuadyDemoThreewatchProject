@@ -4,22 +4,24 @@
 // action => store = createStroe(reducer, 中间件) => reducer
 
 import * as types from '../../redux/commonConstant'
-// console.log(action.type,action.query,"reducer")
-export default function(state = {loading: false}, action){
+
+export default function(state = {imgList:''}, action){
     let reState = JSON.parse(JSON.stringify(state))
     switch(action.type){
-        case types.L_REQUEST:
+        case types.B_REQUEST:
             reState.loading = true
             break
-        case types.L_SUCCESS:
+        case types.B_SUCCESS:
             reState.data = action.body
             reState.lastFetched = action.lastFetched
             reState.loading = false
+            reState.imgList = action.body
             break
-        case types.L_FAILURE:
+        case types.B_FAILURE:
             reState.error = action.error
             reState.loading = false
             break
     }
+    
     return reState;
 }
