@@ -18,8 +18,6 @@ export function backToTopStatus(ScrollTop){
 }
 
 export function backToTop(){
-	// console.log('action')
-	console.log(1)
 	return{
 		type: constants.BACKTOTOP
 	}

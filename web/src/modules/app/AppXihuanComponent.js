@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 // import {Router,Route,hashHistory,Link,IndexRoute,browserHistory} from 'React-Router'
 var ReactRouter = require('react-router');
 var {Router,Route,hashHistory,Link,IndexRoute,browserHistory} = ReactRouter;
-import $ from '../listpage/jquery-3.1.1.js'
+import $ from 'jquery'
 import "./AppXihuanComponent.scss"
 import erp from "../../utils/global"
 
