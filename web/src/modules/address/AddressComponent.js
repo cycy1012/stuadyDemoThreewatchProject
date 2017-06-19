@@ -26,11 +26,12 @@ class AddressMamageComponent extends React.Component {
     componentDidMount(){
 		
 	}
- 		console.log("+++",index,9999,this.state.data[index].address)
+	delAdd(index){
+		console.log("+++",index,9999,this.state.data[index].address)
 		let address=this.state.data[index].address;
 		this.props.delAddress(address).then(response=>{
 			console.log(response.body,response)
-			let data = response.body.data;
+			// let data = response.body.data;
 			// this.setState({data:data})
 		})
 

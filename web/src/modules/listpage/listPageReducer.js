@@ -42,7 +42,7 @@ export default function(state = {
 
 				//判断action.listProducts是否存在
 				}else if(action.body){
-					action.body.map(function(item){
+					(action.body||[]).map(function(item){
 						reState.listProducts.push(item);
 					});					
 					// (action.body || []).map(function(item){
