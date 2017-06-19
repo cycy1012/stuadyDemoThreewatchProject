@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
     app,
     register,
     details,
-    listPage
+    listPage,
 })
 
 export default rootReducer

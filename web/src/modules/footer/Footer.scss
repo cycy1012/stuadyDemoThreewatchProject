@@ -3,6 +3,8 @@
 
 .footer_footer{
 	width: 100%;
+	position: fixed;
+	bottom:0;
 	height:1.46875rem;
 	background-color: #FFF;
 	border-top: 1px solid #E1E1E1;
@@ -28,6 +30,9 @@
 			color:#646464;
 			margin: 0.09375rem 0 .03125rem 0;
 			font-size: .5625rem;
+		}
+		.colorclass{
+			
 		}
 		span{
 			font-size: .375rem;

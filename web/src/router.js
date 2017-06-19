@@ -17,6 +17,7 @@ import OrderpageComponent from './modules/orderpage/OrderpageComponent'
 import AddressComponent from './modules/address/AddressComponent'
 import Add_addressComponent from './modules/address/Add_addressComponent'
 import SearchComponent from './modules/search/SearchComponent'
+import MyDataCompont from './modules/myData/myDataComponent'
 
 
 
@@ -40,5 +41,6 @@ export default (
         <Route path="address" component={AddressComponent} />
         <Route path="add_address" component={Add_addressComponent} />
         <Route path="settingUp" component={SettingUpComponent} />
+        <Route path="myData" component={MyDataCompont} />
     </Route>
 )

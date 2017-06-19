@@ -1,0 +1,97 @@
+@import '../../static/styles/common.scss';
+@import '../../static/styles/base.scss';
+
+.mydata{
+	width: 100%;
+	height: 100%;
+	.setTop{
+		position: relative;
+		height: 1.4rem;
+		p{
+			height: 1.4rem;
+			font-size:14px;
+			overflow: hidden;
+			background-color: #D8B770;
+			color: #fff;
+			border-bottom: 0.03125rem solid #E8E8E8;
+			padding-left: 0.825rem;
+			line-height:  1.4rem;
+			.back{
+				padding-left: 0.2rem;
+				height: 1.4rem;
+				width:  1.0rem;
+				position: absolute;
+				left: 0;
+				text-decoration: none;
+				i{
+					height: 100%;
+					line-height:  1.4rem;
+					font-size: 18px;
+					color: #fff;
+				}
+			}
+			.homepage{
+				// float: right;
+				height:  1.4rem;
+				width:  1.4rem;
+				position: absolute;
+				right: 0;
+				text-decoration: none;
+				i{
+					padding-left: 0.240625rem;
+					height: 100%;
+					line-height:  1.4rem;
+					font-size: 24px;
+					color: #fff;
+				}
+			}
+		}
+	}
+	.setmain{
+		.setTitle{
+			height: 1.5rem;
+			font-size: 14px;
+			line-height: 1.5rem;
+			background: #fff;
+			color: inherit;
+			border-bottom: 0.015625rem solid #F6F6F6;
+			padding-left: 0.46875rem;
+			b{
+				font-size: 12px;
+				float: right;
+				margin-right: 0.546875rem;
+				color:#ccc;
+				font-size: 14px;
+			}
+		}
+	}
+	.chuang{
+		display: none;
+		transition:all 5s;
+		width: 100%;
+		height: 100%;
+		opacity: .4;
+		background: #000;
+		position: fixed;
+		>div{
+			width: 70%;
+			margin: 70% 15%;
+			border-radius: 0.15625rem;
+			background: #fff;
+			height: 4.0rem;
+			p{
+				border-bottom: 0.015625rem solid #CCC;
+				height:1.26rem;
+				color:#555555;
+				line-height: 1.25rem;
+				text-align: center;
+				&:first-child{
+					color:#000;
+				}
+				&:last-child{
+					border:0;
+				}	
+			}
+		}
+	}		
+}

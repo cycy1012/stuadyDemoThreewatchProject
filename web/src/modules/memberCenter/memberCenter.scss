@@ -5,7 +5,6 @@
 #container{
 	$member_color:#E3BC7D;
 	$member_border:0.03125rem solid #ddd;
-
 	background:#F6F6F6;
 	.header_main{
 		position: relative;
@@ -27,7 +26,7 @@
 				text-align: center;
 				ul{
 					float: left;
-					padding-top:3.0rem;
+					padding-top:3.3rem;
 					width: 90%;
 					margin:0 5%;
 					display: flex;
@@ -70,6 +69,9 @@
 				}
 				.user{
 					color:#fff;
+					margin-top: 0.078125rem;
+					font-size: 16px;
+					text-align: center;
 				}
 			}
 
@@ -218,12 +220,13 @@
 		}
 	}
 	.ad{
-		display: block;
+		display:block;
 		height:1.71875rem;
 		background: #5F646E;
 		position: fixed;
 		bottom: 0;
 		width: 100%;
+		z-index: 1000;
 		padding-left:1.25rem;
 		text-align: center;
 		line-height: 1.71875rem;
@@ -244,7 +247,6 @@
 		.fontWord{
 			display: inline-block;
 			color:#fff;
-			font-size: 0.25rem;
 		}
 		.lingqu{
 			float: right;

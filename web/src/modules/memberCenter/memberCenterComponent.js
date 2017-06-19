@@ -13,7 +13,8 @@ class MemberCenterActions extends Component{
         super(props);
     }	
 	MemberClose(){
-		this.refs.bottom_close.style.display="none";
+			this.refs.bottom_close.style.display="none";
+			window.sessionStorage.setItem('bottomClo','num')	
 	}
 	dingdan(){
 		  window.location.hash = 'orderpage'
@@ -22,11 +23,20 @@ class MemberCenterActions extends Component{
 		window.location.hash = 'buycar'
 	}
 	xinxi(){
-		window.location.hash= 'login'
+		window.location.hash= 'myData'
+	}
+	componentWillMount(){
+	 	window.userName = sessionStorage.getItem('phone')
+	}
+	componentDidMount(){	
+		if(sessionStorage.getItem('bottomClo')){
+	 		this.refs.bottom_close.style.display="none";
+	 	}else{
+	 		this.refs.bottom_close.style.display="block";
+	 	}
 	}
 	render(){
 		return (
-			<div>
 			<div id="container">
 				<header className= 'header_main'>
 					<div className="title clearfix">
@@ -37,8 +47,7 @@ class MemberCenterActions extends Component{
 						</Link>	
 						<div className= 'headPic'>
 							<img src={MemberHead} alt=""/>
-							<div className="user">dfdsafsa
-
+							<div className="user">{window.userName}
 							</div>						
 						</div>
 						<div className='user-behavior clearfix'>
@@ -147,16 +156,12 @@ class MemberCenterActions extends Component{
 						</div>
 					</div>									
 				</main>
-
 				<div className='ad' ref='bottom_close'>
 					<span><i  id='btnClose' className='iconfont icon-cha' onClick={this.MemberClose.bind(this)}></i><i className='iconfont icon-shoubiao' id='btnLogo'></i></span>
 					<span className= 'fontWord'>登录客户端，转领神秘好礼 ！</span>
 					<div className= 'lingqu'>立即领取</div>
 				</div>
-				
-
-		</div>
-		<FooterComponent/>
+				<FooterComponent/>
 		</div>
 		)
 	}
