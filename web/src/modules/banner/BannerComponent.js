@@ -1,72 +1,70 @@
 import React, { Component } from 'react';
-
-
+import * as BannerActions from './BannerAction'
+var ReactRouter = require('react-router');
+var {Router,Route,hashHistory,Link,IndexRoute,browserHistory} = ReactRouter;
+import {connect} from 'react-redux'
+import erp from "../../utils/global"
 import './banner.scss'
-import pic1 from './1.png'
-import pic2 from './2.png'
-import pic3 from './3.png'
-import pic4 from './4.png'
-// 3000 => this.props.duration
-// 142 hang   重新定义 [...] => this.props.imgList
-// 18hang del!
-// this.state.shuzu  ===>   this.props.imgList
 
 
-export default class BannerComponent extends Component {
+class BannerComponent extends Component {
   constructor(props) {
     super(props);
     this.state={
-      numberStep:1,
+      step:1,
       startX:0,
       changeX:0,
       startLeft:0,
-      shuzu:[{photo:pic1},{photo:pic2},{photo:pic3},{photo:pic4}]
     }
     this.autoMove = this.autoMove.bind(this);
     this.bannerStop = this.bannerStop.bind(this);
     this.bannerStart = this.bannerStart.bind(this);
     this.bannerMove = this.bannerMove.bind(this);
-    this.autoTimer = null;
 
   }
+  componentWillMount(){
+    this.props.getBanner('首页轮播图')
+  }
   componentWillUnmount() {
-    console.log(window.autoTimer)
     window.clearInterval(window.autoTimer);
     window.autoTimer = null;
+    window.clearInterval(window.document.getElementById('bannerInner').timer);
+    window.document.getElementById('bannerInner').timer=null;
+
+
   }
   componentDidMount() {
-    // console.log(document.getElementById('bannerInner'))
-    document.getElementById('bannerInner').style.left = -document.getElementsByClassName('imgBox')[0].offsetWidth + "px";
-    const num = (this.state.shuzu.length+2)*100+"%";
-    document.getElementById('bannerInner').style.width = num;
-    const arryImg = document.getElementsByClassName('imgBox');
-    for(let i = 0;i<arryImg.length;i++){
-      arryImg[i].style.width = 100/(this.state.shuzu.length+2)+"%";
-    }
-    window.clearInterval(window.autoTimer);
-    window.autoTimer = null;
-    window.autoTimer = window.setInterval(this.autoMove, 3000);
-    console.log( window.autoTimer)
+    setTimeout(function(){
+      document.getElementById('bannerInner').style.left = -document.getElementsByClassName('imgBox')[0].offsetWidth + "px";
+      const num = (this.props.imgList.length+2)*100+"%";
+      document.getElementById('bannerInner').style.width = num;
+      const arryImg = document.getElementsByClassName('imgBox');
+      for(let i = 0;i<arryImg.length;i++){
+        arryImg[i].style.width = 100/(this.props.imgList.length+2)+"%";
+      }
+      window.autoTimer = null;
+      window.autoTimer = window.setInterval(this.autoMove,3500);
+    }.bind(this),100)
   }
   
   autoMove(){
-    let numberStep = this.state.numberStep,count = this.state.shuzu.length + 1;
-
-    if (numberStep >= (count - 1)) {
-        numberStep = 0;
+    let step = this.state.step,count = this.props.imgList.length + 1;
+    if (step >= (count - 1)) {
+        step = 0;
         document.getElementById('bannerInner').style.left = 0;
     }
-    numberStep++;
-    this.setState({numberStep:numberStep},function(){
+    step++;
+    this.setState({step:step},function(){
       this.focusTip();
     });
-    this.animate({left: -numberStep * document.getElementsByClassName('imgBox')[0].offsetWidth}, 600);
+    this.animate({left: -step * document.getElementsByClassName('imgBox')[0].offsetWidth}, 500);
   }
   focusTip(){
-    let currentnumberStep = this.state.numberStep;
+    let currenStep = this.state.step;
     let tipNum = document.getElementsByClassName('bannerTip')[0].getElementsByTagName("li").length;
     for (let i = 0; i < tipNum; i++) {
-        document.getElementsByClassName('bannerTip')[0].getElementsByTagName("li")[i].className = i === (currentnumberStep-1) ? "bg" : "";
+        document.getElementsByClassName('bannerTip')[0].getElementsByTagName("li")[i].className = i === (currenStep-1) ? "bg" : "";
+
     }
 
   }
@@ -90,8 +88,8 @@ export default class BannerComponent extends Component {
             return;
         }
         window.clearInterval(document.getElementById('bannerInner').timer);
-        document.getElementById('bannerInner').timer = null;
-        function numberStep() { 
+
+        function step() { 
             times += interval;
             if (times < duration) {
                 for (let attr in oChange) {
@@ -107,13 +105,11 @@ export default class BannerComponent extends Component {
                 document.getElementById('bannerInner').timer = null;
             }
         }
-        
-        document.getElementById('bannerInner').timer = window.setInterval(numberStep, interval);
-
+        document.getElementById('bannerInner').timer = window.setInterval(step, interval);
     }
   bannerStop(e){
-    console.log( window.autoTimer)
-     window.clearInterval(window.autoTimer);
+    window.clearInterval(window.autoTimer);
+
     let startX = e.touches[0].clientX;
     let startLeft = parseFloat(document.getElementById('bannerInner').style.left);
     this.setState({
@@ -123,24 +119,23 @@ export default class BannerComponent extends Component {
   }
   bannerStart(){
     window.autoTimer = null;
-    window.autoTimer = window.setInterval(this.autoMove, 3000);
-    console.log(window.autoTimer)
+    window.autoTimer = window.setInterval(this.autoMove, 3500);
     if(this.state.changeX>(document.getElementsByClassName('imgBox')[0].offsetWidth/5)){
-      let numberStep = this.state.numberStep,count = this.state.shuzu.length + 2;
-      if (numberStep <= 1) {
-          numberStep = count-1;
-          document.getElementById('bannerInner').style.left = -numberStep * document.getElementsByClassName('imgBox')[0].offsetWidth + "px";
+      let step = this.state.step,count = this.props.imgList.length + 2;
+      if (step <= 1) {
+          step = count-1;
+          document.getElementById('bannerInner').style.left = -step * document.getElementsByClassName('imgBox')[0].offsetWidth + "px";
       }
-      numberStep--;
-      this.setState({numberStep:numberStep},function(){
+      step--;
+      this.setState({step:step},function(){
         this.focusTip();
       });
-      this.animate({left: -numberStep * document.getElementsByClassName('imgBox')[0].offsetWidth}, 400);
+      this.animate({left: -step * document.getElementsByClassName('imgBox')[0].offsetWidth}, 400);
     }else if(this.state.changeX<-(document.getElementsByClassName('imgBox')[0].offsetWidth/5)){
       this.autoMove();
     }else{
-      this.animate({left: -this.state.numberStep * document.getElementsByClassName('imgBox')[0].offsetWidth}, 150);
-
+      this.animate({left: -this.state.step * document.getElementsByClassName('imgBox')[0].offsetWidth}, 150);
+ 
     }
   }
   bannerMove(e){
@@ -150,26 +145,28 @@ export default class BannerComponent extends Component {
   }
   render() {
 
-    const imgList = this.state.shuzu;
+    const imgList = this.props.imgList;
     return (
+
       <div className="banner" id="banner">
         <div className="bannerInner" id="bannerInner" onTouchMove={this.bannerMove} onTouchStart={this.bannerStop} onTouchEnd={this.bannerStart}>
-          {/*把第最后一张图片复制一张放最后，实现手动滑动的无缝滚动*/
+          {
             imgList.map(function(item,index){
               if(index == imgList.length-1){
-              return <a className="imgBox"><img src={item.photo}/></a>
+
+              return <a className="imgBox"><img src={erp.uploadUrl + item.preview}/></a>
               }
             })
           }
           {
             imgList.map(function(item,index){
-              return <a className="imgBox"><img src={item.photo}/></a>
+              return <a className="imgBox"><img src={erp.uploadUrl + item.preview}/></a>
             })
           }
-          {/*把第一张图片复制一张放最后，实现无缝滚动*/
+          {
             imgList.map(function(item,index){
               if(index == 0){
-              return <a className="imgBox"><img src={item.photo}/></a>
+              return <a className="imgBox"><img src={erp.uploadUrl + item.preview}/></a>
               }
             })
           }
@@ -189,4 +186,13 @@ export default class BannerComponent extends Component {
       </div>
     );
   }
+
 };
+
+const mapStateToProps = state => ({
+    imgList:state.banner.imgList || []
+    
+})
+
+export default connect(mapStateToProps, BannerActions)(BannerComponent)
+

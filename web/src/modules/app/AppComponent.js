@@ -17,17 +17,11 @@ import erp from "../../utils/global"
 
 
 class AppComponent extends Component{
-	// contructor(props){
-	// 	super(props)
-	// 	this.state={
-	// 		return {
-	// 			timer:null
-	// 		}
-	// 	}
-	// }
+	
 	onScrollHandler(){
 		this.props.backToTopStatus(this.refs.app_main.scrollTop)
 	}
+	
 	backtotopfn(){
 		// 当前滚动条 滚动距离
 		let Height = this.props.height
@@ -44,14 +38,16 @@ class AppComponent extends Component{
 			}.bind(this),30)
 		}.bind(this),50)
 	}
+
 	componentDidMount(){
 		hashHistory.push('appRenqi')
 
-	// 实现左上角功能
+		// 实现左上角功能
 		$('.hengmian').click(function(){
-			$('.app_aside').animate({width:'81.25%'}).show()
-			$('.app_container').animate({left:'81.25%'})
-			$('.app_aside_mask').show().animate({left:'81.25%',opacity:0.7})
+			$('.app_aside').animate({width:'6.933333rem'}).show()
+			$('.app_container').animate({left:'6.933333rem'})
+			$('.app_aside_mask').show().animate({left:'6.933333rem',opacity:0.7})
+
 		})
 		$('.app_aside_mask').click(function(){
 			$('.app_aside').animate({width:0},function(){
@@ -63,6 +59,50 @@ class AppComponent extends Component{
 			})
 		})
 
+		//倒计时
+		var $day = $('.day')
+		var $hour=$('.hour')
+		var $min=$('.min')
+		var $sec=$('.sec')
+		var end = Date.parse('2017/6/23 22:00:00');
+		// var now = Date.now();
+		// var xxx= end-now;
+		// console.log(end,now)
+		// 页面进入时先执行一次
+		// 显示时间
+		showTimeLeft();
+		var timer = setInterval(showTimeLeft,1000);
+		function showTimeLeft(){
+	 		var now = Date.now();
+		 	// 把当前时间与秒杀时间进行对比
+		 	var offsetTime = Math.floor((end - now)/1000);
+		 	var secLeft = offsetTime%60;
+		 	var minLeft = Math.floor(offsetTime/60)%60;
+		 	var hourLeft = Math.floor(offsetTime/60/60)%24;
+		 	var dayLeft = Math.floor(offsetTime/60/60/24);
+		 	//当时间小于10的时候判断
+		 	secLeft<10? secLeft='0'+secLeft : secLeft=secLeft;
+		 	minLeft<10? minLeft='0'+minLeft : minLeft=minLeft;
+		 	hourLeft<10? hourLeft='0'+hourLeft : hourLeft=hourLeft;
+		 	// dayLeft<10? dayLeft='0'+hourLeft : dayLeft=dayLeft;
+
+		 	$day.text(dayLeft);
+			$hour.text(hourLeft);
+			$min.text(minLeft);
+			$sec.text(secLeft)
+			//判断相差时间为0的时候，直接等于00
+			if (offsetTime <=0) {
+				$day.text('0'+'0');
+				$hour.text('0' + '0');
+				$min.text('0' + '0');
+				$sec.text('0' + '0')
+			}
+			if(dayLeft <=0 ){
+				$hour.text('0');
+			}
+		 }
+
+	   // 结束
 	}
 	
 
@@ -103,47 +143,48 @@ class AppComponent extends Component{
 	            	<main className="app_main" ref="app_main" onScroll={this.onScrollHandler.bind(this)} style={{height:this.props.height}}>
 	            		<div className="backToTop" ref="backTop" onClick={this.backtotopfn.bind(this)} style={{display:this.props.display}}><span className="iconfont icon-fanhuidingbu"></span></div>
 
-	            		<BannerComponent/>
 
+
+	            		<BannerComponent/>
+	
 		            	<div className="linkPic"><Link to=""><img src={require('../../static/imgs/3.png')} alt="" /></Link></div>
 		            	<div className="ToSnapUp">
 		            		<Link to="" className="ToSnapUp_link">
 		            			<h3>限时抢购</h3>
 		            			<p>
-		            				<span></span>
-		            				<span></span>
-		            				<span></span>
-		            				<span></span>		
+		            				<span className="day"></span>天
+		            				<span className="hour"></span>时
+		            				<span className="min"></span>分
+		            				<span className="sec"></span>秒	
 		            			</p>
 		            			<span className="iconfont icon-iconfontright"></span>	
 		            		</Link>
 		            		<div className="recommend">
-
-								<XianshiComponent/>
+							<XianshiComponent/>
 
 		            		</div>
 		            	</div>
 		        		<div className="watchOption">
 							<div>
-								<Link to="" className="watch_Option watch_Option1">
+								<Link to={"listPage?keyword=男"} className="watch_Option watch_Option1">
 									<span>男表</span>
 									<span>MEN</span>
 								</Link>
 							</div>
 							<div>
-								<Link to="" className="watch_Option watch_Option2">
+								<Link to={"listPage?keyword=女"} className="watch_Option watch_Option2">
 									<span>女表</span>
 									<span>WOMEN</span>
 								</Link>
 							</div>
 							<div>
-								<Link to="" className="watch_Option watch_Option3">
+								<Link to={"listPage?keyword=机械"} className="watch_Option watch_Option3">
 									<span>机械表</span>
 									<span>MECHANICS</span>
 								</Link>
 							</div>
 							<div>
-								<Link to="" className="watch_Option watch_Option4">
+								<Link to={"listPage?keyword=情侣"} className="watch_Option watch_Option4">
 									<span>石英表</span>
 									<span>QUARTZ</span>
 								</Link>
@@ -174,9 +215,9 @@ class AppComponent extends Component{
 						{this.props.children}
 		            	</article>	
 	            	</main>
-	            	<FooterComponent/>
+	            	
             	</div>
-            	
+            	<FooterComponent/>
             </div>
         )
     }

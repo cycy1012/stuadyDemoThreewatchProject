@@ -4,13 +4,33 @@ var ReactRouter = require('react-router');
 var {Router,Route,hashHistory,Link,IndexRoute,browserHistory} = ReactRouter;
 import $ from '../listpage/jquery-3.1.1.js'
 import {connect} from 'react-redux'
+import * as XianshiActions from './XianshiAction'
 import erp from "../../utils/global"
 import pic1 from '../../static/imgs/1.png'
 import pic2 from '../../static/imgs/2.png'
 import './Xianshi.scss'
 
 class XianshiComponent extends Component{
+	constructor(props){
+		super(props)
+		this.state={
+			xianShiQiangGou1_data:[],
+			xianShiQiangGou2_data:[]
+		}
+	}
+
 	componentDidMount(){
+		// console.log(this.props)
+		this.props.getxianshi('限时抢购1').then(
+            response =>{
+           		this.setState({xianShiQiangGou1_data:response.body})
+        })
+        this.props.getxianshi('限时抢购2').then(
+            response =>{
+           		this.setState({xianShiQiangGou2_data:response.body})
+        })
+
+
 		// PageSlide接收三个参数:页面元素,要设定的滑动方向,可选的扩展函数
 		var PageSlide = function(el, swipe, options) {
 		    this.options = options || {}  //可选函数
@@ -232,36 +252,33 @@ class XianshiComponent extends Component{
 		return(
 			<ul className="pages">
 				<div className = "page">
-				<li>
-					<div><img src={require('../../static/imgs/4.png')} alt="" /></div>
-					<p>浪琴浪琴运动系列33913987 男表</p>
-				</li>
-				<li>
-					<div><img src={require('../../static/imgs/nanshi.jpg')} alt="" /></div>
-					<p>浪琴浪琴运动系列33913987 男表</p>
-				</li>
-				<li>
-					<div><img src={require('../../static/imgs/nvshi.jpg')} alt="" /></div>
-					<p>浪琴浪琴运动系列33913987 男表</p>
-				</li>
+					{(this.state.xianShiQiangGou1_data || []).map(function(item){
+						return <li>
+									<div><Link to={"details?_id=" + item._id}><img src={erp.uploadUrl + item.preview} /></Link></div>
+									<p>{item.name}</p>
+								</li>
+
+					})}
 				</div>
-				<div className="page">
-				<li>
-					<div><img src={pic2} alt="" /></div>
-					<p>浪琴浪琴运动系列33913987 男表</p>
-				</li>
-				<li>
-					<div><img src={pic1} alt="" /></div>
-					<p>浪琴浪琴运动系列33913987 男表</p>
-				</li>
-				<li>
-					<div><img src={pic2} alt="" /></div>
-					<p>浪琴浪琴运动系列33913987 男表</p>
-				</li>
+				<div className = "page">
+					{(this.state.xianShiQiangGou2_data || []).map(function(item){
+						return <li>
+									<div><Link to={"details?_id=" + item._id}><img src={erp.uploadUrl + item.preview} /></Link></div>
+									<p>{item.name}</p>
+								</li>
+
+					})}
+
 				</div>
 			</ul>
 		)
 	}
 }
 
-export default XianshiComponent
+const mapStateToProps = state => ({
+    
+})
+
+export default connect(mapStateToProps, XianshiActions)(XianshiComponent)
+
+

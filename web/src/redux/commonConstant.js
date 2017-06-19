@@ -7,3 +7,7 @@ export const BACKTOTOP_NONE = "BACKTOTOP_NONE"
 
 export const BACKTOTOP = "BACKTOTOP"
 
+export const B_REQUEST = "B_REQUEST"
+export const B_SUCCESS = "B_SUCCESS"
+export const B_FAILURE = "B_FAILURE"
+
