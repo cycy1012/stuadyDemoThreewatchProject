@@ -44,7 +44,6 @@ class AppComponent extends Component{
 	}
 	componentDidMount(){
 		hashHistory.push('appRenqi')
-
 		if(!this.refs.banner_mask){
 			return
 		}
