@@ -117,7 +117,9 @@ class DetailsComponent extends Component{
 							</div>
 						</div>
 						<div className="bottom_close"></div>
-						<div className="bottom_confim" onTouchStart={this.session.bind(this)}>确认</div>
+						<Link to="/buycar">
+							<div className="bottom_confim" onTouchStart={this.session.bind(this)}>确认</div>
+						</Link>
 					</div>
 					<div className="detail_cont">
 						<div className="swiper-container">

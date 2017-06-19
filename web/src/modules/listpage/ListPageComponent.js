@@ -168,7 +168,7 @@ class ListPageCompoennt extends Component {
 							this.props.listProducts.map(function(item, index){
 								//遍历商品列表
 								return(
-								<li><Link to={{pathname: "/details", query: {_id: item._id}}}>
+								<li><Link to={{pathname: "/details/detailsMain", query: {_id: item._id}}}>
 									<img src={erp.uploadUrl + item.preview} alt=""/>
 									<h3>{item.name}</h3>
 									<div className="collect clearfix">

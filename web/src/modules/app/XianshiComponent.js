@@ -254,7 +254,7 @@ class XianshiComponent extends Component{
 				<div className = "page">
 					{(this.state.xianShiQiangGou1_data || []).map(function(item){
 						return <li>
-									<div><Link to={"details?_id=" + item._id}><img src={erp.uploadUrl + item.preview} /></Link></div>
+									<div><Link to={"details/detailsMain?_id=" + item._id}><img src={erp.uploadUrl + item.preview} /></Link></div>
 									<p>{item.name}</p>
 								</li>
 
@@ -263,7 +263,7 @@ class XianshiComponent extends Component{
 				<div className = "page">
 					{(this.state.xianShiQiangGou2_data || []).map(function(item){
 						return <li>
-									<div><Link to={"details?_id=" + item._id}><img src={erp.uploadUrl + item.preview} /></Link></div>
+									<div><Link to={"details/detailsMain?_id=" + item._id}><img src={erp.uploadUrl + item.preview} /></Link></div>
 									<p>{item.name}</p>
 								</li>
 
