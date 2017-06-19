@@ -6,43 +6,44 @@ body,html{
 }
 .buycarHeader{
 	position: relative;
-	height:50px;
+	height:1.5625rem;
+	overflow:hidden;
 	p{
-		height:50px;
-		font-size:16px;
+		height:1.5625rem;
+		font-size:.5rem;
 		overflow: hidden;
 		background-color: #D8B770;
 		// background-color: $main_color;
 		color: #fff;
 		border-bottom: 0.03125rem solid #E8E8E8;
 		text-align: center;
-		line-height: 50px;
+		line-height: 1.5625rem;
 	
 				.back{
 			// float: left;
-			height:50px;
-			width: 50px;
+			height:1.5625rem;
+			width: 1.5625rem;
 			position: absolute;
 			left: 0;
 			text-decoration: none;
 			i{
 				height: 100%;
-				line-height: 50px;
-				font-size: 24px;
+				line-height: 1.5625rem;
+				font-size: .75rem;
 				color: #fff;
 			}
 		}
 		.homepage{
 			// float: right;
-			height: 50px;
-			width: 50px;
+			height: 1.5625rem;
+			width: 1.5625rem;
 			position: absolute;
 			right: 0;
 			text-decoration: none;
 			i{
 				height: 100%;
-				line-height: 50px;
-				font-size: 24px;
+				line-height: 1.5625rem;
+				font-size: .75rem;
 				color: #fff;
 			}
 		}
@@ -60,51 +61,61 @@ body,html{
 		.prodetail{
 			background-color:#fff;
 
-			height: 100px;
-			padding: 10px;
+			height: 3.125rem;
+			padding: .3125rem .3125rem .3125rem .1875rem;
 			overflow: hidden;
 			position:relative;
-			margin-bottom: 5px;
+			margin-bottom: .15625rem;
 
 			.checkbox{
 				display: block;
 				float: left;
 				position:relative;
-				line-height: 80px;
+				line-height: 2.5rem;
+				color:#df3033;
 
 
-				.choosePro{
-					// position: absolute;
-				 //    top: 4px;
-				    width: 20px;
-				    height: 20px;
-				    border-radius:50%;
-				}
+				// .choosePro{
+				// 	// position: absolute;
+				//  //    top: .125rem;
+				//     width: .625rem;
+				//     height: .625rem;
+				//     // border-radius:50%;
+				// }
 			}
 			.detail_main{
 				float: left;
-				margin-left: 10px;
+				margin-left: .3125rem;
 				overflow: hidden;
-				width: 270px;
+				width: 8.4375rem;
+				height: 2.1875rem;
 				.picbox {
-					float: left;
 				    display: block;
+					float: left;
+
 				    // width: 1.375rem;
 				    // height: 1.375rem;
 				    float: left;
 				    img{
-				    	width: 70px;
-				    	height: 70px;				    }
+				    	width: 2.1875rem;
+				    	height: 2.1875rem;				    }
 				}
 				.pro_word{
 					float: left;
-					margin-left: 10px;
+					margin-left: .3125rem;
+
 					.proName{
-					    text-overflow: ellipsis;
-					    display: 	block;
-					    overflow: hidden;
-					    white-space: nowrap;
-					    color: #000;
+						h3{
+					    	display:block;
+					    	white-space:wrap; 
+					    	// overflow:hidden; 
+					    	text-overflow:ellipsis;
+
+							width: 5rem;
+						    // overflow: hidden;
+						    // white-space: wrap;
+						    color: #000;
+						}
 					}
 					.buyoption{
 						.priceTag{
@@ -117,52 +128,52 @@ body,html{
 							    padding-top: 0.25rem;
 							    padding-bottom: 0.25rem;
 							    color: #d8b86e;
-							    font-size: 14px;
+							    font-size: .4375rem;
 						    }
 						}
 						.addNum{
 							position:absolute;
-							right: 10px;
-							bottom:10px;
+							right: .3125rem;
+							bottom:.3125rem;
 						    border: none;
 						    background: none;
-						    height: 30px;
+						    height: .9375rem;
 						    // margin-top: 0.12rem	;
-						    padding: 0 30px;
-						    width: 100px;
+						    padding: 0 .9375rem;
+						    width: 3.125rem;
 						    input{
 						    	display: block;
-							    height: 30px;
-							    width: 40px;
+							    height: .9375rem;
+							    width: 1.25rem;
 							    border: none !important;
 								text-align: center;
 							    color: #313131;
 						    }
 						    .Numreduce{
-						    	font-size: 18px;
+						    	font-size: .5625rem;
 							    line-height: 100%;
 							    position: absolute;
 							    top: 0;
 							    left: 0;
-							    width: 30px;
+							    width: .9375rem;
 							    height: 100%;
 							    color: #555;
 							    border-radius: 50%;
-  								border: 1px solid #e6e6e6;
+  								border: .03125rem solid #e6e6e6;
 							    background-color: #f9f9f9;
 							    outline: none;
 						    }
 						    .Numadd{
-						    	font-size: 18px;
+						    	font-size: .5625rem;
 							    line-height: 100%;
 							    position: absolute;
 							    top: 0;
 							    right: 0;
-							    width: 30px;
+							    width: .9375rem;
 							    height: 100%;
 							    color: #555;
 							    border-radius: 50%;
-  								border: 1px solid #e6e6e6;
+  								border: .03125rem solid #e6e6e6;
 							    background-color: #f9f9f9;
 							    outline: none;
 						    	
@@ -182,48 +193,50 @@ body,html{
 }
 .buycarFooter{
 
-	height:50px;
+	height:1.5625rem;
+	overflow:hidden;
 
 	// position: fixed;
     left: 0;
     bottom: 0;
     background-color: #fff;
     width: 100%;
-    border-top: 1px solid #e1e1e1;
+    border-top: .03125rem solid #e1e1e1;
     z-index: 99;
     position:relative;
 	// overflow:hidden;
 	
-	border-top: 1px solid #E8E8E8;
+	border-top: .03125rem solid #E8E8E8;
 	.chooseAll{
 		float: left;
-		line-height: 50px;
+		line-height: 1.5625rem;
 		position:relative;
-
+		margin-left: .3125rem;
 		span{
-            margin-left: 32px;
-            font-size: 12px;
+           	padding:0 .125rem;
+            font-size: .375rem;
+            color: #df3033;
 		}
 		.chooseBtn{
 			position:absolute;
-  			top: 15px;
-   			left: 5px;;
-   			width: 20px;
-   			height: 20px;
+  			top: .46875rem;
+   			left: .15625rem;;
+   			width: .625rem;
+   			height: .625rem;
         }
 	}
 	.totalPay{
 		float: left;
-		line-height: 50px;
+		line-height: 1.5625rem;
 		position: relative;
-		padding: 0 0 0 20px;
+		padding: 0 0 0 .625rem;
 		span{
-			font-size: 14px;
+			font-size: .4375rem;
 			font-weight: bold;	
 			color: #df3033;
 		}
 		b{
-			font-size: 16px;
+			font-size: .5rem;
 			font-weight: bold;
 			color: #df3033;
 
@@ -232,16 +245,52 @@ body,html{
 	.buynow{
 		float: right;
 		.buyBtn{
-			font-size: 16px;
+			font-size: .5rem;
 		    background-color: #1b1b1b;
-		    line-height: 52px;
+		    line-height: 1.625rem;
 		    position: absolute;
 		    right: 0;
-		    padding: 0 20px;
-		    max-width: 98px;
-		    top: -1px;
+		    padding: 0 .625rem;
+		    max-width: 3.0625rem;
+		    top: -.03125rem;
 		    color: #fff;
     		text-align: center;
 		}
 	}
 }
+
+.no_shop{
+		// display: none;
+		text-align: center;
+		 background-color:#fff;
+		.icon-gouwuche{
+			font-size: 40px;
+			
+			color:#df3033;
+			// padding-top: 1.9375rem;
+			text-align: center;
+		}
+		p{
+			text-align: center;
+			padding-top: 0.2125rem;
+			font-size: 14px;
+			span{
+				font-size: 14px;
+			}
+		}
+		div{
+			display: flex;
+			h2{
+				// display: inline-block;
+				flex:1;
+				font-size: 14px;
+				text-align: center;
+				color: #fff;
+				background-color: #1b1b1b;
+				margin:0.28125rem 0.3125rem;
+				line-height: 1.25rem;
+				border-radius: 0.15625rem;
+				// border:1px solid #D4D4D4;
+			}
+		}
+	}

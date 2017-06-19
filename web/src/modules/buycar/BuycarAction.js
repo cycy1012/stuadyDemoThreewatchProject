@@ -1,14 +1,8 @@
-var {INCREMENT_COUNTER, DECREMENT_COUNTER} = require('../buycar/BuycarConstant.js');
-
-//增加
-exports.increment = function(){
+import * as constants from '../../redux/commonConstant'
+export function mamage(){
 	return {
-		type: INCREMENT_COUNTER
-	}
-}
-
-exports.decrement = function(){
-	return {
-		type: DECREMENT_COUNTER
+		types: [constants.REQUEST, constants.SUCCESS, constants.FAILURE],
+		path: 'buycar',
+		method:'post',
 	}
 }

@@ -55,4 +55,14 @@ exports.Register = function(app){
             })
         }        
     })
+
+
+
+    app.post('/buycar',urlencodedParser,function(request,response){
+        DB.get('buydata',{},function(result){
+            response.send(result)
+            console.log(result)
+        })
+    })
+
 }
