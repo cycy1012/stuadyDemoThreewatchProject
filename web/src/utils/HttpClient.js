@@ -1,7 +1,7 @@
 //http://visionmedia.github.io/superagent/
 import request from 'superagent'
 
-const LOCAL_SERVER = 'http://10.3.133.38:888/';
+const LOCAL_SERVER = 'http://10.3.133.50:8888/';
 
 const DEV_SERVER = '';
 const PRO_SERVER = '';
@@ -26,6 +26,19 @@ const HttpClient = {
                 }
             });
     }),
+// funtion(path,query){
+//     new Promise(function(resolve,reject){
+//         var req =request.get(getUrl(path))
+//         var req =query(query)
+//         var req =requset.end(function(err,res){
+//              if (err) {
+//                     reject(err);
+//                 } else {
+//                     resolve(res.body);
+//                 }
+//         })
+//     })
+// }
 
     post: (path, formdata, query) => new Promise((resolve, reject) => {
         request

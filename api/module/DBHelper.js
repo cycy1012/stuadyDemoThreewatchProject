@@ -51,5 +51,22 @@ module.exports = {
             })
             db.close();
         })
-    }
+    },
+    del:function(_collection,_data,callback){console.log(_data,"_data",_collection)
+        db.collection(_collection,function(err,collection){
+            collection.remove(_data,function(err,result){
+                callback(ApiResult(true, null, result))
+            })
+        })
+    },
+    updataProducts:function(_collection,_condition,_callback){
+        db.collection(_collection,function(err,collection){
+            collection.updata(data,{$set:needUpdata},true,function(err,result){
+                if(err){
+                    console.log(err)
+                }
+            })
+        });
+    },
+
 }

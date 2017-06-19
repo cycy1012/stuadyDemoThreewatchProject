@@ -26,15 +26,15 @@ class AppRenqiComponent extends Component{
     			<ul className="list">
     				{this.state.response.map(function(item){
                         return   <li>
-                                    <Link to={"details?_id=" + item._id} className="list_watch_picture"><img src={erp.uploadUrl + item.preview} /></Link>
-                                    <Link to={"details?_id=" + item._id} className="list_watch_name"><p className="list_watch_name_content">{item.name}</p></Link>
+                                    <Link to={"details/detailsMain?_id=" + item._id} className="list_watch_picture"><img src={erp.uploadUrl + item.preview} /></Link>
+                                    <Link to={"details/detailsMain?_id=" + item._id} className="list_watch_name"><p className="list_watch_name_content">{item.name}</p></Link>
                                     <p className="list_watch_price">￥{item.price}</p>
                                 </li>
                     })}
                     {this.state.response.map(function(item){
                         return   <li>
-                                    <Link to={"details?_id=" + item._id} className="list_watch_picture"><img src={erp.uploadUrl + item.preview} /></Link>
-                                    <Link to={"details?_id=" + item._id} className="list_watch_name"><p className="list_watch_name_content">{item.name}</p></Link>
+                                    <Link to={"details/detailsMain?_id=" + item._id} className="list_watch_picture"><img src={erp.uploadUrl + item.preview} /></Link>
+                                    <Link to={"details/detailsMain?_id=" + item._id} className="list_watch_name"><p className="list_watch_name_content">{item.name}</p></Link>
                                     <p className="list_watch_price">￥{item.price}</p>
                                 </li>
                     })}                    

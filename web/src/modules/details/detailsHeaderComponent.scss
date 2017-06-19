@@ -1,0 +1,134 @@
+@import '../../static/styles/common.scss';
+@import '../../static/styles/base.scss';
+
+.detail_head{
+	width: 100%;
+	height:1.25rem;
+	background: #fff;
+	overflow: hidden;
+	// 头部左边的图标
+	.pic_left{
+		float: left;
+		width: 15%;
+		height:1.25rem;
+		text-align: center;
+		line-height: 1.25rem;
+		i{					
+			color: #333;
+			font-size:22px;
+		}	
+	}
+	//头部的Tab标签的切换
+	.detail_head_tab{
+		float: left;
+		height: 1.25rem;
+		width: 70%;
+		li{
+			float: left;
+			line-height: 1.25rem;
+			font-size: 14px;
+			padding: 0 6.2%;
+			text-decoration: none;
+			a{
+				text-decoration: none;
+			}
+		}
+	}
+	// 头部右边的图标
+	.pic_right{
+		float: right;
+		width: 15%;
+		height:1.25rem;
+		text-align: center;
+		line-height: 1.25rem;
+		i{
+			color: #6C6C6C;
+			font-size:22px;
+		}
+	}
+}
+
+//详情页的脚部
+.detail_foot{
+		height: 1.25rem;
+		width: 100%;
+		background: #fff;
+		overflow: hidden;
+		// 收藏
+		.like{
+			height: 1.25rem;
+			width: 20%;
+			background: #fdfdfd;
+			float: left;
+		    text-align: center;
+   			color: #666;
+		    border-right: 0.03125rem solid #e1e1e1;
+		    margin-top: 2px;
+    		>.iconfont {
+    			display: block;
+    			font-size: 16px;
+    			margin-top: 2px;
+    		}
+    		>span{
+    			font-size: 12px;
+    		}
+		}
+		//购物车
+		.detail_cart{
+		    height: 1.25rem;
+			width: 20%;
+			background: #fdfdfd;
+			float: left;
+		    text-align: center;
+   			color: #666;
+   			margin-top: 2px;
+		    >.iconfont {
+    			font-size: 16px;
+    			display: block;
+    			margin-top: 2px;
+    		}
+    		>span{
+    			font-size: 12px;
+    		}
+		}
+		.addCart{
+		    height: 1.25rem;
+		    width: 30%;
+		    background:#EEEEEE;
+		    float: left;
+		    font-size: 14px;
+		    line-height: 1.25rem;
+		    text-align: center;
+		    // color: #fff;   
+		}
+		.detail_buy{
+			height: 1.25rem;
+		    width: 30%;
+		    background:#1B1B1B;
+		    float: right;
+		    font-size: 14px;
+		    line-height: 1.25rem;
+		    text-align: center;
+		    color: #fff;
+		}
+}
+
+//购物车的弹窗
+.shopCar{
+	width: 3.125rem;
+	height: 1.25rem;
+	background: #D8B86F;
+	border-radius:0.3125rem;
+	position: fixed;
+    left:0;
+    right:0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    &>p{
+    	text-align: center;
+    	line-height: 1.25rem;
+    	font-size: 14px;
+    	color:#fff;
+    }
+}
