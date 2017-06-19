@@ -26,6 +26,19 @@ const HttpClient = {
                 }
             });
     }),
+// funtion(path,query){
+//     new Promise(function(resolve,reject){
+//         var req =request.get(getUrl(path))
+//         var req =query(query)
+//         var req =requset.end(function(err,res){
+//              if (err) {
+//                     reject(err);
+//                 } else {
+//                     resolve(res.body);
+//                 }
+//         })
+//     })
+// }
 
     post: (path, formdata, query) => new Promise((resolve, reject) => {
         request

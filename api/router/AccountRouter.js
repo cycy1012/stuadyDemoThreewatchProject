@@ -54,6 +54,7 @@ exports.Register = function(app){
             })
         }        
     })
+
     app.post('/memberCenter',urlencodedParser,function(request,response){
             console.log(requset.body,"===>",response.body)
             DB.get('sexUser',{username:request.body.username}),

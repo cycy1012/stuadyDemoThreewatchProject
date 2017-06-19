@@ -118,6 +118,46 @@ var searchProductByarea=function(_collection,obj,callback){
 	})
 }
 
+//查询根据条件商品，可以排序 ，可以限制数量，用于分页查询
+var getProductFilter = function(_collection,obj1, data, Reg,skip,limit, sort,callback){
+    //初始化变量的值   
+    /*
+        skip：查找起始位置
+        limit：得到结果的个数
+        sort：根据给定条件排序 1升序-1降序 (前台必须JSON.strigify否则parse出错,则取消排序
+        格式："sotr":JSON.strigify({price:1}))
+    */ 
+    skip = skip ? parseInt(skip) : 0;
+    limit = limit ? parseInt(limit) : 0;
+    try{
+        sort = sort ? JSON.parse(sort) : {};
+    }catch(error){
+        console.log('sort转换失败,取消排序,错误信息：',error);
+        sort = {};
+    }
+
+    //obj为需要查找的数据
+    var obj = {};
+    for(var attr in data){
+        //假如满足一下条件则跳过不加入obj中
+        if(!(attr === 'limit' || attr === 'skip' || attr ==='sort' || attr === "fuzzy")){
+            obj[attr] = Reg;
+        }
+    }
+    db.collection(_collection, function(error, collection){
+        if(error){
+            console.log(error)
+        } else {
+            console.log('obj:',obj);
+            console.log('objobjobj',obj,skip,limit,sort)
+            collection.find(obj1).skip(skip).limit(limit).sort(sort).toArray(function(err, docs){
+                callback(docs);
+            });   
+        }
+    });
+
+};
+
 exports.save = save;
 exports.exists = exists;
 exports.delByProductsObj = delByProductsObj;
@@ -125,3 +165,4 @@ exports.changeProduct = changeProduct;
 exports.gainProduct = gainProduct;
 exports.searchProductByclassify = searchProductByclassify;
 exports.searchProductByarea = searchProductByarea;
+exports.getProductFilter = getProductFilter;

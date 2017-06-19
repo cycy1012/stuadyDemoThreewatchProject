@@ -183,4 +183,36 @@ exports.Register = function(app){
 
       })
     });
+     //查找商品信息，可以限制数量，可以排序
+    app.post('/getProductsAdvanced1',urlencodedParser,function(request, response){
+
+      var obj1= {}
+      var arr1 = []
+      arr1.push(request.body.area)
+      arr1 = arr1.toString()
+      var Reg1 = new RegExp(arr1)
+      obj1.people = Reg1
+
+      console.log('request.body:',request.body);
+
+      console.log('typeof request.body.sort:',typeof request.body.sort);
+      var arr = [];
+      //根据前端数据添加进数据
+      for(var attr in request.body){
+        console.log('attr:',attr);
+        if(!(attr === 'limit' || attr === 'skip' || attr ==='sort' || attr === "fuzzy")){
+          arr.push(request.body[attr]);
+        }
+      }
+      arr = arr.toString();
+      if(arr === ""){
+        arr = /\d\D/;
+      }
+      var Reg = new RegExp(arr);
+      console.log('arr:',arr,'Reg:',Reg);
+      db.getProductFilter('qqq', obj1,request.body, Reg, request.body.skip, request.body.limit, request.body.sort,function(result){
+        response.send(JSON.stringify(result));
+      });
+    });
+
 }
