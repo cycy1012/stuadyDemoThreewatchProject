@@ -1,15 +1,19 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import ReactDOM from 'react-dom'
-import {Router, Route, hashHistory, Link, IndexRoute, browserhistory} from 'react-router'
-import $ from './jquery-3.1.1.js'
+import {Router, Route, hashHistory, Link, IndexRoute, browserHistory} from 'react-router'
+
 
 import './ListPage.scss'
 import FooterComponent from '../footer/FooterComponent'
-import SpinnerComponent from '../spinner/SpinnerComponent.js'
+import SpinnerComponent from '../spinner/SpinnerComponent'
 
 import * as ListPageActions from './listPageAction'
 import erp from '../../utils/global.js'
+
+
+//模拟数据
+let brandArr = ['江诗丹顿', '积家', '宝珀','帝舵','摩凡陀','宝诗龙','梵克雅宝','罗杰杜彼','伯爵','格拉苏蒂原创','帕玛强尼','芝柏','法穆兰','雅克德罗','雅克德罗'];
 
 class ListPageCompoennt extends Component {
 	constructor(props){
@@ -21,60 +25,30 @@ class ListPageCompoennt extends Component {
 	}
 	componentWillMount(){
 		let keyword = this.props.location.query.keyword;
-		this.sendAjaxGetProducts(keyword);
-		// console.log(responseData);
-		// this.props.getProducts().then(response => {
-		// 	console.log(response);
-  //           // if(response.body.status){
-  //           //     hashHistory.push('/login')
-  //           // }else{
-  //           //     console.log("用户名已经注册")
-  //           // }
-  //       })
-	}
-	componentDidMount(){
-		// console.log(document.getElementById('list'));
-		// console.log(this.props.location.query,'===');
-	}
-	componentWillUpdate(){
-		console.log('Component Will Updata');
-		var targe = document.getElementById('list').childNodes;
-		// console.log(targe)
- 	// 	document.getElementById('list').append(this.props.listProducts.map(function(item, index){
-		// 	return (
-		// 		<li><Link to={"/details?id=" + item.addtime}>
-		// 			<img src={"https://www.watchvip.cn/" + item.appthumb} alt=""/>
-		// 			<h3>{item.name}</h3>
-		// 			<div className="collect clearfix">
-		// 				<p className="price">{item.goods_price}</p>
-		// 				<p className="like"><i className="iconfont icon-xin"></i>{item.click}</p>
-		// 			</div>
-		// 		</Link></li>
-		// 	)
-		// }));	
-		// console.log(this.props.listProducts);
-		// document.getElementById('list').append(aa);
+		this.sendAjaxGetProducts(keyword, true);
 	}
 
 	//发送请求获取商品列表
-	sendAjaxGetProducts(keyword){
+	sendAjaxGetProducts(keyword, wipeCache){
 		// let keyword = this.props.location.query.keyword;
-		$.ajax({
-			url : erp.baseUrl + 'searchProduct',
-			dataType : 'json',
-			type : 'post',
-			data : {page : this.props.ajaxPage , classify : keyword},
-			beforeSend:function(){
-				this.props.getProducts('before', {}, this.props.sendAjaxFlat);
-			}.bind(this),
-			success:function(response){	
-				this.props.getProducts('success', response, this.props.sendAjaxFlat);		
-			}.bind(this),
-			error:function(){
-				this.props.getProducts('error', {}, this.props.sendAjaxFlat);
-			}.bind(this)
-		});		
-        // this.props.getProducts(this.props.ajaxPage).then(
+		// $.ajax({
+		// 	url : erp.baseUrl + 'searchProduct',
+		// 	dataType : 'json',
+		// 	type : 'post',
+		// 	data : {page : this.props.ajaxPage , classify : keyword},
+		// 	beforeSend:function(){
+		// 		this.props.getProducts('before', {}, this.props.sendAjaxFlat, wipeCache);
+		// 	}.bind(this),
+		// 	success:function(response){	
+		// 		this.props.getProducts('success', response, this.props.sendAjaxFlat, this.props.wipeCache);		
+		// 	}.bind(this),
+		// 	error:function(){
+		// 		this.props.getProducts('error', {}, this.props.sendAjaxFlat, this.props.wipeCache);
+		// 	}.bind(this)
+		// });	
+	
+		this.props.sendAjaxFlat && this.props.getProducts(keyword, this.props.ajaxPage, wipeCache);
+        // this.props.getProducts(keyword, page, wipeCache).then(
         //     response =>{
         //    		console.log(response)
         // })
@@ -82,87 +56,97 @@ class ListPageCompoennt extends Component {
 
 	//点击筛选的事件
 	classify(targe){
-		// this.props.filterDisplay(targe);
-		// console.log('this', this.refs);
-		// console.log('targe', targe);
-		// console.log(this.refs.filter_son0)
 		for(let attr in this.refs){
 			if(attr === targe){
 				this.props.filterDisplay(this.refs[attr],targe);
 			}
 		}
-		// switch(targe){
-		// 	case 'filter_son0':
-		// 		this.props.filterDisplay(this.refs.filter_son0);
-		// 		break;
-		// 	case 'filter_son1':
-		// 		this.props.filterDisplay(this.refs.filter_son1);
-		// 		break;				
-		// 	case 'filter_son2':
-		// 		this.props.filterDisplay(this.refs.filter_son2);
-		// 		break;				
-		// 	case 'filter_son3':
-		// 		this.props.filterDisplay(this.refs.filter_son3);
-		// 		break;				
-		// }
 	}
 
 	//页面滚动事件
 	onScrollHandle(){
-		var wrapScrollTop = this.refs.wrap.scrollTop;
-		var wrapOffsetHieght = this.refs.list.offsetHeight;
-		var windowInnerHeight = window.innerHeight;
+		let wrapScrollTop = this.refs.wrap.scrollTop;
+		let wrapOffsetHieght = this.refs.list.offsetHeight;
+		let windowInnerHeight = window.innerHeight;
 		if((wrapScrollTop >= (wrapOffsetHieght - windowInnerHeight - 10)) && this.props.sendAjaxFlat){
-			this.sendAjaxGetProducts()
+			console.warn('保留数据');
+			let keyword = this.props.location.query.keyword;
+			this.sendAjaxGetProducts(keyword, false)
 		}
-		// console.log(wrapScrollTop,windowInnerHeight,wrapOffsetHieght)
 	}
 
 	//搜索事件
-	search(){
-		let val = this.refs.input.value;
-		this.sendAjaxGetProducts(val)
+	search(text){
+		var val;
+		if(typeof(text) === "string"){
+			val = text;
+			if(text === "全部"){
+				val = "";
+			}
+		}else{
+			val = this.refs.input.value;
+		}
+		hashHistory.push('/listPage?keyword=' + val);
+		this.sendAjaxGetProducts(val, true);
+		console.warn('重置数据');
 	}
 
+	//input回车搜索
+	keyDown(event){
+		if(event.keyCode === 13){
+			let val = this.refs.input.value;
+			hashHistory.push('listPage?keyword=' + val);
+			this.sendAjaxGetProducts(val, true);
+			console.warn('重置数据');
+		}	
+	}
+
+	//筛选
+	select(event){
+		let text = event.target.innerHTML;
+		this.search(text);
+		// console.log();
+	}
 
 	render(){
 		return(
 			<div className="listPage">
 				<header className="list_header">
 					<a className="iconfont icon-fanhui" href="javascript:history.go(-1);"></a>
-					<h1>所有产品</h1>
+					{/*<h1>所有产品</h1>*/}
+					<nav className="list_nav">
+						<i className="iconfont icon-sousuo_sousuo i_search" onTouchStart={this.search.bind(this)}></i>
+						<input type="text" placeholder="请输入商品关键字"  onKeyDown={this.keyDown.bind(this)} ref="input"/>
+					</nav>
 					<a className="iconfont icon-gouwuche" href="#/buycar"></a>
 				</header>
 				<div className="list_wrap" onScroll = {this.onScrollHandle.bind(this)} ref="wrap">
-				<nav className="list_nav">
-					<i className="iconfont icon-sousuo_sousuo i_search" onClick={this.search.bind(this)}></i><input type="text" placeholder="请输入商品关键字" ref="input"/>
-				</nav>
+				{/*<nav className="list_nav">
+					<i className="iconfont icon-sousuo_sousuo i_search" onTouchStart={this.search.bind(this)}></i><input type="text" placeholder="请输入商品关键字" ref="input"/>
+				</nav>*/}
 				<div className="list_filter">
-					<p onClick = {this.classify.bind(this, 'filter_son0')}>类别<i className="iconfont icon-30"></i></p>
-					<p onClick = {this.classify.bind(this, 'filter_son1')}>品牌<i className="iconfont icon-30"></i></p>
-					<p onClick = {this.classify.bind(this, 'filter_son2')}>排序<i className="iconfont icon-30"></i></p>
-					<p onClick = {this.classify.bind(this, 'filter_son3')}>筛选<i className="iconfont icon-shaixuan"></i></p>
+					<p onTouchStart = {this.classify.bind(this, 'filter_son0')}>类别<i className="iconfont icon-30"></i></p>
+					<p onTouchStart = {this.classify.bind(this, 'filter_son1')}>品牌<i className="iconfont icon-30"></i></p>
+					<p onTouchStart = {this.classify.bind(this, 'filter_son2')}>排序<i className="iconfont icon-30"></i></p>
+					<p onTouchStart = {this.classify.bind(this, 'filter_son3')}>筛选<i className="iconfont icon-shaixuan"></i></p>
 					<div className="filter-com filter-son0" style={{display : this.props.filter_son0?'block':'none'}} ref="filter_son0">
 						<ul>
-							<li>全部</li>
-							<li>男士腕表</li>
-							<li>女士腕表</li>
-							<li>情侣腕表</li>
-							<li>机械腕表</li>
+							<li onTouchStart={this.select.bind(this)}>全部</li>
+							<li onTouchStart={this.select.bind(this)}>男士腕表</li>
+							<li onTouchStart={this.select.bind(this)}>女士腕表</li>
+							<li onTouchStart={this.select.bind(this)}>情侣腕表</li>
+							<li onTouchStart={this.select.bind(this)}>机械腕表</li>
 						</ul>
 					</div>
 					<div className="filter-com filter-son1" style={{display : this.props.filter_son1?'block':'none'}} ref="filter_son1">
 						<ul>
-							<li>罗杰杜彼</li>
-							<li>积家</li>
-							<li>宝珀</li>
-							<li>帝舵</li>
-							<li>摩凡陀</li>
-							<li>摩凡陀</li>
-							<li>摩凡陀</li>
-							<li>摩凡陀</li>
-							<li>摩凡陀</li>
-							<li>摩凡陀</li>
+							{
+								brandArr.map(function(item){
+									return(
+										<li>{item}</li>
+									)
+								})
+							}
 						</ul>
 					</div>
 					<div className="filter-com filter-son2" style={{display : this.props.filter_son2?'block':'none'}} ref="filter_son2">
@@ -182,49 +166,23 @@ class ListPageCompoennt extends Component {
 					<ul className="clearfix">
 						{
 							this.props.listProducts.map(function(item, index){
-								// console.log(item);
-								return (
-								<li><Link to={"/details?_id=" + item._id}>
+								//遍历商品列表
+								return(
+								<li><Link to={{pathname: "/details/detailsMain", query: {_id: item._id}}}>
 									<img src={erp.uploadUrl + item.preview} alt=""/>
 									<h3>{item.name}</h3>
 									<div className="collect clearfix">
 										<p className="price">{item.price}</p>
 										<p className="like"><i className="iconfont icon-xin"></i>{item.sale_number}</p>
 									</div>
-								</Link></li>	)			
-							})
-							
-						}
-						{/*<li><Link to="/?name=aa">
-							<img src="https://www.watchvip.cn/upload/img/goods/20170506/5e4523386d654f046c3354c6ceabbfa4_s.jpg" alt=""/>
-							<h3>天梭 T095.417.11.067.00</h3>
-							<div className="collect clearfix">
-								<p className="price">2190.2</p>
-								<p className="like"><i className="iconfont icon-xin"></i>115</p>
-							</div></Link>
-						</li>
-						<li>
-							<img src={require("../../static/styles/imgs/watch.png")} alt=""/>
-							<h3>天梭 T095.417.11.067.00</h3>
-							<div className="collect clearfix">
-								<p className="price">2190.2</p>
-								<p className="like"><i className="iconfont icon-xin"></i>115</p>
-							</div>
-						</li>
-						<li>
-							<img src={require("../../static/styles/imgs/watch.png")} alt=""/>
-							<h3>天梭 T095.417.11.067.00</h3>
-							<div className="collect clearfix">
-								<p className="price">2190.2</p>
-								<p className="like"><i className="iconfont icon-xin"></i>115</p>
-							</div>
-						</li>*/}										
+								</Link></li>)			
+							})	
+						}										
 					</ul>
 				</div></div>
 				<SpinnerComponent show={this.props.loading}/>
 				<FooterComponent/>
 			</div>
-
 		)
 	}
 }
@@ -237,6 +195,7 @@ const mapStateToProps = state =>({
 	loading: state.listPage.loading,
 	listProducts: state.listPage.listProducts,
 	ajaxPage: state.listPage.ajaxPage,
-	sendAjaxFlat: state.listPage.sendAjaxFlat
+	sendAjaxFlat: state.listPage.sendAjaxFlat,
+	wipeCache: state.listPage.wipeCache
 })
 export default connect(mapStateToProps, ListPageActions)(ListPageCompoennt)

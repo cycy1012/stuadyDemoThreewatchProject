@@ -1,6 +1,7 @@
 var path = require('path');
 
 var AccountRouter = require('./AccountRouter');
+var ProductRouter = require('./ProductRouter.js');
 
 exports.Register = function(express){
     var app = express();
@@ -21,6 +22,8 @@ exports.Register = function(express){
     })
 
     AccountRouter.Register(app);
+    ProductRouter.Register(app);
+    app.use(express.static(path.join(path.resolve(__dirname, '../../'), '/')));
 
     return app;
 }

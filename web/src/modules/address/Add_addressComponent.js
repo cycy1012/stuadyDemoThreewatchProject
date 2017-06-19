@@ -1,16 +1,34 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import "./Add_address.scss"
+import * as  AddAction from './Add_addressAction.js'
 
 import redux from 'redux'
-import { Router, Route, hashHistory, Link } from "react-router"
+import  {Router,Route,hashHistory,Link,IndexRoute,browserHistory} from 'react-router';
 
 
 import ReactRouter from "react-router"
 import $ from 'jquery'
 
 class AddressComponent extends React.Component {
-
+	constructor(props){
+        super(props);
+    }
+    componentWillMount(){
+		window.onlyUsername=window.sessionStorage.getItem('phone');
+    }	
+	commitAdd(){
+		this.props.Addcommit(onlyUsername,this.refs.waname.value,this.refs.waphone.value,this.refs.address.value,this.refs.xiang.value).then(
+			response=>{
+				console.log("===>",response)
+				if(response.body.status){
+					hashHistory.push('/address')
+				}else{
+					alert("你输入的地址重复了")
+				}
+			}
+		)
+	}
 	render(){
 		return(
 			<div>
@@ -22,14 +40,13 @@ class AddressComponent extends React.Component {
                  </div>
                  <div className="Add_addressmain">
 					<ul>
-						<li>收货人姓名： <input type="text"/></li>
-						<li>联系电话： <input type="text"/></li>
-						<li>地址省、市： <input type="text"/></li>
-						<li>详细地址： <input type="text"/></li>
+						<li>收货人姓名： <input ref="waname" type="text"/></li>
+						<li>联系电话： <input ref="waphone" type="text"/></li>
+						<li>地址省、市： <input ref="address" type="text"/></li>
+						<li>详细地址： <input ref="xiang" type="text"/></li>
 
 					</ul>
-					<div className="addsubmit">
-					
+					<div className="addsubmit" onTouchStart={this.commitAdd.bind(this)}>
 						<p>提交</p>
 					</div>
 
@@ -40,4 +57,7 @@ class AddressComponent extends React.Component {
 	}
 
 }
-export default AddressComponent;
+
+const mapStateToProps = state => ({
+})
+export default connect(mapStateToProps, AddAction)(AddressComponent)

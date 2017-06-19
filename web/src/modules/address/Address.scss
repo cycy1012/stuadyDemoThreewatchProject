@@ -46,6 +46,40 @@
 	}
 }
 .addressmain{
+	ul{
+		padding-left: 0.3125rem;
+		color: #666666;
+		background-color: #fff;
+
+		// 生成的数据
+		div{
+			padding: 0.15625rem;
+		}
+		p{
+			height: 0.625rem;
+			position: relative;
+			>b{
+				position: absolute;
+				height: 0.625rem;
+				top:0;
+				right:10%;
+				font-size: 12px;
+				line-height: 0.625rem;
+			}
+			>.iconfont{
+				position: absolute;
+				top:0;
+				right:0;
+				// color
+			}
+		}
+		li{
+			height: 1.09375rem;
+			padding-top: 0.15625rem;
+			font-size: 14px;
+			border-bottom:1px solid #eee;
+		}
+	}
 	.addbtn{
 		margin: .3125rem;
 		.add_addressbtn{

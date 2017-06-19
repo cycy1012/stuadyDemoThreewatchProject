@@ -7,7 +7,7 @@ export function ajaxMiddleware({ dispatch, getState }) {
             types,
             shouldCallAPI = () => true,
             query = {},
-            payload = {},
+            payload = {wipeCache: action.wipeCache},
             method = "get",
             path
         } = action;

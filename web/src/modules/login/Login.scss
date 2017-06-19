@@ -2,8 +2,7 @@
 @import '../../static/styles/base.scss';
 
 body{
-	background:#f2f2f2;
-	// padding-top:3.28125rem;
+	// background:#f2f2f2;
 }
 	.loginScss{
 		.loginTop{
@@ -19,6 +18,14 @@ body{
 			font-size: 16px;
 			background:#DFBF77;
 			box-shadow: inset 0 0.015625rem 0 rgba(255,255,255,.08), 0 0.015625rem 0.125rem rgba(0,0,0,.2);
+			>.iconfont{
+				position: absolute;
+				width:1.40625rem;
+				left: 0;
+				top:0;
+				font-size: 0.78125rem;
+				height: 1.4rem;
+			}
 		}
 		.logoImg  {
 			padding: 5% 0;
@@ -29,14 +36,15 @@ body{
 				height: 4.6875rem;
 			}	
 		}
-		form{
+		.loginForm{
 			width:100%;
 			position: relative;
 			// margin-top:3.28125rem;
 			position:relative;
 			div{background:#fff;}
-			.phone,.password{
+			#loginUser,#loginPas{
 				height:1.4rem;
+				background: #fff;
 				width:100%;
 				padding-left:5.5%;
 				border:none;
@@ -68,10 +76,12 @@ body{
 				margin-left:5.5%;
 				margin-right:5.5%;
 			}
-			.phone{
+			#loginUser{
+				background: #FFF;
 				border-top:0.03125rem solid #ccc;
 			}
-			.password{
+			#loginPas{
+				background: #FFF;
 				border-bottom:0.03125rem solid #ccc;
 			}
 			p{

@@ -5,3 +5,6 @@ export function  member(){
 		query:{username}
 	}
 }
+export function  memberlingqu(){
+
+}

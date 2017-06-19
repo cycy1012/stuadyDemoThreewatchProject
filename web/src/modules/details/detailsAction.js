@@ -15,41 +15,21 @@ export function qiehuan(){
 		 $('.tab_con').eq(ind).show();
 	});
 }
-export function addCart(){
-	// $('.success').css('display','block');
-	// $('#btn_addCart').css('display','block')
-	$('#btn_addCart').show();
-	// $('.success').stop(true).show(200).delay(400).hide(300);		
-}
-export function goodChoose(){
-	var btn_choose=$('.good_choose');
-		btn_choose.on('click',function(){
-			$('.detail_pic').fadeIn(500);
-			$('.detail_bottom').show();
-		})
-		var btn_closegood = $('.bottom_infoclose');
-		btn_closegood.on('click',function(){
-			$('.detail_bottom').hide();
-			$('.detail_pic').fadeOut(300);
 
-		})
-} 
-
-export function backTop(){console.log(999,scrollY)
-	window.onscroll=function(){
-			if(scrollY>20){
-				$('.backTop').fadeIn(500);
-			}else{
-				$('.backTop').hide();
-			}
-		}	
-	window.scrollTo(0,0);
-	$('.backTop').animate({
-		opacity:0,
-		top:20
-	},2000);
-	console.log(scrollY)
+export function ajaxDetail(id){
+	return {
+		types: [constants.REQUEST, constants.SUCCESS, constants.FAILURE],
+		path: 'gainProductById',
+		method:'post',
+		query:{'_id':id}
+	}
 }
-export function ajaxDetails(){
-	
+
+export function ajaxCart(order){
+	return {
+		types: [constants.REQUEST, constants.SUCCESS, constants.FAILURE],
+		path: 'writeOrder',
+		method:'post',
+		query:{order:order}
+	}
 }

@@ -5,17 +5,13 @@
 #container{
 	$member_color:#E3BC7D;
 	$member_border:0.03125rem solid #ddd;
-
 	background:#F6F6F6;
 	.header_main{
 		position: relative;
 		.title{
 			width:100%;
-			height: 100%;
-			img{
-				width:100%;
-				height:4.0rem;
-			}
+			height:5.0rem;
+			background: $main_color;
 			.memberSet{
 				height:0.5625rem;
 				width: 1.09375rem;
@@ -26,17 +22,56 @@
 				color:#F6F6F6;
 				border-radius: 0.078125rem;
 			}
+			.user-behavior{
+				text-align: center;
+				ul{
+					float: left;
+					padding-top:3.3rem;
+					width: 90%;
+					margin:0 5%;
+					display: flex;
+					li{
+						flex:1;
+						float: right;
+						height: 100%;
+						a{
+							color:#fff;
+							text-decoration: none;
+							font-size: 14px;
+							color:#051B28;
+							font-family: 'Microsoft YaHei',"Comic Sans MS","幼圆","黑体",sans-serif;
+							#babyboder{
+								border:0;
+							}
+							p{
+								color:#fff;
+							}
+							.baby{
+
+								border-right: 0.015625rem dotted #c3c3c3;								
+							}
+						}
+											
+					}
+				}
+			}
 			.headPic{
 				position: absolute;
 				border-radius: 50%;
 				height:1.875rem;
 				width: 1.8755rem;
-				left: 5%;
-				bottom:-20%;
+				left: 42%;
+				top:10%;
 				img{
 					border-radius: 50%;
 					width: 100%;
 					height: 100%;
+				}
+				.user{
+					color:#fff;
+					margin-top: 0.078125rem;
+					font-size: 16px;
+					text-align: center;
 				}
 			}
 
@@ -47,32 +82,11 @@
 		// flex:1;
 		// overflow-y:auto;
 		// height:37.5rem;
-		.user-behavior{
-			text-align: center;
-			ul{
-				float: right;
-				padding-top: 0.078125rem;
-				li{
-					border-right: 0.015625rem dotted #ccc;
-					float: right;
-					width:2.34375rem;
-					height: 100%;
-					a{
-						text-decoration: none;
-						font-size: 14px;
-						color:#051B28;
-						font-family: 'Microsoft YaHei',"Comic Sans MS","幼圆","黑体",sans-serif;
-					}
-					&:nth-child(1){
-						border: 0;
-					}					
-				}
-			}
-		}
+
 		// 我的订单
 		.myOrder{
 			height:3.625rem;
-			margin-top:0.3125rem;
+			// margin-top:0.3125rem;
 			background:#fff;
 			border-top:$member_border;
 			border-bottom:$member_border;
@@ -205,32 +219,14 @@
 
 		}
 	}
-	.footer_main{
-		margin-top: 0.15625rem;
-		background: #fff;
-		display: flex;
-		height:0.9375rem;
-		text-align: center;
-		line-height:0.9375rem;
-		div{
-			flex:1;
-			border-right: 1px dotted #ccc;
-			&:nth-child(1),&:nth-child(4){
-				border:0;
-			}
-			a{
-				color:#051B28;
-				font-size: 14px;
-			}
-		}
-	}
 	.ad{
-		display: block;
+		display:block;
 		height:1.71875rem;
 		background: #5F646E;
 		position: fixed;
 		bottom: 0;
 		width: 100%;
+		z-index: 1000;
 		padding-left:1.25rem;
 		text-align: center;
 		line-height: 1.71875rem;
@@ -251,7 +247,6 @@
 		.fontWord{
 			display: inline-block;
 			color:#fff;
-			font-size: 0.25rem;
 		}
 		.lingqu{
 			float: right;
