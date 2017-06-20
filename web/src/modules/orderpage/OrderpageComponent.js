@@ -63,9 +63,7 @@ class OrderpageComponent extends React.Component {
   //   console.log(111111111111111);
   //   $('._totalprice').text($('._totalprice').text)
   // }
-  // showtip(){
-  //   alert('亲，订单提交成功!    (按确定返回首页)');
-  //   window.location.href='';
+
   }
 
   showtip(){
@@ -75,8 +73,8 @@ class OrderpageComponent extends React.Component {
     window.localStorage.setItem('total',JSON.stringify(data_reset));
         
 
-    // alert('亲，订单提交成功!    (按确定返回首页)');
-    // window.location.href='';
+    alert('亲，订单提交成功!    (按确定返回首页)');
+    window.location.href='';
   }
   
 
