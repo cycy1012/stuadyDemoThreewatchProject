@@ -11,16 +11,18 @@ import BuycarAction from '../buycar/BuycarAction.js'
 class BuycarComponent extends React.Component{
     constructor(props){
         super(props)
-                        
-        let sessionPro  = [{"_id":{"$oid":"593fcdb6d7e74c19a8fb3444"},"name":"菲拉格慕 FLZ-091509210172","price":"3700.00","preview":"preview-1497353654523.png","qty":2},
-        {"_id":{"$oid":"593fce1fd7e74c19a8fb3445"},"name":"法穆兰 3540 QZ COL DRM A D4 CD","price":"169200.00","preview":"preview-1497353759832.jpg","qty":4},
-        {"_id":{"$oid":"593fce62d7e74c19a8fb3446"},"name":"卡地亚芭蕾系列WG40023J 18K黄金原镶钻圈 金带金壳女表 时尚手链表","price":"58000.00","preview":"preview-1497353826785.png","qty":1}]  
-        window.localStorage.setItem('key',JSON.stringify(sessionPro));
-        window.goods=window.localStorage.getItem('key');
+        console.log(window.localStorage.getItem('data'))       
+        window.goods=window.localStorage.getItem('data');              
+        // let sessionPro  = [{"_id":{"$oid":"593fcdb6d7e74c19a8fb3444"},"name":"菲拉格慕 FLZ-091509210172","price":"3700.00","preview":"preview-1497353654523.png","qty":2},
+        // {"_id":{"$oid":"593fce1fd7e74c19a8fb3445"},"name":"法穆兰 3540 QZ COL DRM A D4 CD","price":"169200.00","preview":"preview-1497353759832.jpg","qty":4},
+        // {"_id":{"$oid":"593fce62d7e74c19a8fb3446"},"name":"卡地亚芭蕾系列WG40023J 18K黄金原镶钻圈 金带金壳女表 时尚手链表","price":"58000.00","preview":"preview-1497353826785.png","qty":1}]  
+        // window.localStorage.setItem('key',JSON.stringify(sessionPro));
+        // window.goods=window.localStorage.getItem('key');
         goods = goods ? JSON.parse(goods) : [];
-        console.log(goods)
+        // console.log(window.localStorage.getItem('data'))
+        // console.log(goods)
         //初始所需的state值
-
+        console.log(goods)
         this.state = {
 
             index:0,
@@ -52,7 +54,7 @@ class BuycarComponent extends React.Component{
         // console.log(event.target.nextSibling);
         for(var i=0 ; i<this.state.goodsarr.length;i++){
             if (index==i) {
-                console.log(this.state.goodsarr[index])
+                // console.log(this.state.goodsarr[index])
                 if (this.state.goodsarr[index].qty>1) {
                   this.state.goodsarr[index].qty--;
 
@@ -60,7 +62,7 @@ class BuycarComponent extends React.Component{
             }
         } 
         this.resetgoodsarr();
-        console.log(this.state.totalprice)
+        // console.log(this.state.totalprice)
         
 
     }
@@ -70,12 +72,12 @@ class BuycarComponent extends React.Component{
         this.setState({in_num:index})
         for(var i=0 ; i<this.state.goodsarr.length;i++){
             if (index==i) {
-                console.log(this.state.goodsarr[index])
+                // console.log(this.state.goodsarr[index])
                 this.state.goodsarr[index].qty++;
             }
         } 
         this.resetgoodsarr();
-        console.log(this.state.totalprice)
+        // console.log(this.state.totalprice)
 
 
     }
@@ -117,8 +119,8 @@ class BuycarComponent extends React.Component{
     resetgoodsarr(){
         this.setState({goodsarr:this.state.goodsarr});
         this.init();
-        window.localStorage.removeItem('key');
-        window.localStorage.setItem('key',JSON.stringify(this.state.goodsarr));
+        window.localStorage.removeItem('data');
+        window.localStorage.setItem('data',JSON.stringify(this.state.goodsarr));
 
     }
     init(){
@@ -128,7 +130,7 @@ class BuycarComponent extends React.Component{
         let linum=0;
         // 计算总价         计算合计数量
         this.state.goodsarr.map(function(item){
-            // console.log(1)
+            console.log(1,this.state.goodsarr)
             let totalprice = 0;let totalqty = 0;
             totalprice += (parseInt(item.price))*item.qty;
             // totalqty +=parseInt(item.qty);
@@ -144,7 +146,7 @@ class BuycarComponent extends React.Component{
     setdata(){
         let data_send  = [{"totalprice":this.state.totalprice,"proqty":this.state.linum}]
         window.localStorage.setItem('total',JSON.stringify(data_send));
-        console.log(data_send)
+        console.log(1,data_send)
         console.log(goods)
 
     }
@@ -216,7 +218,7 @@ class BuycarComponent extends React.Component{
                     </div>
                     <div className="totalPay" ><span>总计:￥</span><b>{this.state.totalprice}</b></div>
                     <div className="buynow">
-                    <Link className="buyBtn" onTouchStart={this.setdata.bind(this)}>去结算</Link>
+                    <Link to="/orderpage" className="buyBtn" onTouchStart={this.setdata.bind(this)}>去结算</Link>
                     </div>
                 </div>
             </div>

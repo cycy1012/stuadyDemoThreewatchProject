@@ -83,9 +83,8 @@ class DetailsComponent extends Component{
     		session.shift()
     	}
 
-    	window.sessionStorage.setItem('data',JSON.stringify(this.state.session))
-    	console.log(window.sessionStorage.getItem('data'))
-
+    	window.localStorage.setItem('data',JSON.stringify(this.state.session))
+    	console.log(window.localStorage.getItem('data'))
     	this.setState({session:session})
     }
     render(){

@@ -31,7 +31,7 @@ class OrderpageComponent extends React.Component {
       // {"_id":{"$oid":"593fce1fd7e74c19a8fb3445"},"name":"法穆兰 3540 QZ COL DRM A D4 CD","price":"169200.00","old_price":"507000.00","pinpai":"法穆兰 Franck Muller","fare":"免运费","sale_number":"1","people":"石英表","xinghao":"140.002 3834.78","jixin":"机械表 自动机械","biaokou":"针扣","biaojing":"蓝宝石水晶","biaodi":"透底","big":"主流30mm-35mm","xingzhuang":"圆形","kedu":"条形","color":"白色","caizhi":"钢","fangshui":"30mm","zhengshu":"是","qujian":"10001-50000","changjing":"商务 时尚","gongneng":"计时功能","preview":"preview-1497353759832.jpg","bannerImg":[],"listImg":[],"new":"undefined"},
       // {"_id":{"$oid":"593fce62d7e74c19a8fb3446"},"name":"卡地亚芭蕾系列WG40023J 18K黄金原镶钻圈 金带金壳女表 时尚手链表","price":"58000.00","old_price":"167000.00","pinpai":"卡地亚 CARTIER","fare":"免运费","sale_number":"3","people":"石英表","xinghao":"140.002 3834.78","jixin":"机械表 自动机械","biaokou":"针扣","biaojing":"蓝宝石水晶","biaodi":"透底","big":"主流30mm-35mm","xingzhuang":"圆形","kedu":"条形","color":"白色","caizhi":"钢","fangshui":"30mm","zhengshu":"是","qujian":"10001-50000","changjing":"商务 时尚","gongneng":"计时功能","preview":"preview-1497353826785.png","bannerImg":[],"listImg":[],"new":"undefined"}]  
       // window.localStorage.setItem('key',JSON.stringify(sessionPro));
-      let goodsdata=window.localStorage.getItem('key');
+      let goodsdata=window.localStorage.getItem('data');
       let total=window.localStorage.getItem('total');
       goodsdata = goodsdata ? JSON.parse(goodsdata) : [];
       total =JSON.parse(total);
@@ -70,7 +70,7 @@ class OrderpageComponent extends React.Component {
 
   showtip(){
     //点击提交订单后，请看localStorage的储存数据，并显示alert
-    window.localStorage.removeItem('key');
+    window.localStorage.removeItem('data');
     let data_reset  = [{"totalprice":0,"proqty":0}]
     window.localStorage.setItem('total',JSON.stringify(data_reset));
         
