@@ -1,0 +1,23 @@
+网页地址 http://localhost:3002/index.html#/
+在\web 路径下 npm start
+在\api 路径下 node server
+
+
+注意！
+1.
+\web\src\utils\global.js   
+修改  base(数据库IP地址(非本机地址))
+     localhost(本地测试地址)  
+
+
+有需要可以改！
+1.
+\api\module\DBHelper
+修改  第4行代码 修改数据库地址（暂时为本机地址）
+
+2.
+数据库名字为:'shuju'
+mongodb集合名字:'qqq'   （注：不带引号）
+3.
+数据库端口：8888（修改文件在\api\Server.js）
+
